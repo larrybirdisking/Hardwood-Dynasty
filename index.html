@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hardwood Dynasty</title>
+<title>Hardwood Dynasty v11</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
@@ -935,9 +935,41 @@ async function hydrateStatsPanel(pop,p) {
 async function loadDB() {
   try {
     const res=await fetch(DATA_URL);
-    if(!res.ok) throw Error("dataset unavailable");
-    const text=await res.text();
-    db=parseCSV(text).filter(p=>p.Player&&p.Team&&Number(p.Season));
+    if(!res.ok) throw Error("main roster dataset unavailable");
+    const currentRows=parseCSV(await res.text())
+      .filter(p=>p.Player&&p.Team&&Number(p.Season));
+
+    // The main roster file starts in 1979. Add the historical NBA player-season
+    // records for 1950–1978 from a separate public CSV, keeping the modern roster
+    // source authoritative wherever it already has coverage.
+    let earlyRows=[];
+    try {
+      const earlyRes=await fetch(LEGACY_STATS_URL);
+      if(earlyRes.ok) {
+        const rawEarly=parseCSV(await earlyRes.text());
+        earlyRows=rawEarly.map(r=>{
+          const pick=(...keys)=>{for(const k of keys){if(r[k]!==undefined&&r[k]!=="")return r[k];}return "";};
+          const player=String(pick("Player","PLAYER","player","Player Name","player_name")).replace(/\*/g,"").trim();
+          const team=String(pick("Tm","TM","Team","TEAM","team","Team_Abbreviation")).trim().toUpperCase();
+          const season=Number(pick("Year","YEAR","year","Season","SEASON","season"));
+          const league=String(pick("Lg","LG","League","league")).trim().toUpperCase();
+          const age=Number(pick("Age","AGE","age"));
+          const exp=pick("Exp","EXP","experience","Experience");
+          const pos=String(pick("Pos","POS","Position","position"));
+          if(!player||!team||team==="TOT"||!Number.isFinite(season)||season<1950||season>1978) return null;
+          if(league && league!=="NBA") return null;
+          return {Player:player,Team:team,Season:String(season),Pos:pos,Exp:exp!==""?exp:(Number.isFinite(age)&&age>0?String(Math.max(0,Math.floor(age-19))):"R"),No:pick("No.","No","Number","Jersey"),_historicalSupplement:true};
+        }).filter(Boolean);
+      }
+    } catch(e) { /* older seasons are an optional supplement; keep modern play available */ }
+
+    // Deduplicate any overlap by player/team/season, preferring the main roster rows.
+    const seen=new Set(currentRows.map(p=>`${String(p.Player).toLowerCase()}|${p.Team}|${Number(p.Season)}`));
+    const supplement=earlyRows.filter(p=>{
+      const key=`${String(p.Player).toLowerCase()}|${p.Team}|${Number(p.Season)}`;
+      if(seen.has(key))return false;seen.add(key);return true;
+    });
+    db=[...supplement,...currentRows].filter(p=>p.Player&&p.Team&&Number(p.Season));
     franchises=[...new Set(db.map(p=>p.Team))];
     teamsBySeason=new Map();seasonsByTeam=new Map();
     for(const p of db){
@@ -950,8 +982,11 @@ async function loadDB() {
       const ys=seasonsByTeam.get(p.Team);if(!ys.includes(y))ys.push(y);
     }
     for(const ys of seasonsByTeam.values())ys.sort((a,b)=>a-b);
+    const availableYears=[...teamsBySeason.keys()].map(Number).sort((a,b)=>a-b);
+    const earlyCount=availableYears.filter(y=>y<1979).length;
+    const latest=availableYears.length?availableYears[availableYears.length-1]:"—";
     $("status").textContent=
-      `database loaded · ${db.length.toLocaleString()} player-season records`;
+      `database loaded · ${db.length.toLocaleString()} player-season records · ${availableYears[0]||"—"}–${latest} seasons (${earlyCount} pre-1979 years loaded)`;
     $("status").classList.add("good");
     $("spinTeam").disabled=false;
   } catch(e) {
@@ -982,7 +1017,7 @@ async function spinTeam() {
 async function spinYear() {
   if(!selectedTeam||roster.length>=10||rolling) return;
   rolling=true;
-  const years=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1950&&y<=2026);
+  const years=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1950&&y<=2027);
   let available=years.filter(y=>!seenSeasons.has(selectedTeam+"-"+y));
   if(!available.length) available=years;
   const finalYear=randomItem(available);
