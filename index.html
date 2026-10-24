@@ -588,6 +588,11 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
   <h1>draft your <span>dynasty.</span></h1>
   <p class="intro">ten picks. ten different players. every pick comes from a randomly selected NBA team and season. build the starting five, then fill your bench.</p>
 
+  <div class="actions roll-above-select">
+    <button class="primary" id="spinTeam" disabled>ROLL FRANCHISE ↗</button>
+    <button class="secondary" id="spinYear" disabled style="display:none">SPIN YEAR</button>
+  </div>
+
   <div class="layout">
     <section class="panel" id="draftPanel">
       <div class="panel-head"><h2>Draft room</h2><span class="step">01 / 03</span></div>
@@ -605,10 +610,6 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
       </div>
       <div class="progress-row"><strong id="pickTitle">pick 1 of 10</strong><span id="pickCount">0 / 10</span></div>
       <div class="progress"><div class="progress-fill" id="progress" style="width:0%"></div></div>
-      <div class="actions">
-        <button class="primary" id="spinTeam" disabled>ROLL FRANCHISE ↗</button>
-        <button class="secondary" id="spinYear" disabled style="display:none">SPIN YEAR</button>
-      </div>
       <div class="status" id="status">connecting to historical roster database...</div>
     </section>
 
@@ -705,6 +706,7 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
 </main>
 
 <script>
+
 const DATA_URL =
 "https://raw.githubusercontent.com/mfridson/NBA_Team_Performance/refs/heads/main/historical_rosters.csv";
 
@@ -986,10 +988,14 @@ async function loadSeasonStats(player, year) {
 async function getPlayerPhoto(name) {
   if(photoCache.has(name)) return photoCache.get(name);
   const promise=(async()=>{
-    // Wikipedia thumbnails are usually recognizable player portraits; Commons is
-    // the fallback for a jersey/action image when an article thumbnail is absent.
+    // Try the REST summary thumbnail first, then Wikipedia pageimages, then Commons.
     try {
-      const url=`${WIKI_API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&pithumbsize=420&titles=${encodeURIComponent(name)}`;
+      const rest=`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name.replace(/ /g,'_'))}`;
+      const r=await fetch(rest,{headers:{'Accept':'application/json'}});
+      if(r.ok){const j=await r.json();const src=j.thumbnail?.source||j.originalimage?.source;if(src)return src;}
+    } catch(e) { /* fall through to pageimages */ }
+    try {
+      const url=`${WIKI_API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&pithumbsize=640&titles=${encodeURIComponent(name)}`;
       const r=await fetch(url);if(r.ok){const j=await r.json();const page=Object.values(j.query?.pages||{})[0];if(page?.thumbnail?.source)return page.thumbnail.source;}
     } catch(e) { /* try Commons below */ }
     try {
@@ -1248,7 +1254,7 @@ async function spinYear() {
     .filter(p=>!usedPlayers.has(p.Player.toLowerCase()));
   const unique=new Map();
   for(const p of full){const key=p.Player.toLowerCase();if(!unique.has(key)||p.ovr>unique.get(key).ovr)unique.set(key,p);}
-  candidates=[...unique.values()].sort((a,b)=>b.ovr-a.ovr).slice(0,10).map(p=>{const goat=isGoatName(p.Player)&&goatCardRoll();return goat?{...p,goat:true,ovr:110,baseOvr:110}:p;});
+  candidates=[...unique.values()].sort((a,b)=>b.ovr-a.ovr).slice(0,10).map(p=>{const goat=isGoatName(p.Player)&&goatCardRoll();const base=goat?{...p,goat:true,ovr:110,baseOvr:110}:p;return rollMomentCard(base);});
   $("year").textContent=String(selectedYear);$("yearSub").textContent=`${full.length} unused roster entries`;
   $("year").classList.remove("rolling");$("year").classList.add("roll-value");
   $("candidateInfo").textContent="choose one of the ten candidates. hover or tap a player for their season stats and photo.";
@@ -1273,6 +1279,31 @@ function renderLifelines(){
 function formatStat(v){return v===null||v===undefined||v===""||!Number.isFinite(Number(v))?"—":Number(v).toFixed(1);}
 function formatPct(v){if(v===null||v===undefined||v===""||!Number.isFinite(Number(v)))return "—";const n=Number(v);return (n<=1?n*100:n).toFixed(1)+"%";}
 
+const MOMENT_CARDS = [
+ {player:"lebron james",title:"THE LOB · 2013 FINALS",ovr:105,keywords:"Dwyane Wade alley oop LeBron James 2013 NBA Finals",file:"LeBron_James_2013_NBA_Finals"},
+ {player:"lebron james",title:"THE BLOCK · 2016 FINALS",ovr:106,keywords:"LeBron James block Andre Iguodala 2016 NBA Finals",file:"LeBron_James_2016_NBA_Finals"},
+ {player:"michael jordan",title:"THE LAST SHOT · 1998",ovr:106,keywords:"Michael Jordan last shot 1998 NBA Finals Bulls Jazz",file:"Michael_Jordan"},
+ {player:"kobe bryant",title:"81 POINTS · 2006",ovr:104,keywords:"Kobe Bryant 81 point game Lakers Raptors",file:"Kobe_Bryant"},
+ {player:"shaquille o'neal",title:"THE THREE-PEAT · 2002",ovr:104,keywords:"Shaquille O'Neal Lakers 2002 NBA Finals",file:"Shaquille_O'Neal"},
+ {player:"larry bird",title:"STEAL & ASSIST · 1987",ovr:103,keywords:"Larry Bird steal Detroit Pistons 1987 playoffs",file:"Larry_Bird"},
+ {player:"ray allen",title:"THE CORNER THREE · 2013",ovr:103,keywords:"Ray Allen corner three 2013 NBA Finals Miami Heat",file:"Ray_Allen"},
+ {player:"magic johnson",title:"ROOKIE MAGIC · 1980",ovr:104,keywords:"Magic Johnson 1980 NBA Finals Lakers",file:"Magic_Johnson"},
+ {player:"vince carter",title:"DUNK CONTEST · 2000",ovr:103,keywords:"Vince Carter 2000 NBA Slam Dunk Contest",file:"Vince_Carter"},
+ {player:"allen iverson",title:"THE STEP OVER · 2001",ovr:103,keywords:"Allen Iverson step over Tyronn Lue 2001 Finals",file:"Allen_Iverson"},
+ {player:"stephen curry",title:"THE DAGGER · 2016",ovr:104,keywords:"Stephen Curry 2016 deep three Thunder",file:"Stephen_Curry"},
+ {player:"giannis antetokounmpo",title:"THE 50-PIECE · 2021",ovr:104,keywords:"Giannis Antetokounmpo 2021 NBA Finals trophy",file:"Giannis_Antetokounmpo"},
+ {player:"dirk nowitzki",title:"ONE-LEGGED FADE · 2011",ovr:103,keywords:"Dirk Nowitzki 2011 NBA Finals Mavericks",file:"Dirk_Nowitzki"},
+ {player:"kawhi leonard",title:"THE BOUNCE · 2019",ovr:103,keywords:"Kawhi Leonard shot bounce 2019 playoffs",file:"Kawhi_Leonard"},
+ {player:"reggie miller",title:"8 POINTS IN 9 SECONDS",ovr:103,keywords:"Reggie Miller 8 points 9 seconds Knicks Pacers",file:"Reggie_Miller"},
+ {player:"dennis rodman",title:"THE REBOUND MACHINE",ovr:102,keywords:"Dennis Rodman Chicago Bulls rebound",file:"Dennis_Rodman"},
+ {player:"julius erving",title:"THE BASELINE MOVE",ovr:103,keywords:"Julius Erving baseline reverse layup",file:"Julius_Erving"},
+ {player:"kevin durant",title:"THE 2017 FINALS DAGGER",ovr:104,keywords:"Kevin Durant 2017 NBA Finals three pointer",file:"Kevin_Durant"}
+];
+function momentForPlayer(player){const key=normalizeStatName(player);return MOMENT_CARDS.filter(m=>normalizeStatName(m.player)===key);}
+function rollMomentCard(p){const options=momentForPlayer(p.Player);if(!options.length||Math.random()>=0.25)return p;const m=randomItem(options);return {...p,momentCard:true,momentTitle:m.title,momentOvr:m.ovr,momentKeywords:m.keywords,momentFile:m.file,baseOvr:m.ovr,ovr:m.ovr};}
+function momentImageUrl(p){const file=String(p.momentFile||'').replace(/ /g,'_');return file?`https://en.wikipedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}.jpg`:'';}
+
+
 function renderCandidates() {
   const wrap=$("candidates");wrap.innerHTML="";
   renderLifelines();
@@ -1284,7 +1315,7 @@ function renderCandidates() {
     const card=document.createElement("div");card.className="candidate"+(p.goat?" goat-card":"");card.tabIndex=0;card.style.animationDelay=(i*20)+"ms";
     const name=escapeHTML(p.Player),position=escapeHTML(p.Pos||"—"),jersey=escapeHTML(p["No."]||"?");
     const displayOvr=boostedOVR(p.baseOvr??p.ovr,false,p.Player,[...roster,p]);
-    const tierClass=ratingClass(displayOvr,p.goat);
+    const tierClass=ratingClass(displayOvr,p.goat); if(p.momentCard) card.classList.add('moment-card');
     const tierColors={"ovr-goat":"#e5c96e",ovr100:"#38d9f4",ovr99:"#df2639",ovr90:"#f1c743",ovr80:"#884bd2",ovr70:"#2878db",ovr60:"#56d47a",ovr0:"#777"};
     card.style.setProperty("--rarity-color",tierColors[tierClass]||"#777");
     card.classList.add("tier-"+tierClass);
@@ -1293,10 +1324,10 @@ function renderCandidates() {
     const duoInfo=duoFor(p.Player);
     const activeDuo=duoIsActive(p.Player,[...roster,p]);
     if(activeDuo) card.classList.add('duo-active-card');
-    card.innerHTML=`<div class="pick-card-head"><div class="pick-avatar"><img class="pick-player-photo" alt="${name}" loading="lazy"><span>${name.split(' ').map(w=>w[0]||'').slice(0,2).join('')}</span></div><div class="pick-player-heading"><div class="player-name">${name}</div><div class="player-info">${position} · ${escapeHTML(teamLabel(p.Team))} · ${p.Season}</div></div><span class="rating ${ratingClass(displayOvr,p.goat)}">${displayOvr}</span></div>${p.goat?'<span class="goat-label">✦ GOAT · MYTHIC RARITY · 110 BASE</span>':''}${duoInfo?duoTagHTML(p.Player,[...roster,p]):''}${statMini}<div class="pick-card-footer"><span>${p.eligible.length?"positions: "+escapeHTML(p.eligible.join(" / ")):"position data limited"}</span><strong>PICK PLAYER ↗</strong></div><div class="player-pop"><div class="pop-top"><img class="player-photo" alt="${name}" src="" loading="lazy"><div><div class="pop-name">${name}</div><div class="pop-meta">${position} · ${escapeHTML(teamLabel(p.Team))}<br>${p.Season} season · ${displayOvr} OVR</div></div></div>${statPanelHTML({...p,ovr:displayOvr})}</div>`;
+    card.innerHTML=`${p.momentCard?`<div class="moment-bg" aria-hidden="true" style="background-image:url('${momentImageUrl(p)}')"></div><div class="moment-shade" aria-hidden="true"></div><div class="moment-ribbon">MOMENT CARD · ${escapeHTML(p.momentTitle||'ICONIC MOMENT')}</div>`:''}<div class="pick-card-head"><div class="pick-avatar"><img class="pick-player-photo" alt="${name}" loading="lazy"><span>${name.split(' ').map(w=>w[0]||'').slice(0,2).join('')}</span></div><div class="pick-player-heading"><div class="player-name">${name}</div><div class="player-info">${position} · ${escapeHTML(teamLabel(p.Team))} · ${p.Season}</div></div><span class="rating ${ratingClass(displayOvr,p.goat)}">${displayOvr}</span></div>${p.goat?'<span class="goat-label">✦ GOAT · MYTHIC RARITY · 110 BASE</span>':''}${p.momentCard?'<span class="moment-boost">MOMENT BOOST · +OVR</span>':''}${duoInfo?duoTagHTML(p.Player,[...roster,p]):''}${statMini}<div class="pick-card-footer"><span>${p.eligible.length?"positions: "+escapeHTML(p.eligible.join(" / ")):"position data limited"}</span><strong>PICK PLAYER ↗</strong></div><div class="player-pop"><div class="pop-top"><img class="player-photo" alt="${name}" src="" loading="lazy"><div><div class="pop-name">${name}</div><div class="pop-meta">${position} · ${escapeHTML(teamLabel(p.Team))}<br>${p.Season} season · ${displayOvr} OVR</div></div></div>${statPanelHTML({...p,ovr:displayOvr})}</div>`;
     const photo=card.querySelector(".player-photo");
     const thumb=card.querySelector('.pick-player-photo');
-    getPlayerPhoto(p.Player).then(src=>{if(src&&thumb?.isConnected){thumb.src=src;thumb.classList.add('loaded');thumb.nextElementSibling?.remove();}});
+    if(!p.momentCard){getPlayerPhoto(p.Player).then(src=>{if(src&&thumb?.isConnected){thumb.src=src;thumb.classList.add('loaded');thumb.nextElementSibling?.remove();}});}else{const avatar=card.querySelector('.pick-avatar');if(avatar)avatar.style.visibility='hidden';}
     const pop=card.querySelector(".player-pop");
     document.body.appendChild(pop); // portal the tooltip out of the card stack so it cannot sit behind cards
     const showPop=()=>{
@@ -1452,7 +1483,7 @@ function regenerateCandidates(){
   chosenCandidate=null;
   const full=(teamsBySeason.get(selectedYear)?.get(selectedTeam)||[]).map(p=>({...p,ovr:getRating(p),baseOvr:getRating(p),goat:false,eligible:normalizePositions(p.Pos,p.Player)})).filter(p=>!usedPlayers.has(p.Player.toLowerCase()));
   const unique=new Map();for(const p of full){const k=p.Player.toLowerCase();if(!unique.has(k)||p.ovr>unique.get(k).ovr)unique.set(k,p);}
-  candidates=[...unique.values()].sort((a,b)=>b.ovr-a.ovr).slice(0,10).map(p=>{const goat=isGoatName(p.Player)&&goatCardRoll();return goat?{...p,goat:true,ovr:110,baseOvr:110}:p;});
+  candidates=[...unique.values()].sort((a,b)=>b.ovr-a.ovr).slice(0,10).map(p=>{const goat=isGoatName(p.Player)&&goatCardRoll();const base=goat?{...p,goat:true,ovr:110,baseOvr:110}:p;return rollMomentCard(base);});
   $("team").textContent=teamLabel(selectedTeam);$("teamSub").textContent='franchise locked · '+selectedTeam;
   $("year").textContent=String(selectedYear);$("yearSub").textContent=`${full.length} unused roster entries`;
   $("candidateInfo").textContent='choose a player from this team-season roll.';renderCandidates();renderLifelines();
@@ -1715,6 +1746,7 @@ window.addEventListener('scroll',()=>requestAnimationFrame(renderDuoLines),{pass
 renderSquad();
 updateProgress();
 loadDB();
+
 </script>
 
 <style id="cinematic-v19-patch">
@@ -1733,6 +1765,64 @@ loadDB();
 @media(prefers-reduced-motion:reduce){.championship-clip-overlay,.championship-clip-frame{transition:none;animation:none}}
 </style>
 
+<style id="moment-card-polish">
+.candidate{isolation:isolate;overflow:hidden;}
+.candidate .pick-card-head,.candidate .pick-stat-main,.candidate .pick-stat-sub,.candidate .pick-card-footer,.candidate .goat-label,.candidate .duo-tag,.candidate .moment-boost{position:relative;z-index:2}
+.moment-bg{position:absolute;inset:0;z-index:0;background-position:center 28%;background-size:cover;opacity:.32;filter:saturate(.8) contrast(1.08);transform:scale(1.02)}
+.moment-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,7,10,.92),rgba(5,7,10,.62) 55%,rgba(5,7,10,.76)),linear-gradient(0deg,rgba(5,7,10,.95),transparent 65%)}
+.moment-ribbon{position:relative;z-index:2;margin:0 0 8px;padding:5px 7px;border-left:3px solid #e7ca72;background:#c9a64620;color:#f3df9b;font-size:9px;letter-spacing:.12em;font-weight:900}
+.moment-boost{display:inline-block;margin:4px 0 6px;padding:4px 6px;border:1px solid #e7ca7266;color:#f4dfa0;background:#b38d2722;font-size:9px;font-weight:900;letter-spacing:.1em}
+.candidate.moment-card{border-color:#d7bc68!important;background:#111318!important;box-shadow:inset 0 0 0 1px #e6cb7030,0 8px 24px #0008!important}
+.candidate.moment-card .pick-avatar{visibility:hidden}
+.candidate.moment-card .rating{background:#b99b4b;color:#101010;border-color:#f5dc8b}
+.candidate.moment-card .pick-card-footer{border-top-color:#bda65b55}
+.pick-player-photo{object-position:center top;}
+</style>
+<style id="v23-monochrome-sharp-top-roll">
+/* monochrome reference UI, hard edges, franchise roll before the whole draft layout */
+*,*::before,*::after{border-radius:0!important}
+:root{--bg:#070707;--panel:#101010;--panel2:#191919;--line:#303030;--text:#f4f4f4;--muted:#929292;--accent:#eeeeee}
+body{background:#050505!important;color:#f4f4f4!important;background-image:radial-gradient(ellipse at 50% 0%,#202020 0,transparent 58%),linear-gradient(160deg,#050505,#0b0b0b 65%,#050505)!important}
+.eyebrow,.status.good,.slot-pos,h1 span{color:#ededed!important}
+.panel{background:linear-gradient(145deg,#171717,#0b0b0b)!important;border-color:#303030!important;box-shadow:0 16px 42px #0008!important}
+.panel::before,.panel-head h2::before{background:#e8e8e8!important}
+.tile,.summary-box,.candidate,.slot,.franchise-card,.scoreboard,.court-board,.award-card,.standings-conference,.playoff-round{border-color:#333!important}
+.tile-value,.team-year .tile:last-child .tile-value{color:#f4f4f4!important}
+.primary,.primary:not(:disabled):hover{background:#f0f0f0!important;color:#080808!important;border:1px solid #fff!important;box-shadow:inset 0 -3px 0 #999!important}
+.secondary{background:#151515!important;color:#f0f0f0!important;border-color:#3a3a3a!important}
+.progress-fill{background:#ededed!important}
+.candidate:not(:disabled):hover{border-color:#aaa!important;background:#202020!important}
+.candidate.chosen{background:#222!important;border-color:#f0f0f0!important;box-shadow:inset 3px 0 #eee!important}
+.slot.compatible,.slot.next-slot{border-color:#eee!important;background:linear-gradient(145deg,#252525,#111)!important;box-shadow:inset 0 0 0 1px #ffffff18!important}
+.position-choice{border-color:#444!important;background:#ffffff04!important}
+.pos-btn:hover{background:#eee!important;color:#080808!important;border-color:#eee!important}
+.roll-above-select{display:flex!important;gap:8px!important;margin:0 0 18px!important;width:100%!important}
+.roll-above-select #spinTeam{width:100%!important;min-height:54px!important;font-size:13px!important;font-weight:900!important;letter-spacing:2px!important;text-transform:uppercase!important;background:#f0f0f0!important;border:1px solid #fff!important;color:#050505!important;box-shadow:inset 0 -4px 0 #999!important}
+.roll-above-select #spinTeam:hover:not(:disabled){background:#fff!important;transform:translateY(-1px)}
+.roll-above-select #spinTeam:disabled{opacity:.48!important}
+.moment-ribbon{border-left-color:#eee!important;background:#ffffff12!important;color:#f3f3f3!important}
+.moment-boost{border-color:#ffffff55!important;color:#f4f4f4!important;background:#ffffff0b!important}
+.candidate.moment-card{border-color:#aaa!important;background:#111!important;box-shadow:inset 0 0 0 1px #ffffff18,0 8px 24px #0008!important}
+.candidate.moment-card .rating{background:#e8e8e8!important;color:#101010!important;border-color:#fff!important}
+.candidate.moment-card .pick-card-footer{border-top-color:#ffffff30!important}
+@media(max-width:700px){.roll-above-select{margin-bottom:14px!important}}
+</style>
+<style id="v25-fix-roll-position-and-square-everything">
+/* hard override: no rounded corners anywhere, and put franchise + season controls first */
+*,*::before,*::after{border-radius:0!important}
+button,input,select,textarea,.panel,.tile,.summary-box,.candidate,.slot,.rating,.badge,.pill,.brand-icon,.modal,.modal-content,.franchise-card,.scoreboard,.court-board,.award-card,.standings-conference,.playoff-round,.series-card,.seed-pill,.progress,.progress-fill,.season-progress,.team-year,.lifelines,.position-choice,.pos-btn,.speed-btn,.feed-line,.award-chip,.player-pop,.goat-label,.duo-tag,.moment-boost,.moment-ribbon{border-radius:0!important}
+/* team/season information must be above the player picker, not beneath it */
+.layout #draftPanel{grid-column:1!important;grid-row:1!important;order:1!important}
+.layout #squadPanel{grid-column:2!important;grid-row:1!important;order:2!important}
+.layout #candidatesPanel{grid-column:1/-1!important;grid-row:2!important;order:3!important}
+.layout>.panel:nth-child(2){grid-column:2!important;grid-row:1!important}
+.roll-above-select{display:flex!important;flex-wrap:nowrap!important;gap:8px!important;width:100%!important;margin:0 0 18px!important}
+.roll-above-select #spinTeam,.roll-above-select #spinYear{display:block!important;flex:1 1 0!important;width:50%!important;min-width:0!important;min-height:54px!important;padding:14px 10px!important;font-size:12px!important;font-weight:900!important;letter-spacing:1.5px!important;text-transform:uppercase!important;border:1px solid #eee!important;box-shadow:none!important}
+.roll-above-select #spinTeam{background:#f0f0f0!important;color:#050505!important}
+.roll-above-select #spinYear{background:#151515!important;color:#f0f0f0!important;border-color:#555!important}
+.roll-above-select #spinTeam:disabled,.roll-above-select #spinYear:disabled{opacity:.48!important}
+@media(max-width:900px){.layout #draftPanel,.layout #squadPanel,.layout #candidatesPanel{grid-column:1!important;grid-row:auto!important}.layout #draftPanel{order:1!important}.layout #candidatesPanel{order:2!important}.layout #squadPanel{order:3!important}}
+</style>
 </body>
 </html>
 
