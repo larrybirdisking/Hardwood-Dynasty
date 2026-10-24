@@ -939,9 +939,9 @@ async function loadDB() {
     const currentRows=parseCSV(await res.text())
       .filter(p=>p.Player&&p.Team&&Number(p.Season));
 
-    // The main roster file starts in 1979. Add the historical NBA player-season
-    // records for 1950–1978 from a separate public CSV, keeping the modern roster
-    // source authoritative wherever it already has coverage.
+    // The primary roster file is incomplete after 2000. Fill gaps with historical
+    // player-season CSVs: the legacy dataset through 2017, then the newer stats
+    // dataset through its latest published season. Existing roster rows win overlaps.
     let earlyRows=[];
     try {
       const earlyRes=await fetch(LEGACY_STATS_URL);
@@ -956,16 +956,38 @@ async function loadDB() {
           const age=Number(pick("Age","AGE","age"));
           const exp=pick("Exp","EXP","experience","Experience");
           const pos=String(pick("Pos","POS","Position","position"));
-          if(!player||!team||team==="TOT"||!Number.isFinite(season)||season<1950||season>1978) return null;
+          if(!player||!team||team==="TOT"||!Number.isFinite(season)||season<1980||season>2017) return null;
           if(league && league!=="NBA") return null;
-          return {Player:player,Team:team,Season:String(season),Pos:pos,Exp:exp!==""?exp:(Number.isFinite(age)&&age>0?String(Math.max(0,Math.floor(age-19))):"R"),No:pick("No.","No","Number","Jersey"),_historicalSupplement:true};
+          return {Player:player,Team:team,Season:String(season),Pos:pos||"SF",Exp:exp!==""?exp:(Number.isFinite(age)&&age>0?String(Math.max(0,Math.floor(age-19))):"R"),No:pick("No.","No","Number","Jersey"),_historicalSupplement:true};
         }).filter(Boolean);
       }
-    } catch(e) { /* older seasons are an optional supplement; keep modern play available */ }
+    } catch(e) { /* keep the game usable if the legacy source is unavailable */ }
+
+    // Add recent seasons from a player-stats dataset (typically 1995–2025).
+    // This is a fallback roster source, not a claim that every current roster is complete.
+    let recentRows=[];
+    try {
+      const recentRes=await fetch(STATS_URL);
+      if(recentRes.ok) {
+        const rawRecent=parseCSV(await recentRes.text());
+        recentRows=rawRecent.map(r=>{
+          const pick=(...keys)=>{for(const k of keys){if(r[k]!==undefined&&r[k]!=="")return r[k];}return "";};
+          const player=String(pick("PLAYER_NAME","Player","PLAYER","player","name","player_name","Name")).replace(/\*/g,"").trim();
+          const team=String(pick("TEAM_ABBREVIATION","Team_Abbreviation","Tm","TM","Team","TEAM","team")).trim().toUpperCase();
+          const rawSeason=pick("SEASON_END","Season_End","Year","year","YEAR","SEASON","Season","season","SEASON_ID","yearID","year_id");
+          const matches=String(rawSeason).match(/(?:19|20)\d{2}/g);
+          const season=matches&&matches.length?Number(matches[matches.length-1]):Number(rawSeason);
+          const pos=String(pick("PLAYER_POSITION","POSITION","Pos","position","POS"));
+          const exp=pick("Exp","EXP","experience","Experience");
+          if(!player||!team||team==="TOT"||!Number.isFinite(season)||season<2001||season>2026) return null;
+          return {Player:player,Team:team,Season:String(season),Pos:pos||"SF",Exp:exp||"R",_recentSupplement:true};
+        }).filter(Boolean);
+      }
+    } catch(e) { /* optional recent supplement */ }
 
     // Deduplicate any overlap by player/team/season, preferring the main roster rows.
     const seen=new Set(currentRows.map(p=>`${String(p.Player).toLowerCase()}|${p.Team}|${Number(p.Season)}`));
-    const supplement=earlyRows.filter(p=>{
+    const supplement=[...earlyRows,...recentRows].filter(p=>{
       const key=`${String(p.Player).toLowerCase()}|${p.Team}|${Number(p.Season)}`;
       if(seen.has(key))return false;seen.add(key);return true;
     });
@@ -1017,7 +1039,7 @@ async function spinTeam() {
 async function spinYear() {
   if(!selectedTeam||roster.length>=10||rolling) return;
   rolling=true;
-  const years=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1950&&y<=2027);
+  const years=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1980&&y<=2026);
   let available=years.filter(y=>!seenSeasons.has(selectedTeam+"-"+y));
   if(!available.length) available=years;
   const finalYear=randomItem(available);
@@ -1191,7 +1213,7 @@ function useTeamReroll(){
 }
 function useYearReroll(){
   if(!lifelines.year||!selectedTeam||rolling)return;
-  const options=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1950&&y<=2026&&y!==selectedYear&&(teamsBySeason.get(y)?.get(selectedTeam)||[]).some(p=>!usedPlayers.has(p.Player.toLowerCase())));
+  const options=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1980&&y<=2026&&y!==selectedYear&&(teamsBySeason.get(y)?.get(selectedTeam)||[]).some(p=>!usedPlayers.has(p.Player.toLowerCase())));
   if(!options.length){$("lifelineStatus").textContent='no other eligible seasons found for this team.';return;}
   lifelines.year=false;selectedYear=randomItem(options);seenSeasons.add(selectedTeam+'-'+selectedYear);regenerateCandidates();$("status").textContent=`year reroll used · ${teamLabel(selectedTeam)} ${selectedYear}.`;
 }
