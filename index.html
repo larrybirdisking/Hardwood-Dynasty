@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hardwood Dynasty v11</title>
+<title>Hardwood Dynasty v14 · Draft Room</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
@@ -117,7 +117,7 @@ button:disabled { opacity:.35; cursor:not-allowed }
 .ovr-goat{color:#fffdf5!important;background:linear-gradient(135deg,#fffdf1,#e7d7a2 42%,#fff8d7)!important;border:1px solid #fff3b0!important;box-shadow:0 0 0 1px #cba64b,0 0 22px #d9b64b88!important;text-shadow:0 1px 8px #8d6b20;color:#49320a!important}
 .goat-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff9df0d,#b88b2c1f 45%,#fff4cc0c)!important;border-color:#e4c46b!important;box-shadow:0 0 0 1px #d6b75a55,inset 0 0 26px #c9a43b12,0 0 26px #d2ad3d1c!important}
 .goat-card:before{content:"";position:absolute;inset:-40%;pointer-events:none;background:radial-gradient(circle,#ffe8a855,transparent 54%);animation:goatPulse 2.8s ease-in-out infinite}
-.goat-card>*{position:relative;z-index:1}.goat-label{display:inline-flex;margin:7px 0 2px;padding:4px 8px;border-radius:4px;color:#4c3507;background:linear-gradient(90deg,#fffce9,#e6c76c,#fff8d8);font-size:9px;font-weight:1000;letter-spacing:1.6px}.goat-card .player-name,.goat-card .pop-name{color:#fff4c4}.lifelines{border:1px solid #ffffff16;border-radius:12px;padding:12px;margin:0 0 14px;background:linear-gradient(120deg,#ffffff08,#ffffff02)}.lifelines-head{display:flex;justify-content:space-between;color:#eee;font-size:11px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:9px}.lifelines-head span,.lifeline-status{color:#858b96;font-size:10px;letter-spacing:0;text-transform:none}.lifeline-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.lifeline-buttons button{font-size:10px;padding:10px 6px;line-height:1.3}.lifeline-buttons small{display:block;color:#888;font-size:9px;margin-top:3px}.lifeline-buttons button:disabled{opacity:.35}.lifeline-status{margin-top:9px;line-height:1.5}@keyframes goatPulse{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:.95;transform:scale(1.08)}}
+.goat-card>*{position:relative;z-index:1}.goat-label{display:inline-flex;margin:7px 0 2px;padding:4px 8px;border-radius:4px;color:#4c3507;background:linear-gradient(90deg,#fffce9,#e6c76c,#fff8d8);font-size:9px;font-weight:1000;letter-spacing:1.6px}.goat-card .player-name,.goat-card .pop-name{color:#fff4c4}.lifelines{border:1px solid #ffffff16;border-radius:12px;padding:12px;margin:0 0 14px;background:linear-gradient(120deg,#ffffff08,#ffffff02)}.lifelines-head{display:flex;justify-content:space-between;color:#eee;font-size:11px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:9px}.lifelines-head span,.lifeline-status{color:#858b96;font-size:10px;letter-spacing:0;text-transform:none}.lifeline-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.lifeline-buttons button{font-size:10px;padding:10px 6px;line-height:1.3}.lifeline-buttons small{display:block;color:#888;font-size:9px;margin-top:3px}.lifeline-buttons button:disabled{opacity:.35}.lifeline-status{margin-top:9px;line-height:1.5}@keyframes goatPulse{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:.95;transform:scale(1.08)}}
 @media(max-width:520px){.lifeline-buttons{grid-template-columns:1fr}.lifeline-buttons button{text-align:left;padding:11px}.lifeline-buttons small{display:inline;margin-left:5px}.candidate{animation:none!important}.goat-card:before{animation-duration:4s}}
 .ovr90 { color:#17130b; background:#f1c743 }
 .ovr80 { color:white; background:#884bd2 }
@@ -413,7 +413,169 @@ h1{font-size:clamp(42px,7vw,72px);letter-spacing:-1.8px}
 @media(max-width:560px){.new-run-wrap{align-items:stretch;flex-direction:column}.new-run-wrap button{width:100%}.victory-card{padding:26px 18px}}
 @media(prefers-reduced-motion:reduce){.victory-card:before,.victory-card:after,.victory-trophy,.victory-orbit{animation:none!important}.victory-card{transition:none}}
 
+
+/* v13 visual cleanup: consistent spacing, cleaner responsive cards, and a distinct marble GOAT rarity */
+:root{--bg:#08090d;--panel:#11131a;--panel2:#191c25;--line:#292e3a;--text:#f5f6fa;--muted:#969eae;--accent:#d8e56b}
+body{min-height:100vh;background:radial-gradient(ellipse at 50% -12%,#22283a 0,transparent 48%),linear-gradient(160deg,#07080b,#0c0e14 55%,#07080b);line-height:1.45}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);background:#090a0ddc;border-bottom:1px solid #ffffff12}
+main{padding-top:30px}
+.panel{border-radius:17px!important;border:1px solid #ffffff12!important;background:linear-gradient(145deg,#151821f2,#0e1016f5)!important;box-shadow:0 16px 44px #0005,inset 0 1px #ffffff08!important}
+.panel::before,.panel::after{pointer-events:none}
+.tile,.summary-box,.candidate,.slot,.award-card,.franchise-card,.scoreboard,.court-board,.standings-conference,.playoff-round{border-radius:12px!important;border-color:#ffffff17!important}
+.candidate{padding:14px!important;background:linear-gradient(145deg,#171a23,#0e1016)!important;box-shadow:0 5px 16px #0002;min-height:125px}
+.candidate:not(:disabled):hover{transform:translateY(-3px);border-color:#aebc5c!important;box-shadow:0 14px 28px #0005,0 0 0 1px #d8e56b22!important}
+.candidate.chosen{background:linear-gradient(145deg,#24291a,#12150e)!important;border-color:#d8e56b!important}
+.player-name{font-size:14px;letter-spacing:-.2px}
+.rating{border-radius:8px;font-variant-numeric:tabular-nums;box-shadow:0 4px 14px #0003}
+.primary,.secondary{border-radius:10px!important}
+.goat-card{isolation:isolate;background-color:#f8f3df!important;background-image:radial-gradient(ellipse at 20% 15%,#ffffff 0,transparent 30%),radial-gradient(ellipse at 85% 80%,#d9c58c88 0,transparent 36%),repeating-radial-gradient(ellipse at 10% 70%,transparent 0 13px,#a58a4c22 14px 16px,transparent 17px 29px),linear-gradient(135deg,#fffdf4 0%,#e8dfc1 24%,#fffef8 43%,#d7c58f 62%,#fffdf5 78%,#eee3bf 100%)!important;border:1px solid #d2b45d!important;box-shadow:0 0 0 1px #e8d28c66,0 12px 32px #bca05c25,inset 0 0 0 2px #fff9e4!important;color:#332713!important}
+.goat-card:before{inset:0!important;z-index:-1;background:linear-gradient(120deg,transparent 10%,#fff9 36%,transparent 55%),radial-gradient(ellipse at 75% 20%,#c6a34b25,transparent 55%)!important;animation:none!important;opacity:.75}
+.goat-card .player-name,.goat-card .pop-name,.goat-card .player-info,.goat-card .pos-hint{color:#3d321b!important}
+.goat-card .rating.ovr-goat{color:#3d2a0b!important;background:linear-gradient(135deg,#fffef8,#d9bd6d,#fff7d7)!important;border:1px solid #b99436!important;text-shadow:none!important;box-shadow:0 3px 12px #9d7d2d30!important}
+.goat-label{color:#3b2b0c!important;background:linear-gradient(90deg,#fffdf2,#e4ce83,#fffaf0)!important;border:1px solid #bda04e!important;border-radius:5px!important;letter-spacing:1.15px!important;font-size:8px!important;box-shadow:inset 0 1px #fff}
+.goat-card .ovr-meter-label,.goat-card .ovr-meter-label strong{color:#493b20!important}
+.goat-card .ovr-meter{background:#b8a777!important}.goat-card .ovr-liquid{background:linear-gradient(90deg,#9c7a28,#f2df9e)!important}
+.slot.filled.goat-card{background-color:#f8f3df!important}
+.player-pop{border-radius:14px!important;border-color:#ffffff26!important;box-shadow:0 22px 70px #000d!important}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.panel.wide{grid-column:auto}.candidates{grid-template-columns:1fr 1fr;gap:8px}.candidate{padding:11px!important}.panel{padding:15px}}
+@media(max-width:430px){.candidates{grid-template-columns:1fr}.team-year{grid-template-columns:1fr 1fr}.panel-head{align-items:flex-start}}
+
 </style>
+
+<style>
+/* v14: draft room inspired by the reference layout */
+body{background:#050505;color:#f4f4f4;background-image:radial-gradient(ellipse at 50% 0%,#17130a 0,transparent 58%)}
+:root{--bg:#050505;--panel:#0c0c0c;--panel2:#141414;--line:#292929;--text:#f4f4f4;--muted:#888;--accent:#c9a646}
+main{max-width:1540px;padding:26px 24px 64px}
+.layout{max-width:1500px;grid-template-columns:minmax(340px,.78fr) minmax(0,1.12fr);gap:18px;align-items:start}
+#draftPanel{grid-column:1;grid-row:1}
+#candidatesPanel{grid-column:1;grid-row:2;min-width:0}
+.layout>.panel:nth-child(2){grid-column:2;grid-row:2}
+#squadPanel{grid-column:2;grid-row:1;min-width:0}
+#franchisePanel{grid-column:1/-1}
+.panel{background:rgba(10,10,10,.96);border:1px solid #242424;border-radius:2px;padding:18px;box-shadow:none}
+.panel-head{border-bottom:1px solid #222;padding-bottom:12px;margin-bottom:14px}
+.panel-head h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#aaa}
+.team-year{gap:0;background:#111;border:1px solid #222}
+.team-year .tile{border:0;border-right:1px solid #292929;border-radius:0;text-align:center;background:#111;padding:18px 10px}
+.team-year .tile:last-child{border-right:0}
+.tile-label{letter-spacing:2px;color:#888}
+.tile-value{font-size:clamp(26px,3vw,38px);margin:8px 0 2px;color:#f5f5f5}
+.team-year .tile:last-child .tile-value{color:#c9a646}
+.primary{background:#c9a646;color:#080808;border-radius:0;letter-spacing:1.3px;text-transform:uppercase;padding:15px}
+.primary:not(:disabled):hover{background:#e2c66e}
+.secondary{background:#101010;border-color:#303030;border-radius:0}
+#draftPanel .actions{display:grid;grid-template-columns:1fr}
+#draftPanel .progress-row{margin:14px 0 8px}
+.progress{background:#202020;border-radius:0}.progress-fill{background:#c9a646}
+.status{font-size:11px}
+#candidatesPanel .panel-head{margin-bottom:10px}
+#candidateInfo{margin-bottom:10px!important}
+#lifelines{padding:10px;border-radius:0;border-color:#292929;background:#090909}
+.lifeline-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}
+.lifeline-buttons button{padding:8px 4px;font-size:9px}
+.candidates{display:flex;flex-direction:column;gap:0;border:1px solid #252525;background:#101010;max-height:690px;overflow:auto}
+.candidate{display:block;position:relative;min-height:69px;padding:10px 12px;border:0;border-bottom:1px solid #222;border-radius:0;background:#101010;animation:none!important;cursor:pointer}
+.candidate:last-child{border-bottom:0}
+.candidate:not(:disabled):hover{transform:none;background:#1a1a1a;border-color:#333}
+.candidate.chosen{background:#211d10;box-shadow:inset 3px 0 #c9a646}
+.candidate-top{align-items:center;gap:10px}
+.player-name{font-size:13px;color:#f3f3f3}
+.player-info{font-size:10px;color:#8d8d8d;line-height:1.4;margin-top:3px}
+.rating{min-width:42px;border-radius:0;font-size:15px;padding:7px 5px}
+.candidate .ovr-meter{display:none}
+.candidate .pos-hint{display:none}
+.candidate .goat-label{font-size:8px;margin-top:5px}
+.candidate .player-pop{display:none}
+#squadPanel .panel-head{justify-content:center;text-align:center}
+#squadPanel .step{display:none}
+.board-instruction{padding:0 0 12px;text-align:center;color:#858585}
+.court-board{background:#050505;border:1px solid #292929;border-radius:0;padding:18px;overflow:visible}
+.court-board:before{display:none}
+.court-label{font-size:12px;letter-spacing:2.5px;color:#bdbdbd;margin-bottom:4px}
+.court-lineup{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+.court-lineup .role-slot:nth-child(1){grid-column:1/3;grid-row:1}
+.court-lineup .role-slot:nth-child(2){grid-column:3/5;grid-row:1}
+.court-lineup .role-slot:nth-child(3){grid-column:5/7;grid-row:1}
+.court-lineup .role-slot:nth-child(4){grid-column:2/4;grid-row:2}
+.court-lineup .role-slot:nth-child(5){grid-column:4/6;grid-row:2}
+.slot{min-height:135px;padding:10px;border:1px solid #292929;border-radius:0;background:#050505}
+.slot-pos{color:#c9a646;font-size:10px;letter-spacing:1px}
+.slot-name{font-size:12px;margin:13px 0 7px}
+.slot-sub{font-size:9px;color:#858585}
+.slot-rating{font-size:13px;color:#c9a646}
+.slot.selectable:hover{border-color:#c9a646;background:#14120c}
+.slot.compatible{border-color:#c9a646;background:#151208;box-shadow:inset 0 0 0 1px #c9a64622}
+.slot.next-slot{border-color:#555;animation:none}
+.bench-heading{margin-top:20px;padding-top:16px;justify-content:center;color:#bcbcbc;font-size:12px}
+.bench-heading span:last-child{display:none}
+.bench-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.bench-grid .slot{min-height:112px;padding:9px}
+.summary{gap:8px}
+.summary-box{background:#0d0d0d;border-color:#252525;border-radius:0}
+.legend{gap:4px}
+.legend span{font-size:8px}
+#squadPanel>.actions{justify-content:flex-end}
+@media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}#draftPanel,#candidatesPanel,.layout>.panel:nth-child(2),#squadPanel,#franchisePanel{grid-column:1;grid-row:auto}.layout>.panel:nth-child(2){grid-row:auto}#squadPanel{grid-row:2}#candidatesPanel{grid-row:3}.layout>.panel:nth-child(2){grid-row:4}#franchisePanel{grid-row:5}}
+@media(max-width:560px){main{padding:18px 10px 40px}.panel{padding:12px}.court-board{padding:10px}.court-lineup{gap:5px}.slot{min-height:105px;padding:7px}.slot-name{font-size:10px;margin:10px 0 5px}.slot-sub{font-size:8px}.slot-rating{font-size:11px}.bench-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lifeline-buttons{grid-template-columns:1fr}.candidate{min-height:62px}.candidates{max-height:540px}}
+</style>
+
+
+<style>
+/* v16: sharper draft room, player picker first, three cards across and four rows visible */
+:root{--accent:#c9a646;--line:#292929;--panel:#090909;--panel2:#111;}
+*,*::before,*::after{border-radius:0!important}
+body{background:#050505!important;background-image:radial-gradient(ellipse at 50% -12%,#211a09 0,transparent 52%),linear-gradient(130deg,#050505,#080808 55%,#030303)!important;color:#f2f2f2}
+header{background:#050505!important;backdrop-filter:none!important;border-bottom:1px solid #262626}
+.brand-icon{background:#c9a646!important;color:#050505!important;transform:skew(-8deg)!important;box-shadow:none!important}
+.layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:start;gap:14px!important}
+#candidatesPanel{grid-column:1!important;grid-row:1!important;min-width:0;}
+#draftPanel{grid-column:1!important;grid-row:2!important;}
+.layout>.panel:nth-child(2){grid-column:2!important;grid-row:2!important}
+#squadPanel{grid-column:2!important;grid-row:1!important;min-width:0}
+#franchisePanel{grid-column:1/-1!important;grid-row:auto!important}
+.panel{background:#090909!important;border:1px solid #292929!important;box-shadow:none!important;backdrop-filter:none!important;padding:15px!important}
+.panel::before{display:none!important}
+.panel-head{border-bottom:1px solid #292929!important;padding-bottom:10px!important;margin-bottom:12px!important}
+.panel-head h2{font-size:11px!important;letter-spacing:2px!important;color:#c9a646!important}
+.tile,.summary-box,.franchise-card,.scoreboard,.court-board,.slot,.award-card,.standings-conference,.playoff-round{border-radius:0!important;box-shadow:none!important}
+.candidates{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:repeat(4,minmax(145px,auto))!important;grid-auto-rows:minmax(145px,auto)!important;gap:7px!important;border:0!important;background:transparent!important;max-height:620px!important;overflow-y:auto!important;overflow-x:hidden!important;padding:1px 4px 1px 1px}
+.candidate{display:flex!important;flex-direction:column!important;justify-content:space-between!important;min-width:0!important;min-height:145px!important;padding:10px!important;border:1px solid #303030!important;border-left:3px solid var(--rarity-color,#777)!important;background:linear-gradient(145deg,#141414,#080808)!important;cursor:pointer!important;overflow:hidden!important;transition:background .15s,border-color .15s,transform .15s!important}
+.candidate:not(:disabled):hover{transform:translateY(-2px)!important;background:#1a1a1a!important;border-color:#777!important;box-shadow:0 5px 0 #000!important;z-index:2}
+.candidate.chosen{background:#211b0b!important;border-color:#c9a646!important;border-left-color:#c9a646!important;box-shadow:inset 0 0 0 1px #c9a646!important}
+.candidate-top,.pick-card-head{display:grid!important;grid-template-columns:30px minmax(0,1fr) auto!important;gap:7px!important;align-items:center!important}
+.pick-avatar{width:30px!important;height:30px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:#1c1c1c!important;border:1px solid #444!important;color:#c9a646!important;font-size:10px!important;font-weight:900!important}
+.player-name{font-size:12px!important;line-height:1.2!important;overflow-wrap:anywhere!important}
+.player-info{font-size:9px!important;line-height:1.35!important;margin-top:4px!important;color:#929292!important}
+.rating{min-width:33px!important;padding:5px 3px!important;font-size:13px!important;border:1px solid #ffffff20!important;box-shadow:none!important}
+.pick-stat-main{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;margin:9px 0 5px!important;background:#101010!important;border:1px solid #242424!important}
+.pick-stat-main>div{text-align:center!important;padding:7px 2px!important;min-width:0!important}
+.pick-stat-main>div+div{border-left:1px solid #242424!important}
+.pick-stat-main strong{display:block!important;font-size:14px!important;color:#c9a646!important;font-variant-numeric:tabular-nums!important}
+.pick-stat-main small,.pick-stat-sub small{display:block!important;font-size:8px!important;color:#8b8b8b!important;margin-top:2px!important}
+.pick-stat-sub{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;background:#0b0b0b!important;border:1px solid #242424!important}
+.pick-stat-sub span{text-align:center!important;font-size:10px!important;padding:5px 1px!important;min-width:0!important;border-right:1px solid #222!important}
+.pick-stat-sub span:last-child{border-right:0!important}
+.pick-stat-empty{font-size:9px!important;color:#777!important;padding:10px 0!important}
+.pick-card-footer{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:5px!important;margin-top:8px!important;padding-top:7px!important;border-top:1px solid #2a2a2a!important;font-size:8px!important;color:#888!important}
+.pick-card-footer strong{font-size:8px!important;color:#c9a646!important;letter-spacing:.6px!important;white-space:nowrap!important}
+.duo-tag,.iconic-duo-tag{display:inline-block!important;border:1px solid #c9a646!important;background:#171205!important;color:#e2c66e!important;font-size:8px!important;padding:4px 5px!important;margin-top:5px!important;letter-spacing:.5px!important}
+.goat-card{border:1px solid #e6d39a!important;border-left:3px solid #e6d39a!important;background:linear-gradient(135deg,#29251a,#0c0b08)!important}
+.goat-label{display:block!important;background:linear-gradient(90deg,#fff9dd,#d6b85d,#fff6d2)!important;color:#3d2d0b!important;font-size:7px!important;padding:4px!important;margin:5px 0!important}
+.primary{background:#c9a646!important;color:#050505!important;border:1px solid #c9a646!important;box-shadow:none!important;text-transform:uppercase!important;letter-spacing:1.2px!important}
+.secondary{background:#0b0b0b!important;color:#ddd!important;border:1px solid #333!important}
+#candidateInfo{margin-bottom:8px!important}
+#lifelines{padding:8px!important;border:1px solid #282828!important;background:#070707!important}
+.lifeline-buttons{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+#squadPanel .panel-head{justify-content:center;text-align:center}
+.court-board{background:#050505!important;border:1px solid #292929!important;padding:12px!important}
+.slot{border:1px solid #2b2b2b!important;background:#070707!important}
+.slot-pos,.slot-rating{color:#c9a646!important}
+.player-pop{border-radius:0!important}
+@media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr)!important}#candidatesPanel,#draftPanel,.layout>.panel:nth-child(2),#squadPanel,#franchisePanel{grid-column:1!important;grid-row:auto!important}#candidatesPanel{order:1}#draftPanel{order:2}#squadPanel{order:3}.layout>.panel:nth-child(2){order:4}#franchisePanel{order:5}.candidates{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-height:620px!important}}
+@media(max-width:560px){main{padding:16px 10px 38px!important}.panel{padding:11px!important}.candidates{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:repeat(6,minmax(140px,auto))!important;grid-auto-rows:minmax(140px,auto)!important;max-height:620px!important}.candidate{min-height:140px!important;padding:8px!important}.pick-stat-main strong{font-size:12px!important}.pick-stat-sub span{font-size:9px!important}.pick-card-footer{font-size:7px!important}.lifeline-buttons{grid-template-columns:1fr!important}}
+</style>
+
 </head>
 <body>
 <header>
@@ -466,9 +628,9 @@ h1{font-size:clamp(42px,7vw,72px);letter-spacing:-1.8px}
     </section>
 
     <section class="panel wide" id="candidatesPanel">
-      <div class="panel-head"><h2>Available players</h2><span class="step">03 / 03</span></div>
+      <div class="panel-head"><h2>Pick a player</h2><span class="step">03 / 03</span></div>
       <div class="status" id="candidateInfo" style="margin:0 0 14px">spin a team and a season to see your candidates.</div>
-      <div class="lifelines" id="lifelines"><div class="lifelines-head"><b>draft lifelines</b><span>one use each</span></div><div class="lifeline-buttons"><button class="secondary" id="teamReroll" disabled>↻ team reroll <small>keep year</small></button><button class="secondary" id="yearReroll" disabled>↻ year reroll <small>keep team</small></button><button class="secondary" id="doubleDip" disabled>＋ double dip <small>draft 2 players</small></button></div><div class="lifeline-status" id="lifelineStatus">lifelines refresh when you start a new draft.</div></div>
+      <div class="lifelines" id="lifelines"><div class="lifelines-head"><b>draft lifelines</b><span>one use each</span></div><div class="lifeline-buttons"><button class="secondary" id="teamReroll" disabled>↻ team reroll <small>keep year</small></button><button class="secondary" id="yearReroll" disabled>↻ year reroll <small>keep team</small></button><button class="secondary" id="doubleDip" disabled>＋ double dip <small>draft 2 players</small></button><button class="secondary" id="movePlayer" disabled>⇄ move player <small>2 uses</small></button></div><div class="lifeline-status" id="lifelineStatus">lifelines refresh when you start a new draft.</div></div>
       <div class="candidates" id="candidates">
         <div class="empty-message" style="grid-column:1/-1">your next ten candidates will appear here.</div>
       </div>
@@ -528,12 +690,15 @@ h1{font-size:clamp(42px,7vw,72px);letter-spacing:-1.8px}
     </section>
   </div>
   <footer>HARDWOOD DYNASTY · V9 · THE POSTSEASON UPDATE</footer>
+  <div class="championship-clip-overlay" id="championshipClipOverlay" aria-hidden="true">
+    <div class="championship-clip-frame"><div class="clip-kicker">HARDWOOD DYNASTY · FINALS MOMENT</div><iframe id="championshipClip" title="NBA championship trophy presentation" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div class="clip-caption">THE FINAL MOMENT</div><button class="secondary" id="skipChampionshipClip" type="button">CONTINUE TO RESULTS</button></div>
+  </div>
   <div class="victory-overlay" id="victoryOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="victoryTitle">
     <div class="victory-backdrop" data-victory-close></div>
     <div class="victory-card"><div class="victory-orbit orbit-one"></div><div class="victory-orbit orbit-two"></div>
       <div class="victory-kicker">HARDWOOD DYNASTY · CHAMPIONS</div><div class="victory-trophy" aria-hidden="true">🏆</div>
       <div class="victory-eyebrow">THE RUN IS COMPLETE</div><h2 id="victoryTitle">WORLD CHAMPIONS</h2><p id="victoryMessage">you conquered the league.</p>
-      <div class="victory-stats"><div><span>REGULAR SEASON</span><strong id="victoryRecord">0–0</strong></div><div><span>PLAYOFF GAMES</span><strong id="victoryPlayoffGames">0</strong></div></div>
+      <div class="victory-stats"><div><span>REGULAR SEASON RECORD</span><strong id="victoryRecord">0–0</strong></div><div><span>CHALLENGE SEASON</span><strong id="victorySeason">—</strong></div></div>
       <div class="victory-actions"><button class="primary" id="victoryNewRun">START A NEW RUN ↗</button><button class="secondary" id="victoryClose">VIEW RESULTS</button></div>
     </div>
   </div>
@@ -597,6 +762,9 @@ let chosenCandidate=null;
 let rolling=false;
 let lifelines={team:true,year:true,double:true};
 let doubleDipPicksRemaining=0;
+let movePlayerUses=2;
+let movePlayerMode=false;
+let movePlayerSource=null;
 const goatCardRoll=()=>Math.random()<0.10;
 
 const $=id=>document.getElementById(id);
@@ -631,14 +799,25 @@ function escapeHTML(s) {
 }
 
 function getRating(p) {
-  const key=(p.Player||"").trim().toLowerCase();
-  if(stars[key]!==undefined) return stars[key];
+  // Ratings describe this exact player-season, never their career reputation.
+  // The stats index is populated while the roster sources load; old seasons use
+  // the legacy box-score source and modern seasons use the modern stats source.
+  const season=Number(p.Season||p.sourceYear||selectedYear||0);
+  const st=findSeasonStats(p,season);
+  if(st && (st.PTS!==null || st.REB!==null || st.AST!==null)) {
+    const pts=Math.max(0,Number(st.PTS)||0), reb=Math.max(0,Number(st.REB)||0);
+    const ast=Math.max(0,Number(st.AST)||0), stl=Math.max(0,Number(st.STL)||0), blk=Math.max(0,Number(st.BLK)||0);
+    const min=Math.max(0,Number(st.MIN)||0), gp=Math.max(0,Number(st.G)||0);
+    // Weighted per-game production, with modest minutes/games adjustments.
+    let score=48 + pts*1.05 + reb*0.78 + ast*0.72 + stl*1.7 + blk*1.35;
+    if(min>=30) score+=2; else if(min>0&&min<12) score-=4;
+    if(gp>0&&gp<20) score-=2;
+    return Math.max(45,Math.min(99,Math.round(score)));
+  }
+  // Transparent fallback when a season's box score is missing.
   const expText=String(p.Exp||"0").toUpperCase();
   const exp=expText==="R"?0:(Number(expText)||0);
-  let score=60+Math.min(exp,10)*1.7;
-  if(expText==="R") score=63;
-  if(exp>=15) score+=2;
-  return Math.max(60,Math.min(84,Math.round(score)));
+  return Math.max(48,Math.min(70,Math.round(52+Math.min(exp,10)*1.1+(exp>=15?1:0))));
 }
 
 const GOAT_PLAYERS=new Set(["michael jordan","lebron james","shaquille o'neal","kobe bryant","larry bird","magic johnson","kareem abdul-jabbar","wilt chamberlain","tim duncan","bill russell"]);
@@ -678,15 +857,21 @@ const CAREER_POSITIONS = {
 };
 function normalizePositions(raw, playerName="") {
   const name=String(playerName||"").trim().toLowerCase();
-  if(CAREER_POSITIONS[name]) return CAREER_POSITIONS[name].slice();
-  const s=String(raw||"").toUpperCase().replace(/[^A-Z]/g,"");
+  const original=String(raw||"").toUpperCase().trim();
+  const s=original.replace(/[^A-Z]/g,"");
   const result=new Set();
-  for(const p of ["PG","SG","SF","PF","C"]) if(s.includes(p)) result.add(p);
+  // Prefer the actual season's listed position, including hybrid positions.
+  if(/POINT.?GUARD|\bPG\b/.test(original)||s.includes("PG")) result.add("PG");
+  if(/SHOOTING.?GUARD|\bSG\b/.test(original)||s.includes("SG")) result.add("SG");
+  if(/SMALL.?FORWARD|\bSF\b/.test(original)||s.includes("SF")) result.add("SF");
+  if(/POWER.?FORWARD|\bPF\b/.test(original)||s.includes("PF")) result.add("PF");
+  if(/CENTER|CENTRE|\bC\b/.test(original)||s==="C") result.add("C");
   if(s==="G"||s==="GUARD"){result.add("PG");result.add("SG");}
   if(s==="F"||s==="FORWARD"){result.add("SF");result.add("PF");}
   if(s==="FC"||s==="CF"){result.add("PF");result.add("C");}
   if(s==="GF"||s==="FG"){result.add("SG");result.add("SF");}
-  return ["PG","SG","SF","PF","C"].filter(p=>result.has(p));
+  if(result.size) return ["PG","SG","SF","PF","C"].filter(pos=>result.has(pos));
+  return CAREER_POSITIONS[name] ? CAREER_POSITIONS[name].slice() : [];
 }
 const STATS_URL = "https://raw.githubusercontent.com/nathankyryk/nba/main/all_player_stats_1995-2025.csv";
 const LEGACY_STATS_URL = "https://raw.githubusercontent.com/peasant98/TheNBACSV/master/nbaNew.csv";
@@ -755,6 +940,16 @@ function findSeasonStats(player, year) {
   const rows=statsIndex.get(key)||[];
   let row=rows.find(r=>teamCodesMatch(r.TEAM_ABBREVIATION||r.Team_Abbreviation||r.Tm||r.TM||r.team||"",player.Team||player.sourceTeam));
   row=row||rows.find(r=>String(r.Tm||r.TM||r.team||"").toUpperCase()==="TOT")||rows[0]||null;
+  // Some CSVs are game logs, not season totals. Average every game in that
+  // player-season so a single low-scoring game never becomes their season OVR.
+  const gameLog=rows.length>8 && rows.some(r=>r.GAME_ID||r.GAME_DATE||r.game_date||r.MATCHUP||r.matchup);
+  if(gameLog){
+    const numeric=(r,...keys)=>{for(const k of keys){const v=r[k];if(v!==undefined&&v!==null&&v!==""&&Number.isFinite(Number(v)))return Number(v);}return null;};
+    const avg=(...keys)=>{const vals=rows.map(r=>numeric(r,...keys)).filter(v=>v!==null);return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;};
+    const sum=(...keys)=>{const vals=rows.map(r=>numeric(r,...keys)).filter(v=>v!==null);return vals.length?vals.reduce((a,b)=>a+b,0):null;};
+    const fgm=sum("FGM","FG"),fga=sum("FGA"),fg3m=sum("FG3M","3PM"),fg3a=sum("FG3A","3PA");
+    row={...rows[0],PTS:avg("PTS","points"),REB:avg("REB","TRB","RPG"),AST:avg("AST","APG"),MIN:avg("MIN","MP","MPG"),STL:avg("STL","SPG"),BLK:avg("BLK","BPG"),FG_PCT:fgm!==null&&fga?fgm/fga:avg("FG_PCT","FG%"),FG3_PCT:fg3m!==null&&fg3a?fg3m/fg3a:avg("FG3_PCT","3P%"),G:rows.length,TEAM_ABBREVIATION:player.Team||player.sourceTeam||rows[0].TEAM_ABBREVIATION};
+  }
   let found=null;
   if(row) {
     const get=(...keys)=>{for(const k of keys){const v=row[k];if(v!==undefined&&v!==""&&v!==null&&Number.isFinite(Number(v)))return Number(v);}return null;};
@@ -791,21 +986,18 @@ async function loadSeasonStats(player, year) {
 async function getPlayerPhoto(name) {
   if(photoCache.has(name)) return photoCache.get(name);
   const promise=(async()=>{
-    // Prefer a real basketball/action photo from Wikimedia Commons, then use the player's article thumbnail.
+    // Wikipedia thumbnails are usually recognizable player portraits; Commons is
+    // the fallback for a jersey/action image when an article thumbnail is absent.
     try {
-      const q=encodeURIComponent(`${name} NBA basketball game`);
+      const url=`${WIKI_API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&pithumbsize=420&titles=${encodeURIComponent(name)}`;
+      const r=await fetch(url);if(r.ok){const j=await r.json();const page=Object.values(j.query?.pages||{})[0];if(page?.thumbnail?.source)return page.thumbnail.source;}
+    } catch(e) { /* try Commons below */ }
+    try {
+      const q=encodeURIComponent(`${name} basketball NBA jersey`);
       const commons=`https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrsearch=${q}&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=420`;
-      const r=await fetch(commons);if(r.ok){
-        const j=await r.json();const pages=Object.values(j.query?.pages||{});
-        const best=pages.find(pg=>/basketball|nba|game|court|player/i.test(pg.title||'')&&pg.imageinfo?.[0]?.thumburl)||pages.find(pg=>pg.imageinfo?.[0]?.thumburl);
-        if(best?.imageinfo?.[0]?.thumburl)return best.imageinfo[0].thumburl;
-      }
-    } catch(e) { /* use the fallback below */ }
-    try {
-      const url=`${WIKI_API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=420&titles=${encodeURIComponent(name)}`;
-      const r=await fetch(url);if(!r.ok)return '';
-      const j=await r.json();const page=Object.values(j.query?.pages||{})[0];return page?.thumbnail?.source||'';
-    } catch(e) { return ''; }
+      const r=await fetch(commons);if(r.ok){const j=await r.json();const pages=Object.values(j.query?.pages||{});const best=pages.find(pg=>/basketball|nba|jersey|game|court|player/i.test(pg.title||'')&&pg.imageinfo?.[0]?.thumburl)||pages.find(pg=>pg.imageinfo?.[0]?.thumburl);if(best?.imageinfo?.[0]?.thumburl)return best.imageinfo[0].thumburl;}
+    } catch(e) { /* image is optional */ }
+    return '';
   })();
   photoCache.set(name,promise);return promise;
 }
@@ -873,13 +1065,14 @@ function duoIsActive(name, players=roster){
   });
 }
 function duoTagHTML(name, players=roster){
-  const info=duoFor(name);if(!info)return '';
   const active=duoIsActive(name,players);
+  const duos=allDuosFor(name);
+  const info=duos.find(d=>players.some(p=>canonicalPlayer(p.Player)===canonicalPlayer(d.partner)))||duos[0];
+  if(!info)return '';
   return `<span class="duo-tag ${active?'active':''}">${active?'✦ +10% DUO':`DUO · ${escapeHTML(info.partner)}`}</span>`;
 }
 function boostedOVR(base, mismatch, name, players=roster){
-  if(Number(base)>=110)return 110;
-  const positional=mismatch?Math.max(1,Math.round(base*0.5)):base;
+  const positional=mismatch?Math.max(1,Math.round(base*0.5)):Number(base)||0;
   return duoIsActive(name,players)?Math.round(positional*1.1):positional;
 }
 function refreshDuoRatings(){
@@ -938,6 +1131,7 @@ async function loadDB() {
     if(!res.ok) throw Error("main roster dataset unavailable");
     const currentRows=parseCSV(await res.text())
       .filter(p=>p.Player&&p.Team&&Number(p.Season));
+    addStatsRows(currentRows);
 
     // The primary roster file is incomplete after 2000. Fill gaps with historical
     // player-season CSVs: the legacy dataset through 2017, then the newer stats
@@ -947,6 +1141,7 @@ async function loadDB() {
       const earlyRes=await fetch(LEGACY_STATS_URL);
       if(earlyRes.ok) {
         const rawEarly=parseCSV(await earlyRes.text());
+        addStatsRows(rawEarly);
         earlyRows=rawEarly.map(r=>{
           const pick=(...keys)=>{for(const k of keys){if(r[k]!==undefined&&r[k]!=="")return r[k];}return "";};
           const player=String(pick("Player","PLAYER","player","Player Name","player_name")).replace(/\*/g,"").trim();
@@ -970,6 +1165,7 @@ async function loadDB() {
       const recentRes=await fetch(STATS_URL);
       if(recentRes.ok) {
         const rawRecent=parseCSV(await recentRes.text());
+        addStatsRows(rawRecent);
         recentRows=rawRecent.map(r=>{
           const pick=(...keys)=>{for(const k of keys){if(r[k]!==undefined&&r[k]!=="")return r[k];}return "";};
           const player=String(pick("PLAYER_NAME","Player","PLAYER","player","name","player_name","Name")).replace(/\*/g,"").trim();
@@ -1067,11 +1263,16 @@ function renderLifelines(){
   $("teamReroll").disabled=!available||!lifelines.team||rolling||!selectedYear;
   $("yearReroll").disabled=!available||!lifelines.year||rolling||!selectedTeam;
   $("doubleDip").disabled=!available||!lifelines.double||rolling||roster.length>8;
+  $("movePlayer").disabled=roster.length===0||movePlayerUses<=0||rolling;
   $("teamReroll").innerHTML=`↻ team reroll <small>${lifelines.team?'keep year':'used'}</small>`;
   $("yearReroll").innerHTML=`↻ year reroll <small>${lifelines.year?'keep team':'used'}</small>`;
   $("doubleDip").innerHTML=`＋ double dip <small>${lifelines.double?'draft 2 players':'used'}</small>`;
-  $("lifelineStatus").textContent=doubleDipPicksRemaining?`double dip active · ${doubleDipPicksRemaining} pick${doubleDipPicksRemaining===1?'':'s'} remaining in this roll.`:'team reroll, year reroll and double dip each work once per draft.';
+  $("movePlayer").innerHTML=`⇄ move player <small>${movePlayerUses} use${movePlayerUses===1?'':'s'} left</small>`;
+  $("lifelineStatus").textContent=movePlayerMode?'move mode: click the player to move, then click another roster slot to swap positions.':doubleDipPicksRemaining?`double dip active · ${doubleDipPicksRemaining} pick${doubleDipPicksRemaining===1?'':'s'} remaining in this roll.`:'team reroll, year reroll, double dip, and move player are your draft lifelines.';
 }
+function formatStat(v){return v===null||v===undefined||v===""||!Number.isFinite(Number(v))?"—":Number(v).toFixed(1);}
+function formatPct(v){if(v===null||v===undefined||v===""||!Number.isFinite(Number(v)))return "—";const n=Number(v);return (n<=1?n*100:n).toFixed(1)+"%";}
+
 function renderCandidates() {
   const wrap=$("candidates");wrap.innerHTML="";
   renderLifelines();
@@ -1082,9 +1283,20 @@ function renderCandidates() {
   candidates.forEach((p,i)=>{
     const card=document.createElement("div");card.className="candidate"+(p.goat?" goat-card":"");card.tabIndex=0;card.style.animationDelay=(i*20)+"ms";
     const name=escapeHTML(p.Player),position=escapeHTML(p.Pos||"—"),jersey=escapeHTML(p["No."]||"?");
-    const displayOvr=p.goat?110:boostedOVR(p.baseOvr??p.ovr,false,p.Player,[...roster,p]);
-    card.innerHTML=`<div class="candidate-top"><div style="min-width:0"><div class="player-name">${name}</div><div class="player-info">${position} · #${jersey}<br>${escapeHTML(teamLabel(p.Team))} · ${p.Season}</div></div><span class="rating ${ratingClass(displayOvr,p.goat)}">${displayOvr}</span></div>${p.goat?'<span class="goat-label">✦ GOAT CARD · 110 OVR</span>':''}${duoTagHTML(p.Player)}${meterHTML(displayOvr)}<div class="pos-hint">${p.eligible.length?"select player · assign on team board":"position data limited · bench still available"}</div><div class="player-pop"><div class="pop-top"><img class="player-photo" alt="${name}" src="" loading="lazy"><div><div class="pop-name">${name}</div><div class="pop-meta">${position} · ${escapeHTML(teamLabel(p.Team))}<br>${p.Season} season · ${p.ovr} OVR</div></div></div>${statPanelHTML(p)}</div>`;
+    const displayOvr=boostedOVR(p.baseOvr??p.ovr,false,p.Player,[...roster,p]);
+    const tierClass=ratingClass(displayOvr,p.goat);
+    const tierColors={"ovr-goat":"#e5c96e",ovr100:"#38d9f4",ovr99:"#df2639",ovr90:"#f1c743",ovr80:"#884bd2",ovr70:"#2878db",ovr60:"#56d47a",ovr0:"#777"};
+    card.style.setProperty("--rarity-color",tierColors[tierClass]||"#777");
+    card.classList.add("tier-"+tierClass);
+    const cardStats=findSeasonStats(p,p.Season||selectedYear);
+    const statMini=cardStats?`<div class="pick-stat-main"><div><strong>${formatStat(cardStats.PTS)}</strong><small>PPG</small></div><div><strong>${formatStat(cardStats.REB)}</strong><small>RPG</small></div><div><strong>${formatStat(cardStats.AST)}</strong><small>APG</small></div></div><div class="pick-stat-sub"><span>${formatPct(cardStats.FG_PCT)} <small>FG%</small></span><span>${formatPct(cardStats.FG3_PCT)} <small>3P%</small></span><span>${formatStat(cardStats.STL)} <small>STL</small></span><span>${formatStat(cardStats.BLK)} <small>BLK</small></span></div>`:`<div class="pick-stat-empty">season stats load when selected</div>`;
+    const duoInfo=duoFor(p.Player);
+    const activeDuo=duoIsActive(p.Player,[...roster,p]);
+    if(activeDuo) card.classList.add('duo-active-card');
+    card.innerHTML=`<div class="pick-card-head"><div class="pick-avatar"><img class="pick-player-photo" alt="${name}" loading="lazy"><span>${name.split(' ').map(w=>w[0]||'').slice(0,2).join('')}</span></div><div class="pick-player-heading"><div class="player-name">${name}</div><div class="player-info">${position} · ${escapeHTML(teamLabel(p.Team))} · ${p.Season}</div></div><span class="rating ${ratingClass(displayOvr,p.goat)}">${displayOvr}</span></div>${p.goat?'<span class="goat-label">✦ GOAT · MYTHIC RARITY · 110 BASE</span>':''}${duoInfo?duoTagHTML(p.Player,[...roster,p]):''}${statMini}<div class="pick-card-footer"><span>${p.eligible.length?"positions: "+escapeHTML(p.eligible.join(" / ")):"position data limited"}</span><strong>PICK PLAYER ↗</strong></div><div class="player-pop"><div class="pop-top"><img class="player-photo" alt="${name}" src="" loading="lazy"><div><div class="pop-name">${name}</div><div class="pop-meta">${position} · ${escapeHTML(teamLabel(p.Team))}<br>${p.Season} season · ${displayOvr} OVR</div></div></div>${statPanelHTML({...p,ovr:displayOvr})}</div>`;
     const photo=card.querySelector(".player-photo");
+    const thumb=card.querySelector('.pick-player-photo');
+    getPlayerPhoto(p.Player).then(src=>{if(src&&thumb?.isConnected){thumb.src=src;thumb.classList.add('loaded');thumb.nextElementSibling?.remove();}});
     const pop=card.querySelector(".player-pop");
     document.body.appendChild(pop); // portal the tooltip out of the card stack so it cannot sit behind cards
     const showPop=()=>{
@@ -1111,7 +1323,10 @@ function renderCandidates() {
       hidePop();
       $("squadPanel").scrollIntoView({behavior:"smooth",block:"start"});
     };
-    card.addEventListener("click",selectPlayer);
+    card.addEventListener("click",selectPlayer,true);
+    card.setAttribute("role","button");
+    card.setAttribute("aria-label",`select ${p.Player}`);
+    card.style.pointerEvents="auto";
     card.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();selectPlayer();}});
     wrap.appendChild(card);
   });
@@ -1120,7 +1335,7 @@ function draft(p,slotType,slotIndex,position=null) {
   const key=p.Player.toLowerCase();if(usedPlayers.has(key)||roster.length>=10)return;
   const mismatch=slotType==='starter'&&!p.eligible.includes(position);
   const baseOvr=p.goat?110:(p.baseOvr??p.ovr);
-  const effectiveOvr=p.goat?110:boostedOVR(baseOvr,mismatch,p.Player,[...roster,{...p,Player:p.Player}]);
+  const effectiveOvr=boostedOVR(baseOvr,mismatch,p.Player,[...roster,{...p,Player:p.Player}]);
   const drafted={...p,baseOvr,ovr:effectiveOvr,assignedPos:slotType==='bench'?'BENCH':position,slotType,slotIndex,mismatch,sourceTeam:selectedTeam,sourceYear:selectedYear};
   roster.push(drafted);usedPlayers.add(key);refreshDuoRatings();chosenCandidate=null;
   if(doubleDipPicksRemaining>0) doubleDipPicksRemaining--;
@@ -1148,11 +1363,25 @@ function slotHTML(p,i,bench,selected=null) {
   const mismatch=!!(selected&&!bench&&!selected.eligible.includes(role));
   const compatible=!!(selected&&(bench||selected.eligible.includes(role)));
   const next=roster.length<10&&!p;
-  const classes=['slot',bench?'bench-slot':'role-slot',p?'filled':'',p&&p.goat?'goat-card':'',selected&&!p?(compatible?'compatible':'mismatch-target'):'',selected&&!p?'selectable':'',next&&!selected?'next-slot':''].filter(Boolean).join(' ');
+  const classes=['slot',bench?'bench-slot':'role-slot',p?'filled':'',p&&p.goat?'goat-card':'',selected&&!p?(compatible?'compatible':'mismatch-target'):'',selected&&!p?'selectable':'',next&&!selected?'next-slot':'',movePlayerMode?'move-target':''].filter(Boolean).join(' ');
   const data=bench?`data-slot-type="bench" data-slot-index="${i}"`:`data-slot-type="starter" data-slot-index="${i}" data-position="${role}"`;
   if(!p) return `<button type="button" class="${classes}" ${data} ${roster.length>=10?'disabled':''}><span class="slot-pos">${label}</span><span class="slot-name">${selected?(mismatch?'−50% OVR':'AVAILABLE'):'empty slot'}</span><span class="slot-sub">${selected?(bench?'bench · no position penalty':mismatch?'out of position':'eligible position'):'waiting for draft'}</span></button>`;
   const penalty=p.mismatch?'<span class="penalty-tag">−50%</span>':'';
-  return `<div class="${classes}" data-player-key="${escapeHTML(p.Player.toLowerCase())}"><span class="slot-pos">${label}</span><span class="slot-name">${escapeHTML(p.Player)}</span><span class="slot-sub">${escapeHTML(teamLabel(p.sourceTeam))} · ${p.sourceYear}${p.mismatch?'<br>out of position':''}</span><span class="slot-rating ${ratingClass(p.ovr,p.goat)}">${p.ovr} OVR ${penalty}</span>${p.goat?'<span class="goat-label">✦ GOAT CARD</span>':''}${duoTagHTML(p.Player)}${meterHTML(p.ovr)}</div>`;
+  return `<div class="${classes}" data-slot-type="${bench?'bench':'starter'}" data-slot-index="${i}" data-position="${role||''}" data-player-key="${escapeHTML(p.Player.toLowerCase())}"><span class="slot-pos">${label}</span><span class="slot-name">${escapeHTML(p.Player)}</span><span class="slot-sub">${escapeHTML(teamLabel(p.sourceTeam))} · ${p.sourceYear}${p.mismatch?'<br>out of position':''}</span><span class="slot-rating ${ratingClass(p.ovr,p.goat)}">${p.ovr} OVR ${penalty}</span>${p.goat?'<span class="goat-label">✦ GOAT · MYTHIC</span>':''}${duoTagHTML(p.Player)}${meterHTML(p.ovr)}</div>`;
+}
+function renderDuoLines(){
+  let svg=document.getElementById('duoConnectionOverlay');
+  if(!svg){svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.id='duoConnectionOverlay';svg.setAttribute('aria-hidden','true');document.body.appendChild(svg);}
+  svg.setAttribute('width',window.innerWidth);svg.setAttribute('height',window.innerHeight);svg.setAttribute('viewBox',`0 0 ${window.innerWidth} ${window.innerHeight}`);
+  svg.innerHTML=`<defs><linearGradient id="duoRainbow" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#70eaff"/><stop offset="50%" stop-color="#f49bdc"/><stop offset="100%" stop-color="#b5a0ff"/></linearGradient><filter id="duoGlow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
+  for(const [a,b] of ICONIC_DUOS){
+    const pa=roster.find(p=>canonicalPlayer(p.Player)===canonicalPlayer(a));const pb=roster.find(p=>canonicalPlayer(p.Player)===canonicalPlayer(b));if(!pa||!pb)continue;
+    const sa=document.querySelector(`.slot.filled[data-player-key="${CSS.escape(pa.Player.toLowerCase())}"]`),sb=document.querySelector(`.slot.filled[data-player-key="${CSS.escape(pb.Player.toLowerCase())}"]`);if(!sa||!sb)continue;
+    const ra=sa.getBoundingClientRect(),rb=sb.getBoundingClientRect();const dx=(rb.left+rb.width/2)-(ra.left+ra.width/2),dy=(rb.top+rb.height/2)-(ra.top+ra.height/2);let x1,y1,x2,y2,c1x,c1y,c2x,c2y;
+    if(Math.abs(dx)>=Math.abs(dy)){const d=dx>=0?1:-1;x1=d>0?ra.right:ra.left;y1=ra.top+ra.height/2;x2=d>0?rb.left:rb.right;y2=rb.top+rb.height/2;const bend=Math.max(30,Math.min(110,Math.abs(x2-x1)*.38));c1x=x1+d*bend;c2x=x2-d*bend;c1y=y1;c2y=y2;}
+    else{const d=dy>=0?1:-1;x1=ra.left+ra.width/2;y1=d>0?ra.bottom:ra.top;x2=rb.left+rb.width/2;y2=d>0?rb.top:rb.bottom;const bend=Math.max(30,Math.min(100,Math.abs(y2-y1)*.38));c1x=x1;c2x=x2;c1y=y1+d*bend;c2y=y2-d*bend;}
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M ${x1} ${y1} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${x2} ${y2}`);path.setAttribute('fill','none');path.setAttribute('stroke','url(#duoRainbow)');path.setAttribute('stroke-width','3');path.setAttribute('stroke-linecap','round');path.setAttribute('opacity','.92');path.setAttribute('filter','url(#duoGlow)');svg.appendChild(path);
+  }
 }
 function renderSquad(selected=null) {
   const starterRoles=['PG','SG','SF','PF','C'];
@@ -1166,9 +1395,31 @@ function renderSquad(selected=null) {
   }).join('');
   $("starters").innerHTML=startersHTML;$("bench").innerHTML=benchHTML;
   document.querySelectorAll('.slot.selectable').forEach(slot=>slot.addEventListener('click',()=>{
+    if(movePlayerMode)return;
     if(!chosenCandidate)return;
     draft(chosenCandidate,slot.dataset.slotType,Number(slot.dataset.slotIndex),slot.dataset.position||null);
   }));
+  if(movePlayerMode){
+    document.querySelectorAll('.slot.filled[data-player-key]').forEach(slot=>slot.addEventListener('click',ev=>{
+      ev.stopPropagation();
+      const target=roster.find(x=>x.Player.toLowerCase()===slot.dataset.playerKey);if(!target)return;
+      if(!movePlayerSource){movePlayerSource=target.Player.toLowerCase();slot.classList.add('move-selected');$("lifelineStatus").textContent=`selected ${target.Player} · now click the player/slot to swap them with.`;return;}
+      const source=roster.find(x=>x.Player.toLowerCase()===movePlayerSource);
+      if(!source){movePlayerSource=null;return;}
+      if(source===target){movePlayerSource=null;renderSquad();renderLifelines();return;}
+      const sourceType=source.slotType,sourceIndex=source.slotIndex,sourcePos=source.assignedPos;
+      source.slotType=target.slotType;source.slotIndex=target.slotIndex;source.assignedPos=target.slotType==='bench'?'BENCH':target.assignedPos;
+      target.slotType=sourceType;target.slotIndex=sourceIndex;target.assignedPos=sourceType==='bench'?'BENCH':sourcePos;
+      [source,target].forEach(player=>{
+        player.mismatch=player.slotType==='starter'&&!player.eligible.includes(player.assignedPos);
+        player.ovr=player.goat?boostedOVR(player.baseOvr??110,player.mismatch,player.Player,roster):boostedOVR(player.baseOvr??player.ovr,player.mismatch,player.Player,roster);
+      });
+      movePlayerUses--;movePlayerMode=false;movePlayerSource=null;chosenCandidate=null;
+      document.querySelectorAll('.player-pop.is-visible').forEach(pop=>pop.classList.remove('is-visible'));
+      renderSquad();renderLifelines();updateProgress();
+      $("status").textContent=`player moved · ${source.Player} and ${target.Player} swapped roster positions.`;
+    }));
+  }
   // Each filled roster spot gets the same stats/photo hover card as draft candidates.
   document.querySelectorAll('.slot.filled[data-player-key]').forEach(slot=>{
     const p=roster.find(x=>x.Player.toLowerCase()===slot.dataset.playerKey);if(!p)return;
@@ -1178,6 +1429,7 @@ function renderSquad(selected=null) {
     const show=()=>{const im=pop.querySelector('.player-photo');if(!im.dataset.requested){im.dataset.requested="true";getPlayerPhoto(p.Player).then(src=>{if(src)im.src=src;else im.style.display="none";});}hydrateStatsPanel(pop,{...p,Team:p.sourceTeam,Season:p.sourceYear});const r=slot.getBoundingClientRect();pop.style.left=Math.max(12,Math.min(window.innerWidth-312,r.right+10))+'px';pop.style.top=Math.max(12,Math.min(window.innerHeight-330,r.top))+'px';pop.classList.add('is-visible');};
     const hide=()=>pop.classList.remove('is-visible');slot.addEventListener('mouseenter',show);slot.addEventListener('mouseleave',hide);slot.addEventListener('focus',show);slot.addEventListener('blur',hide);
   });
+  requestAnimationFrame(()=>renderDuoLines());
   $("total").textContent=roster.length+"/10";
   if(roster.length){$("average").textContent=(roster.reduce((a,p)=>a+p.ovr,0)/roster.length).toFixed(1);$("best").textContent=Math.max(...roster.map(p=>p.ovr));}
   else{$("average").textContent="—";$("best").textContent="—";}
@@ -1221,8 +1473,15 @@ function useDoubleDip(){
   if(!lifelines.double||!candidates.length||roster.length>8||rolling)return;
   lifelines.double=false;doubleDipPicksRemaining=2;renderLifelines();$("status").textContent='double dip activated · draft two players from this roll.';
 }
+function useMovePlayer(){
+  if(movePlayerUses<=0||!roster.length||rolling)return;
+  movePlayerMode=!movePlayerMode;movePlayerSource=null;chosenCandidate=null;
+  renderSquad();renderLifelines();
+  $("lifelineStatus").textContent=movePlayerMode?'move mode: click the player you want to move, then click another roster slot to swap them.':'move mode cancelled.';
+  $("boardInstruction").textContent=movePlayerMode?'move player active · select a roster player, then select the destination slot.':'choose a player, then click an empty spot.';
+}
 function resetDraft() {
-  rolling=false;lifelines={team:true,year:true,double:true};doubleDipPicksRemaining=0;
+  rolling=false;lifelines={team:true,year:true,double:true};doubleDipPicksRemaining=0;movePlayerUses=2;movePlayerMode=false;movePlayerSource=null;
   clearTimeout(simTimer);simTimer=null;selectedCoach=null;challenge=null;gameIndex=0;wins=0;losses=0;streak=0;simPaused=false;seasonFinished=false;leagueTeams=[];schedule=[];playoffRounds=[];seasonPhase="regular";playoffGameCount=0;playoffCurrentRound=0;playoffCurrentSeries=0;
   $("franchisePanel").classList.remove("unlocked");$("seasonSim").style.display="none";$("coachName").textContent="not rolled";$("coachName").classList.remove("rolling","roll-value");$("coachStats").textContent="roll a coach once your ten-player roster is complete.";$("coachOvr").innerHTML="";$("coachAchievements").innerHTML="";$("coachPhoto").style.display="none";$("coachPhoto").src="";$("rollCoach").disabled=false;$("rollCoach").textContent="ROLL COACH";$("challengeYear").textContent="—";$("challengeYear").classList.remove("rolling","roll-value");$("championReveal").textContent="THE HISTORICAL CHAMPION WILL APPEAR HERE";$("championReveal").classList.remove("revealed");$("challengeMeta").textContent="roll a random season. its champion is the team to beat.";$("rollChallenge").disabled=true;$("rollChallenge").textContent="ROLL CHALLENGE YEAR";$("startFranchise").disabled=true;$("startFranchise").textContent="START FRANCHISE ↗";
   selectedTeam=null;
@@ -1269,15 +1528,16 @@ async function rollCoach(){
   if(roster.length<10||selectedCoach||rolling)return;
   rolling=true;const button=$("rollCoach");button.disabled=true;button.textContent="ROLLING COACH…";
   const nameEl=$("coachName");nameEl.classList.add("rolling");
-  const ticker=setInterval(()=>{const c=randomItem(coaches);nameEl.textContent=c.name;},75);
-  await new Promise(resolve=>setTimeout(resolve,1500));clearInterval(ticker);
+  const ticker=setInterval(()=>{const c=randomItem(coaches);nameEl.textContent=c.name;},48);
+  button.textContent="SCOUTING THE SIDELINE…";$("status").textContent="coach selection in progress";
+  await new Promise(resolve=>setTimeout(resolve,2200));clearInterval(ticker);
   selectedCoach=randomItem(coaches);nameEl.textContent=selectedCoach.name;nameEl.classList.remove("rolling");nameEl.classList.add("roll-value");
   const photo=$("coachPhoto");photo.style.display="block";photo.alt=selectedCoach.name;photo.src="";
   getPlayerPhoto(selectedCoach.photo||selectedCoach.name).then(src=>{if(src)photo.src=src;else photo.style.display="none";});
   $("coachOvr").innerHTML=meterHTML(selectedCoach.ovr);
   $("coachStats").textContent=selectedCoach.wins===null?`${selectedCoach.years} · historical head coach · estimated ${selectedCoach.ovr} OVR · +${selectedCoach.boost} team rating`:`${selectedCoach.years} · ${selectedCoach.wins.toLocaleString()} regular-season wins · ${selectedCoach.losses.toLocaleString()} losses · ${selectedCoach.titles} NBA titles · +${selectedCoach.boost} team rating`;
   $("coachAchievements").innerHTML=selectedCoach.achievements.map(a=>`<span class="award-chip">${escapeHTML(a)}</span>`).join('');
-  button.textContent="COACH LOCKED";$("rollChallenge").disabled=false;$("status").textContent=`${selectedCoach.name} hired. your coach is locked in.`;rolling=false;
+  button.textContent="COACH CONFIRMED";$("rollChallenge").disabled=false;$("status").textContent=`${selectedCoach.name} hired. your coach is locked in.`;rolling=false;
 }
 async function rollChallenge(){
   if(!selectedCoach||challenge||rolling)return;
@@ -1285,14 +1545,15 @@ async function rollChallenge(){
   const years=Array.from({length:77},(_,i)=>1950+i);
   if(!years.length){rolling=false;button.disabled=false;button.textContent="ROLL CHALLENGE YEAR";return;}
   const finalYear=randomItem(years);const yearEl=$("challengeYear");yearEl.classList.add("rolling");
-  const ticker=setInterval(()=>{yearEl.textContent=String(randomItem(years));},70);
-  await new Promise(resolve=>setTimeout(resolve,1400));clearInterval(ticker);challenge=finalYear;
+  const ticker=setInterval(()=>{yearEl.textContent=String(randomItem(years));},42);
+  button.textContent="DRAWING THE CHALLENGE…";$("status").textContent="historical challenge season is being drawn";
+  await new Promise(resolve=>setTimeout(resolve,2400));clearInterval(ticker);challenge=finalYear;
   yearEl.textContent=String(challenge);yearEl.classList.remove("rolling");yearEl.classList.add("roll-value");
   const champion=historicalChampions[challenge]||null;
   $("championReveal").textContent=champion?`${challenge} NBA CHAMPIONS · ${champion.toUpperCase()}`:`${challenge} SEASON · CHAMPION DATA UNAVAILABLE`;
   $("championReveal").classList.add("revealed");
   $("challengeMeta").textContent=champion?`historical champion: ${champion} · season ending ${challenge}. your goal: beat that season's league and win the championship.`:`season ending ${challenge}. no verified champion entry is available for this year; if its roster is missing, the closest available roster season is used for simulation.`;
-  button.textContent="CHALLENGE YEAR LOCKED";$("startFranchise").disabled=false;$("status").textContent=champion?`${challenge} locked. ${champion} are the historical champions to beat.`:`${challenge} locked. historical champion data is unavailable for this year.`;rolling=false;
+  button.textContent="CHALLENGE CONFIRMED";$("startFranchise").disabled=false;$("status").textContent=champion?`${challenge} locked. ${champion} are the historical champions to beat.`:`${challenge} locked. historical champion data is unavailable for this year.`;rolling=false;
 }
 function teamConference(code){const east=new Set(['ATL','BOS','BKN','NJN','BRK','NYN','CHA','CHH','CHO','CHI','CLE','DET','IND','MIA','MIL','NYK','ORL','PHI','TOR','WAS','WSB','BAL','CAP','SYR','ROC','CIN','BUF']);return east.has(code)?'East':'West';}
 function buildLeague(){
@@ -1323,11 +1584,24 @@ function simulateOneGame(){
  // Update the displayed league records as the user's real 82-game record is formed.
  $("homeTeam").textContent='YOUR DYNASTY';$("awayTeam").textContent=opp.name;$("homeScore").textContent=hs;$("awayScore").textContent=as;$("gameQuarter").textContent='FINAL';$("gameNote").textContent=`Game ${gameIndex}: ${won?'WIN':'LOSS'} · ${opp.name} (${opp.strength.toFixed(1)} estimated team rating).`;const line=document.createElement('div');line.className='feed-line latest '+(won?'win':'loss');line.textContent=`G${String(gameIndex).padStart(2,'0')} · ${won?'W':'L'} · ${hs}–${as} vs ${opp.name}`;$("gameFeed").prepend(line);while($("gameFeed").children.length>22)$("gameFeed").lastChild.remove();updateSeasonUI();if(gameIndex>=82)finishRegularSeason();
 }
-function showVictory(){
- const overlay=$("victoryOverlay");$("victoryTitle").textContent="WORLD CHAMPIONS";
- $("victoryMessage").textContent=`your dynasty finished ${wins}–${losses} and conquered the postseason. legacy secured.`;
- $("victoryRecord").textContent=`${wins}–${losses}`;$("victoryPlayoffGames").textContent=String(playoffGameCount);
+let championshipClipTimer=null;
+function revealVictoryModal(){
+ const overlay=$("victoryOverlay");$("victoryTitle").textContent="CHAMPIONS";
+ $("victoryMessage").textContent=`A championship season completed with a ${wins}–${losses} regular-season record.`;
+ $("victoryRecord").textContent=`${wins}–${losses}`;if($("victorySeason"))$("victorySeason").textContent=String(challenge||"—");
  overlay.classList.add("open");overlay.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");
+}
+function showVictory(){
+ const clipOverlay=$("championshipClipOverlay"),frame=$("championshipClip");
+ if(championshipClipTimer)clearTimeout(championshipClipTimer);
+ clipOverlay.classList.add("open");clipOverlay.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");
+ frame.src="https://www.youtube-nocookie.com/embed/9v6EFRAb_as?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&start=65";
+ championshipClipTimer=setTimeout(()=>finishChampionshipClip(),9000);
+}
+function finishChampionshipClip(){
+ if(championshipClipTimer)clearTimeout(championshipClipTimer);championshipClipTimer=null;
+ const clipOverlay=$("championshipClipOverlay"),frame=$("championshipClip");clipOverlay.classList.remove("open");clipOverlay.setAttribute("aria-hidden","true");
+ setTimeout(()=>{frame.src="about:blank";revealVictoryModal();},750);
 }
 function closeVictory(){const overlay=$("victoryOverlay");overlay.classList.remove("open");overlay.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");}
 function completeRunUI(){$("newRunWrap").hidden=false;}
@@ -1428,17 +1702,63 @@ function runInstantSimulation(){
   setTimeout(batch,0);
 }
 document.querySelectorAll('.speed-btn').forEach(btn=>btn.addEventListener('click',()=>{simSpeed=Number(btn.dataset.speed);document.querySelectorAll('.speed-btn').forEach(b=>b.classList.toggle('active',b===btn));if(simSpeed===0&&!seasonFinished){simPaused=false;runSimulation();}else if(!simPaused&&!seasonFinished){instantRunning=false;runSimulation();}}));
-$("newRunButton").addEventListener("click",startNewRun);$("victoryNewRun").addEventListener("click",startNewRun);$("victoryClose").addEventListener("click",closeVictory);document.querySelectorAll("[data-victory-close]").forEach(el=>el.addEventListener("click",closeVictory));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeVictory();});
+$("skipChampionshipClip").addEventListener("click",finishChampionshipClip);$("newRunButton").addEventListener("click",startNewRun);$("victoryNewRun").addEventListener("click",startNewRun);$("victoryClose").addEventListener("click",closeVictory);document.querySelectorAll("[data-victory-close]").forEach(el=>el.addEventListener("click",closeVictory));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeVictory();});
 $("rollCoach").addEventListener('click',rollCoach);$("rollChallenge").addEventListener('click',rollChallenge);$("startFranchise").addEventListener('click',()=>{if(seasonFinished){$("startFranchise").textContent="START FRANCHISE ↗";seasonFinished=false;$("seasonSim").style.display="none";startFranchise();}else startFranchise();});
 $("pauseSeason").addEventListener('click',()=>{simPaused=!simPaused;$("pauseSeason").textContent=simPaused?"RESUME":"PAUSE";if(simPaused){clearTimeout(simTimer);simTimer=null;}else{instantRunning=false;runSimulation();}updateSeasonUI();});
 $("spinTeam").addEventListener("click",spinTeam);
 $("spinYear").addEventListener("click",spinYear);
-$("teamReroll").addEventListener("click",useTeamReroll);$("yearReroll").addEventListener("click",useYearReroll);$("doubleDip").addEventListener("click",useDoubleDip);
+$("teamReroll").addEventListener("click",useTeamReroll);$("yearReroll").addEventListener("click",useYearReroll);$("doubleDip").addEventListener("click",useDoubleDip);$("movePlayer").addEventListener("click",useMovePlayer);
 $("reset").addEventListener("click",resetDraft);
 
+window.addEventListener('resize',()=>requestAnimationFrame(renderDuoLines));
+window.addEventListener('scroll',()=>requestAnimationFrame(renderDuoLines),{passive:true});
 renderSquad();
 updateProgress();
 loadDB();
 </script>
+
+<style id="cinematic-v19-patch">
+#duoConnectionOverlay{position:fixed;inset:0;z-index:80;pointer-events:none;overflow:visible}
+.championship-clip-overlay{position:fixed;inset:0;z-index:11000;display:grid;place-items:center;padding:20px;background:#030303;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease,visibility .9s ease}
+.championship-clip-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+.championship-clip-frame{width:min(1050px,100%);text-align:center;animation:clipReveal .8s cubic-bezier(.2,.8,.2,1) both}
+.clip-kicker{font-size:10px;letter-spacing:3px;color:#d9bd69;margin:0 0 15px;font-weight:800}
+.championship-clip-frame iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid #d9bd69;background:#090909;box-shadow:0 0 80px #d9bd6920}
+.clip-caption{margin:15px 0;color:#eee;font-size:12px;letter-spacing:3px;font-weight:800}
+#skipChampionshipClip{margin-top:12px;padding:10px 20px}
+@keyframes clipReveal{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.victory-card h2{font-weight:800;letter-spacing:-1px;text-transform:uppercase}
+.victory-trophy{animation:none!important}
+.victory-stats span{font-size:8px;letter-spacing:1.2px}
+@media(prefers-reduced-motion:reduce){.championship-clip-overlay,.championship-clip-frame{transition:none;animation:none}}
+</style>
+
 </body>
 </html>
+
+
+<style id="lifeline-and-rarity-patch">
+.candidate{border-color:color-mix(in srgb,var(--rarity-color,#777) 55%,#252525)!important;border-left:3px solid var(--rarity-color,#777)!important}
+.candidate .rating{box-shadow:0 0 12px color-mix(in srgb,var(--rarity-color,#777) 32%,transparent)}
+.candidate.tier-ovr-goat{background:linear-gradient(135deg,#fffdf20b,#c9a64620 48%,#fffdf206)!important;border-color:#e8d28a!important}
+.slot.compatible{border:2px solid #8ee6a6!important;box-shadow:inset 0 0 0 1px #8ee6a644,0 0 16px #56d47a18!important}
+.slot.mismatch-target{border:1px dashed #e0a04b!important;background:#171006!important}
+.slot.move-target{cursor:pointer!important;border-color:#c9a646!important;outline:1px solid #c9a64633}
+.slot.move-target:hover,.slot.move-selected{background:#28200a!important;border-color:#ffe18a!important;box-shadow:inset 0 0 0 2px #c9a64666,0 0 20px #c9a64622!important}
+@media(max-width:560px){.lifeline-buttons{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+</style>
+
+<style id="v18-photos-duos-stats-fix">
+.pick-avatar{position:relative!important;overflow:hidden!important;width:42px!important;height:48px!important;align-self:stretch!important;background:#161616!important;border-color:var(--rarity-color,#777)!important}
+.pick-player-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0;transition:opacity .18s}
+.pick-player-photo.loaded{opacity:1}
+.pick-avatar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#d8c16b;font-size:10px;font-weight:900;text-shadow:0 1px 5px #000}
+.pick-player-photo.loaded+span{display:none}
+.pick-card-head{grid-template-columns:42px minmax(0,1fr) auto!important}
+.candidate.duo-active-card,.slot.duo-active-card{border-color:#f09bdc!important;box-shadow:0 0 0 1px #72eaff80,0 0 12px #ef9bdc48,0 0 23px #a89cff22!important}
+.duo-tag.active{border-color:#8bdcf4!important;background:linear-gradient(100deg,#70eaff1e,#f49bdc24,#b5a0ff25)!important;color:#dffaff!important;box-shadow:0 0 12px #d4a3ff28!important}
+#duoConnectionOverlay{position:fixed;inset:0;width:100vw;height:100vh;z-index:40;pointer-events:none;overflow:visible}
+.slot.filled{position:relative;z-index:41}
+.candidate.duo-active-card{position:relative;z-index:2}
+@media(max-width:560px){.pick-avatar{width:36px!important;height:42px!important}.pick-card-head{grid-template-columns:36px minmax(0,1fr) auto!important}}
+</style>
