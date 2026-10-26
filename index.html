@@ -338,7 +338,7 @@ button.slot{font:inherit;cursor:pointer}
 @media(max-width:700px){.franchise-grid{grid-template-columns:1fr}.season-record{grid-template-columns:repeat(2,1fr)}}
 
 
-.franchise-results{margin-top:18px}.standings-table{display:grid;grid-template-columns:1fr 1fr;gap:12px}.standings-conference{border:1px solid #333;border-radius:14px;overflow:hidden;background:#0c0c0c}.standings-title{padding:11px 13px;background:#181818;color:#ddd;font-size:10px;letter-spacing:1.5px;font-weight:900}.standing-row{display:grid;grid-template-columns:25px minmax(0,1fr) 38px 38px;gap:7px;align-items:center;padding:8px 11px;border-top:1px solid #ffffff0b;font-size:10px}.standing-row.user-row{background:#242424;color:#fff;font-weight:900}.standing-row.playoff-cut{border-bottom:1px dashed #555}.standing-row .team-record{text-align:right;color:#999;font-variant-numeric:tabular-nums}.seed-pill{font-size:8px;color:#111;background:#eee;border-radius:5px;padding:3px 4px;text-align:center;font-weight:900}.playoff-results{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.playoff-round{border:1px solid #333;border-radius:13px;padding:10px;background:#0d0d0d;min-width:0}.playoff-round h4{font-size:9px;letter-spacing:1.1px;color:#aaa;margin:0 0 9px}.series-card{border:1px solid #ffffff12;border-radius:9px;padding:8px;margin-bottom:7px;font-size:9px;line-height:1.5}.series-card.won-series{border-color:#eee;background:#ffffff0a}.series-card .series-score{font-weight:900;color:#fff}.award-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.award-card{border:1px solid #333;background:#101010;border-radius:13px;padding:12px}.award-card h4{font-size:9px;color:#999;letter-spacing:1.2px;margin:0 0 7px}.award-card strong{font-size:13px}.award-card p{font-size:10px;color:#aaa;margin:5px 0 0;line-height:1.5}.slot .ovr-meter{width:100%;height:7px;margin:8px 0 0}.slot .ovr-meter-label{font-size:7px;margin-top:6px}.slot .ovr-meter-label span{letter-spacing:.4px}.slot .ovr-meter-label strong{font-size:8px}.slot.filled{overflow:visible}.slot.filled .ovr-meter{overflow:hidden}.player-pop{border-radius:18px}.candidate,.tile,.summary-box,.franchise-card,.scoreboard,.court-board,.slot,.award-card,.standings-conference,.playoff-round{border-radius:18px}
+.franchise-results{margin-top:18px}.standings-table{display:grid;grid-template-columns:1fr 1fr;gap:12px}.standings-conference{border:1px solid #333;border-radius:14px;overflow:hidden;background:#0c0c0c}.standings-title{padding:11px 13px;background:#181818;color:#ddd;font-size:10px;letter-spacing:1.5px;font-weight:900}.standing-row{display:grid;grid-template-columns:minmax(0,1fr) 38px 38px;gap:7px;align-items:center;padding:8px 11px;border-top:1px solid #ffffff0b;font-size:10px}.standing-row.user-row{background:#242424;color:#fff;font-weight:900}.standing-row.playoff-cut{border-bottom:1px dashed #555}.standing-row .team-record{text-align:right;color:#999;font-variant-numeric:tabular-nums}.seed-pill{font-size:8px;color:#111;background:#eee;border-radius:5px;padding:3px 4px;text-align:center;font-weight:900}.playoff-results{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.playoff-round{border:1px solid #333;border-radius:13px;padding:10px;background:#0d0d0d;min-width:0}.playoff-round h4{font-size:9px;letter-spacing:1.1px;color:#aaa;margin:0 0 9px}.series-card{border:1px solid #ffffff12;border-radius:9px;padding:8px;margin-bottom:7px;font-size:9px;line-height:1.5}.series-card.won-series{border-color:#eee;background:#ffffff0a}.series-card .series-score{font-weight:900;color:#fff}.award-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.award-card{border:1px solid #333;background:#101010;border-radius:13px;padding:12px}.award-card h4{font-size:9px;color:#999;letter-spacing:1.2px;margin:0 0 7px}.award-card strong{font-size:13px}.award-card p{font-size:10px;color:#aaa;margin:5px 0 0;line-height:1.5}.slot .ovr-meter{width:100%;height:7px;margin:8px 0 0}.slot .ovr-meter-label{font-size:7px;margin-top:6px}.slot .ovr-meter-label span{letter-spacing:.4px}.slot .ovr-meter-label strong{font-size:8px}.slot.filled{overflow:visible}.slot.filled .ovr-meter{overflow:hidden}.player-pop{border-radius:18px}.candidate,.tile,.summary-box,.franchise-card,.scoreboard,.court-board,.slot,.award-card,.standings-conference,.playoff-round{border-radius:18px}
 @media(max-width:760px){.standings-table{grid-template-columns:1fr}.playoff-results{grid-template-columns:repeat(2,minmax(0,1fr))}.award-results{grid-template-columns:1fr}}
 
 /* v5: sharp monochrome presentation; rarity colours stay on draft cards and liquid meters */
@@ -366,8 +366,20 @@ main::before{content:"";position:fixed;z-index:-1;pointer-events:none;width:min(
 h1{font-size:clamp(42px,7vw,72px);letter-spacing:-1.8px}
 .candidate,.slot,.tile,.summary-box,.franchise-card,.scoreboard,.court-board,.award-card,.standings-conference,.playoff-round{border-radius:3px!important}
 .candidate:not(:disabled):hover{box-shadow:0 0 0 1px #ffffff16,0 16px 36px #000b,0 0 28px #ffffff0a}
-.rating.ovr100{color:#001016;background:linear-gradient(135deg,#b7fbff,#38d9f4 50%,#b7fbff);box-shadow:0 0 22px #38d9f466,inset 0 1px #fff}
-.ovr99{box-shadow:0 0 15px #df263933}
+/* full-card rarity glow for elite draft picks */
+.candidate.tier-ovr90{border-color:#d6a52f!important;box-shadow:inset 0 0 0 1px #d6a52f44,0 0 17px #e6b83b30!important;background:linear-gradient(145deg,#17140b,#080808 58%,#211908)!important}
+.candidate.tier-ovr99{border-color:#f12d43!important;box-shadow:inset 0 0 0 1px #ff344b55,0 0 20px #f21d3e44!important;background:linear-gradient(145deg,#20080d,#080808 58%,#26070d)!important}
+.candidate.tier-ovr90 .pick-card-footer{border-top-color:#c69b3044!important}
+.candidate.tier-ovr99 .pick-card-footer{border-top-color:#f12d4344!important}
+/* elite overall ratings get a proper rarity treatment */
+.rating.ovr90{color:#241700!important;background:linear-gradient(125deg,#fff0a6 0%,#f6c744 28%,#fff4bb 48%,#c68a16 72%,#ffe88a 100%)!important;border:1px solid #ffe8a0!important;box-shadow:0 0 0 1px #8b641d,0 0 13px #e6b83b88,inset 0 1px #fff8d9!important;text-shadow:0 1px #fff3bd;position:relative;overflow:hidden}
+.rating.ovr90::after{content:"";position:absolute;inset:-40% -70%;background:linear-gradient(105deg,transparent 38%,#ffffffbb 49%,transparent 60%);transform:translateX(-130%);animation:eliteGoldSweep 3.4s ease-in-out infinite;pointer-events:none}
+.rating.ovr99{color:#fff!important;background:linear-gradient(130deg,#ffb0b0 0%,#e52335 25%,#850b20 52%,#ff3347 75%,#ffb0b0 100%)!important;border:1px solid #ff858f!important;box-shadow:0 0 0 1px #680616,0 0 16px #f21d3e99,inset 0 1px #ffd0d4!important;text-shadow:0 1px 5px #5b0010;position:relative;overflow:hidden;animation:eliteRedPulse 2.2s ease-in-out infinite alternate}
+.rating.ovr99::after{content:"";position:absolute;inset:-40% -70%;background:linear-gradient(105deg,transparent 38%,#ffffffb8 49%,transparent 60%);transform:translateX(-130%);animation:eliteRedSweep 2.7s ease-in-out infinite;pointer-events:none}
+@keyframes eliteGoldSweep{0%,25%{transform:translateX(-130%)}70%,100%{transform:translateX(130%)}}
+@keyframes eliteRedSweep{0%,15%{transform:translateX(-130%)}70%,100%{transform:translateX(130%)}}
+@keyframes eliteRedPulse{from{box-shadow:0 0 0 1px #680616,0 0 10px #f21d3e66,inset 0 1px #ffd0d4}to{box-shadow:0 0 0 1px #680616,0 0 22px #f21d3ecc,inset 0 1px #ffd0d4}}
+@media(prefers-reduced-motion:reduce){.rating.ovr90::after,.rating.ovr99::after,.rating.ovr99{animation:none!important}}
 .ovr-meter{position:relative;overflow:hidden}
 .ovr-meter::after{content:"";position:absolute;inset:0;width:35%;background:linear-gradient(90deg,transparent,#ffffff65,transparent);transform:translateX(-130%);animation:meterShine 4.5s ease-in-out infinite}
 .duo-tag{display:inline-flex;align-items:center;gap:4px;max-width:100%;margin:8px 0 2px;padding:4px 6px;border:1px solid #555;color:#bdbdbd;font-size:8px;font-weight:900;letter-spacing:.65px;text-transform:uppercase;overflow-wrap:anywhere}
@@ -439,6 +451,9 @@ main{padding-top:30px}
 .player-pop{border-radius:14px!important;border-color:#ffffff26!important;box-shadow:0 22px 70px #000d!important}
 @media(max-width:760px){.layout{grid-template-columns:1fr}.panel.wide{grid-column:auto}.candidates{grid-template-columns:1fr 1fr;gap:8px}.candidate{padding:11px!important}.panel{padding:15px}}
 @media(max-width:430px){.candidates{grid-template-columns:1fr}.team-year{grid-template-columns:1fr 1fr}.panel-head{align-items:flex-start}}
+
+
+#shopPage{max-width:1400px;margin:0 auto;min-height:65vh;padding-top:32px}#shopPage[hidden]{display:none!important}#homePage[hidden]{display:none!important}#shopPage .shop-panel{margin-top:24px} .shop-panel{margin-top:24px}.shop-wallet{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px;border:1px solid var(--line,#444);background:linear-gradient(120deg,#171717,#252525);margin-bottom:12px}.shop-cash{font-size:32px;font-weight:900;letter-spacing:-1px}.shop-countdown{font-size:12px;color:#bbb;font-variant-numeric:tabular-nums}.shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}.shop-offer{border:1px solid #444;background:#141414;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}.shop-offer.olympic{border-color:#c7a75c;box-shadow:inset 0 0 0 1px #6f5728}.shop-offer.allstar{border-color:#8d75c6}.shop-offer.country{border-color:#777}.shop-rarity{font-size:10px;letter-spacing:1.5px;font-weight:900}.shop-offer h3{font-size:17px;margin:0}.shop-price{font-size:22px;font-weight:900}.shop-offer button{margin-top:auto;width:100%}.shop-owned{margin-top:22px;border-top:1px solid #444;padding-top:16px}.owned-list{display:flex;gap:8px;flex-wrap:wrap}.owned-chip{border:1px solid #555;padding:8px 10px;font-size:12px}.shop-log{margin-top:14px;color:#bbb;font-size:12px;line-height:1.6}.shop-offer button:disabled{opacity:.5;cursor:not-allowed}@media(max-width:700px){.shop-grid{grid-template-columns:1fr}.shop-wallet{align-items:flex-start;flex-direction:column}}
 
 </style>
 
@@ -580,18 +595,15 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
 <body>
 <header>
   <div class="brand"><div class="brand-icon">H</div> HARDWOOD DYNASTY</div>
-  <div class="pill">HISTORICAL DRAFT MODE</div>
+  <div class="header-tools"><button class="phone-layout-toggle" id="shopNav" type="button" aria-pressed="false">TEAM SHOP</button><div class="pill">HISTORICAL DRAFT MODE</div><button class="phone-layout-toggle" id="phoneLayoutToggle" type="button" aria-pressed="false">PHONE LAYOUT</button><button class="money-top-button" id="moneyTopButton" type="button" aria-label="Open wallet and redeem code"><span class="money-top-label">CASH</span><strong id="topCashAmount">$0</strong></button></div>
 </header>
 
-<main>
+<main id="homePage">
   <div class="eyebrow">your franchise starts here</div>
   <h1>draft your <span>dynasty.</span></h1>
   <p class="intro">ten picks. ten different players. every pick comes from a randomly selected NBA team and season. build the starting five, then fill your bench.</p>
 
-  <div class="actions roll-above-select">
-    <button class="primary" id="spinTeam" disabled>ROLL FRANCHISE ↗</button>
-    <button class="secondary" id="spinYear" disabled style="display:none">SPIN YEAR</button>
-  </div>
+  <span id="spinYear" aria-hidden="true" style="display:none!important"></span>
 
   <div class="layout">
     <section class="panel" id="draftPanel">
@@ -607,6 +619,9 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
           <div class="tile-value" id="year">—</div>
           <div class="tile-sub" id="yearSub">awaiting spin</div>
         </div>
+      </div>
+      <div class="actions roll-below-select">
+        <button class="primary" id="spinTeam" disabled>ROLL TEAM ↗</button>
       </div>
       <div class="progress-row"><strong id="pickTitle">pick 1 of 10</strong><span id="pickCount">0 / 10</span></div>
       <div class="progress"><div class="progress-fill" id="progress" style="width:0%"></div></div>
@@ -631,6 +646,12 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
     <section class="panel wide" id="candidatesPanel">
       <div class="panel-head"><h2>Pick a player</h2><span class="step">03 / 03</span></div>
       <div class="status" id="candidateInfo" style="margin:0 0 14px">spin a team and a season to see your candidates.</div>
+      <div class="player-sort-row" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px">
+        <label for="playerSort" style="font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">sort player pool</label>
+        <select id="playerSort" aria-label="Sort player pool" style="background:#111;color:#f5f5f5;border:1px solid #444;border-radius:0;padding:10px 12px;font:inherit;max-width:100%;color-scheme:dark">
+          <option value="random">random order</option><option value="ovr">highest ovr</option><option value="ppg">ppg · points</option><option value="apg">apg · assists</option><option value="spg">spg · steals</option><option value="bpg">bpg · blocks</option>
+        </select>
+      </div>
       <div class="lifelines" id="lifelines"><div class="lifelines-head"><b>draft lifelines</b><span>one use each</span></div><div class="lifeline-buttons"><button class="secondary" id="teamReroll" disabled>↻ team reroll <small>keep year</small></button><button class="secondary" id="yearReroll" disabled>↻ year reroll <small>keep team</small></button><button class="secondary" id="doubleDip" disabled>＋ double dip <small>draft 2 players</small></button><button class="secondary" id="movePlayer" disabled>⇄ move player <small>2 uses</small></button></div><div class="lifeline-status" id="lifelineStatus">lifelines refresh when you start a new draft.</div></div>
       <div class="candidates" id="candidates">
         <div class="empty-message" style="grid-column:1/-1">your next ten candidates will appear here.</div>
@@ -690,25 +711,48 @@ header{background:#050505!important;backdrop-filter:none!important;border-bottom
       <p class="stat-note">the historical roster and champion are based on the selected season where data is available. scores, standings, playoff series and awards are generated by this game's simulation, not official historical results.</p>
     </section>
   </div>
+
   <footer>HARDWOOD DYNASTY · V9 · THE POSTSEASON UPDATE</footer>
   <div class="championship-clip-overlay" id="championshipClipOverlay" aria-hidden="true">
-    <div class="championship-clip-frame"><div class="clip-kicker">HARDWOOD DYNASTY · FINALS MOMENT</div><iframe id="championshipClip" title="NBA championship trophy presentation" src="about:blank" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div class="clip-caption">THE FINAL MOMENT</div><button class="secondary" id="skipChampionshipClip" type="button">CONTINUE TO RESULTS</button></div>
-  </div>
-  <div class="victory-overlay" id="victoryOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="victoryTitle">
-    <div class="victory-backdrop" data-victory-close></div>
-    <div class="victory-card"><div class="victory-orbit orbit-one"></div><div class="victory-orbit orbit-two"></div>
-      <div class="victory-kicker">HARDWOOD DYNASTY · CHAMPIONS</div><div class="victory-trophy" aria-hidden="true">🏆</div>
-      <div class="victory-eyebrow">THE RUN IS COMPLETE</div><h2 id="victoryTitle">WORLD CHAMPIONS</h2><p id="victoryMessage">you conquered the league.</p>
-      <div class="victory-stats"><div><span>REGULAR SEASON RECORD</span><strong id="victoryRecord">0–0</strong></div><div><span>CHALLENGE SEASON</span><strong id="victorySeason">—</strong></div></div>
-      <div class="victory-actions"><button class="primary" id="victoryNewRun">START A NEW RUN ↗</button><button class="secondary" id="victoryClose">VIEW RESULTS</button></div>
+    <div class="championship-clip-frame">
+      <div class="championship-banner">CHAMPIONS<span>HARDWOOD DYNASTY / NBA FINALS</span></div>
+      <section class="championship-movie-phase" id="championshipMoviePhase">
+        <img id="championshipGif" class="championship-gif" src="https://media1.tenor.com/m/Og93pooBKFQAAAAd/new-york-knicks-nba-champs.gif" alt="basketball champions lifting the Larry O'Brien trophy" loading="eager"/>
+      </section>
+      <section class="championship-stats-phase" id="championshipStatsPhase" aria-hidden="true">
+        <div class="championship-stats-kicker">SEASON COMPLETE · DYNASTY SECURED</div>
+        <div class="championship-stats-grid">
+          <div><span>REGULAR SEASON</span><strong id="clipStatsRecord">0–0</strong></div>
+          <div><span>CHALLENGE SEASON</span><strong id="clipStatsSeason">—</strong></div>
+          <div><span>PLAYOFF GAMES</span><strong id="clipStatsPlayoffGames">0</strong></div>
+        </div>
+        <p id="clipStatsMessage">the league has a new champion.</p>
+        <button class="secondary" id="skipChampionshipClip" type="button">VIEW FULL RESULTS</button>
+      </section>
     </div>
   </div>
+</main>
+
+<main id="shopPage" hidden>
+  <div class="eyebrow">the dynasty marketplace</div>
+  <h1>team <span>shop.</span></h1>
+  <p class="intro">win games, stack cash, and permanently unlock new teams for your draft pool.</p>
+  <section class="panel shop-panel">
+    <div class="panel-head"><h2>Wallet</h2><span class="step" id="ownedCount">0 UNLOCKED</span></div>
+    <div class="shop-wallet"><div><div class="tile-label">AVAILABLE CASH</div><div class="shop-cash" id="shopCash">$0</div></div><div class="shop-countdown" id="shopCountdown">new teams arrive in 02:00:00</div></div>
+    <div class="panel-head"><h2>Fresh arrivals</h2><span class="step">3 OFFERS / 2 HOURS</span></div>
+    <div class="shop-grid" id="shopOffers"></div>
+    <p class="shop-log" id="shopNotice" aria-live="polite">win regular-season and playoff games to earn cash. purchases are permanent.</p>
+    <div class="shop-owned"><div class="panel-head"><h2>Your collection</h2><span class="step">PERMANENT UNLOCKS</span></div><div class="owned-list" id="ownedTeams">no special teams yet.</div></div>
+  </section>
 </main>
 
 <script>
 
 const DATA_URL =
 "https://raw.githubusercontent.com/mfridson/NBA_Team_Performance/refs/heads/main/historical_rosters.csv";
+const ALLSTAR_ROSTER_URL = "https://raw.githubusercontent.com/mariomunooz/NBA-Data/main/all_star_games_rosters.csv";
+let ALL_STAR_ROSTERS = {};
 
 const teamNames = {
  ATL:"Atlanta Hawks", BOS:"Boston Celtics", BKN:"Brooklyn Nets",
@@ -800,26 +844,67 @@ function escapeHTML(s) {
   })[c]);
 }
 
+// Curated season anchors keep legendary seasons from being wrecked by incomplete
+// historical stat feeds. Keys use the roster dataset's season-end year.
+const SEASON_OVR = {
+  "michael jordan|1991":99,"michael jordan|1992":99,"michael jordan|1993":99,
+  "michael jordan|1988":98,"michael jordan|1989":98,"michael jordan|1990":98,
+  "karl malone|1990":94,"karl malone|1991":96,"karl malone|1992":97,
+  "karl malone|1993":96,"karl malone|1994":96,"karl malone|1995":96,
+  "karl malone|1996":96,"karl malone|1997":97,"karl malone|1998":96,
+  "john stockton|1989":94,"john stockton|1990":95,"john stockton|1991":95,
+  "john stockton|1992":95,"john stockton|1993":95,"john stockton|1994":94,
+  "scottie pippen|1992":94,"scottie pippen|1993":95,"scottie pippen|1994":94,
+  "scottie pippen|1995":95,"scottie pippen|1996":95,"scottie pippen|1997":94,
+  "charles barkley|1989":95,"charles barkley|1990":96,"charles barkley|1991":97,
+  "charles barkley|1992":97,"charles barkley|1993":97,"charles barkley|1994":95,
+  "hakeem olajuwon|1992":96,"hakeem olajuwon|1993":97,"hakeem olajuwon|1994":98,
+  "hakeem olajuwon|1995":97,"david robinson|1993":96,"david robinson|1994":97,
+  "shaq|1999":97,"shaquille o'neal|1999":97,"shaquille o'neal|2000":98,
+  "shaquille o'neal|2001":98,"shaquille o'neal|2002":97,
+  "magic johnson|1986":98,"magic johnson|1987":99,"magic johnson|1988":98,
+  "larry bird|1984":98,"larry bird|1985":99,"larry bird|1986":99,
+  "kareem abdul-jabbar|1971":98,"kareem abdul-jabbar|1972":99,"kareem abdul-jabbar|1977":98,
+  "wilt chamberlain|1962":99,"bill russell|1962":97,"oscar robertson|1963":97,
+  "julius erving|1975":96,"julius erving|1976":97,"julius erving|1980":96,
+  "kevin garnett|2003":96,"kevin garnett|2004":97,"tim duncan|2002":97,
+  "tim duncan|2003":98,"kobe bryant|2005":96,"kobe bryant|2006":98,
+  "kobe bryant|2007":98,"kobe bryant|2008":98,"lebron james|2008":98,
+  "lebron james|2009":99,"lebron james|2012":99,"lebron james|2013":99,
+  "stephen curry|2015":97,"stephen curry|2016":99,"kevin durant|2013":98,
+  "giannis antetokounmpo|2019":98,"giannis antetokounmpo|2020":98,
+  "nikola jokic|2021":97,"nikola jokic|2022":98,"nikola jokic|2023":99
+};
 function getRating(p) {
-  // Ratings describe this exact player-season, never their career reputation.
-  // The stats index is populated while the roster sources load; old seasons use
-  // the legacy box-score source and modern seasons use the modern stats source.
   const season=Number(p.Season||p.sourceYear||selectedYear||0);
+  const name=String(p.Player||p.displayName||"").trim().toLowerCase();
+  const anchored=SEASON_OVR[name+"|"+season];
+  if(anchored) return anchored;
   const st=findSeasonStats(p,season);
   if(st && (st.PTS!==null || st.REB!==null || st.AST!==null)) {
     const pts=Math.max(0,Number(st.PTS)||0), reb=Math.max(0,Number(st.REB)||0);
     const ast=Math.max(0,Number(st.AST)||0), stl=Math.max(0,Number(st.STL)||0), blk=Math.max(0,Number(st.BLK)||0);
     const min=Math.max(0,Number(st.MIN)||0), gp=Math.max(0,Number(st.G)||0);
-    // Weighted per-game production, with modest minutes/games adjustments.
-    let score=48 + pts*1.05 + reb*0.78 + ast*0.72 + stl*1.7 + blk*1.35;
-    if(min>=30) score+=2; else if(min>0&&min<12) score-=4;
-    if(gp>0&&gp<20) score-=2;
+    // Balanced production scale: elite multi-category seasons reach the 90s,
+    // while minutes, games played and defensive stats still matter.
+    let score=43 + pts*1.12 + reb*0.82 + ast*0.78 + stl*1.65 + blk*1.4;
+    if(min>=34) score+=3; else if(min>=29) score+=2; else if(min>0&&min<12) score-=5;
+    if(gp>=70) score+=1; else if(gp>0&&gp<20) score-=3;
+    const fgp=Number(st.FG_PCT), tpp=Number(st.FG3_PCT);
+    if(Number.isFinite(fgp)&&fgp>0.48) score+=1;
+    if(Number.isFinite(tpp)&&tpp>0.38) score+=1;
     return Math.max(45,Math.min(99,Math.round(score)));
   }
-  // Transparent fallback when a season's box score is missing.
+  // If the historical box-score source is missing, use known player quality as
+  // a sensible fallback rather than assigning every old legend a 50-70 OVR.
+  const career=Number(stars[name]||stars[name.replace(/^shaquille o'neal$/,"shaquille o'neal")]||0);
   const expText=String(p.Exp||"0").toUpperCase();
   const exp=expText==="R"?0:(Number(expText)||0);
-  return Math.max(48,Math.min(70,Math.round(52+Math.min(exp,10)*1.1+(exp>=15?1:0))));
+  if(career) {
+    const development=exp<=1?-5:exp<=3?-3:exp<=5?-1:0;
+    return Math.max(55,Math.min(98,career+development));
+  }
+  return Math.max(48,Math.min(76,Math.round(52+Math.min(exp,10)*1.5+(exp>=15?2:0))));
 }
 
 const GOAT_PLAYERS=new Set(["michael jordan","lebron james","shaquille o'neal","kobe bryant","larry bird","magic johnson","kareem abdul-jabbar","wilt chamberlain","tim duncan","bill russell"]);
@@ -835,7 +920,33 @@ function ratingClass(n,goat=false) {
   return "ovr0";
 }
 
-function teamLabel(code) { return teamNames[code]||code; }
+function specialTeamYear(code){
+  const name=String(teamNames[code]||code);
+  const match=name.match(/\b(19|20)\d{2}\b/);
+  if(!match)return null;
+  if(/olympic/i.test(name)&&typeof USA_OLYMPIC_ROSTERS!=='undefined'&&USA_OLYMPIC_ROSTERS[name])return Number(match[0]);
+  if(/all.?star/i.test(name))return Number(match[0]);
+  return null;
+}
+function olympicDisplayYear(code){const name=String(teamNames[code]||code);return /olympic/i.test(name)?specialTeamYear(code):null;}
+function displaySeason(code, season){return specialTeamYear(code)||season;}
+function teamLabel(code) { const name=String(teamNames[code]||code);if(/all.?star/i.test(name))return "All-Star";if(olympicDisplayYear(code))return "USA Olympic Team";return name; }
+async function loadOfficialAllStarRosters(){
+  try{
+    const res=await fetch(ALLSTAR_ROSTER_URL,{cache:'force-cache'});if(!res.ok)throw Error('all-star roster feed unavailable');
+    const rows=parseCSV(await res.text());const out={};
+    for(const r of rows){
+      const pick=(...keys)=>{for(const k of keys){if(r[k]!==undefined&&String(r[k]).trim()!=='')return String(r[k]).trim();}return '';};
+      const rawYear=pick('Year','YEAR','year','Season','SEASON','season','Game Year','game_year');
+      const nums=rawYear.match(/(?:19|20)\d{2}/g);const year=nums&&nums.length?Number(nums[nums.length-1]):Number(rawYear);
+      const player=pick('Player','PLAYER','player','Player Name','player_name','Name','name');
+      if(!player||!Number.isFinite(year)||year<1980||year>2026)continue;
+      (out[year]||(out[year]=[])).push({name:player,pos:pick('Pos','POS','Position','position')});
+    }
+    for(const y of Object.keys(out))out[y]=[...new Map(out[y].map(x=>[normPlayerName(x.name),x])).values()];
+    if(Object.keys(out).length)ALL_STAR_ROSTERS=out;
+  }catch(e){console.warn('Official All-Star roster feed could not be loaded',e);}
+}
 
 // Only positions listed in the historical roster are enabled, with a curated set of known career roles.
 const CAREER_POSITIONS = {
@@ -870,10 +981,22 @@ function normalizePositions(raw, playerName="") {
   if(/CENTER|CENTRE|\bC\b/.test(original)||s==="C") result.add("C");
   if(s==="G"||s==="GUARD"){result.add("PG");result.add("SG");}
   if(s==="F"||s==="FORWARD"){result.add("SF");result.add("PF");}
-  if(s==="FC"||s==="CF"){result.add("PF");result.add("C");}
+  if(s==="FC"||s==="CF"){result.add("PF");result.add("C");result.add("SF");}
   if(s==="GF"||s==="FG"){result.add("SG");result.add("SF");}
+  // Flexible roster eligibility: forwards can fill either forward slot;
+  // guards can fill either guard slot; centers can also play power forward.
+  const forwardListed = /FORWARD/.test(original) || /(^|[^A-Z])SF([^A-Z]|$)/.test(original) || /(^|[^A-Z])PF([^A-Z]|$)/.test(original) || s==="F";
+  const guardListed = /GUARD/.test(original) || /(^|[^A-Z])PG([^A-Z]|$)/.test(original) || /(^|[^A-Z])SG([^A-Z]|$)/.test(original) || s==="G";
+  const centerListed = /CENTER|CENTRE/.test(original) || /(^|[^A-Z])C([^A-Z]|$)/.test(original) || s==="C";
+  if(forwardListed){result.add("SF");result.add("PF");}
+  if(guardListed){result.add("PG");result.add("SG");}
+  if(centerListed){result.add("C");result.add("PF");}
   if(result.size) return ["PG","SG","SF","PF","C"].filter(pos=>result.has(pos));
-  return CAREER_POSITIONS[name] ? CAREER_POSITIONS[name].slice() : [];
+  const fallback=CAREER_POSITIONS[name] ? new Set(CAREER_POSITIONS[name]) : new Set();
+  if(fallback.has("SF")||fallback.has("PF")){fallback.add("SF");fallback.add("PF");}
+  if(fallback.has("PG")||fallback.has("SG")){fallback.add("PG");fallback.add("SG");}
+  if(fallback.has("C")){fallback.add("C");fallback.add("PF");}
+  return ["PG","SG","SF","PF","C"].filter(pos=>fallback.has(pos));
 }
 const STATS_URL = "https://raw.githubusercontent.com/nathankyryk/nba/main/all_player_stats_1995-2025.csv";
 const LEGACY_STATS_URL = "https://raw.githubusercontent.com/peasant98/TheNBACSV/master/nbaNew.csv";
@@ -986,27 +1109,69 @@ async function loadSeasonStats(player, year) {
   return found;
 }
 async function getPlayerPhoto(name) {
-  if(photoCache.has(name)) return photoCache.get(name);
+  const cleanName=String(name||'').trim();
+  if(!cleanName) return '';
+  const cacheKey=cleanName.toLowerCase();
+  if(photoCache.has(cacheKey)) return photoCache.get(cacheKey);
   const promise=(async()=>{
-    // Try the REST summary thumbnail first, then Wikipedia pageimages, then Commons.
-    try {
-      const rest=`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(name.replace(/ /g,'_'))}`;
-      const r=await fetch(rest,{headers:{'Accept':'application/json'}});
-      if(r.ok){const j=await r.json();const src=j.thumbnail?.source||j.originalimage?.source;if(src)return src;}
-    } catch(e) { /* fall through to pageimages */ }
-    try {
-      const url=`${WIKI_API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&pithumbsize=640&titles=${encodeURIComponent(name)}`;
-      const r=await fetch(url);if(r.ok){const j=await r.json();const page=Object.values(j.query?.pages||{})[0];if(page?.thumbnail?.source)return page.thumbnail.source;}
-    } catch(e) { /* try Commons below */ }
-    try {
-      const q=encodeURIComponent(`${name} basketball NBA jersey`);
-      const commons=`https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrsearch=${q}&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=420`;
-      const r=await fetch(commons);if(r.ok){const j=await r.json();const pages=Object.values(j.query?.pages||{});const best=pages.find(pg=>/basketball|nba|jersey|game|court|player/i.test(pg.title||'')&&pg.imageinfo?.[0]?.thumburl)||pages.find(pg=>pg.imageinfo?.[0]?.thumburl);if(best?.imageinfo?.[0]?.thumburl)return best.imageinfo[0].thumburl;}
-    } catch(e) { /* image is optional */ }
+    const norm=v=>String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const wanted=norm(cleanName);
+    const validImage=u=>typeof u==='string'&&/^https?:\/\//i.test(u)&&!/(logo|icon|placeholder|default-avatar|blank-headshot)/i.test(u);
+    const imageFrom=o=>{
+      if(!o||typeof o!=='object')return '';
+      const vals=[o.href,o.url,o.src,o.image?.href,o.image?.url,o.headshot?.href,o.headshot?.url,o.headshot,o.thumbnail?.href,o.thumbnail?.url,o.images?.[0]?.href,o.images?.[0]?.url];
+      return vals.find(validImage)||'';
+    };
+    // ESPN's search payload changes shape occasionally, so walk every nested result
+    // and only accept an exact player-name match before using a headshot.
+    try{
+      const r=await fetch(`https://site.web.api.espn.com/apis/search/v2?query=${encodeURIComponent(cleanName)}&limit=12&sport=basketball`,{headers:{Accept:'application/json'}});
+      if(r.ok){const data=await r.json(),matches=[];
+        const walk=v=>{if(!v||typeof v!=='object')return;if(Array.isArray(v)){v.forEach(walk);return;}
+          const names=[v.displayName,v.fullName,v.name,v.title,v.shortName,v.athlete?.displayName].filter(Boolean);
+          if(names.some(n=>norm(n)===wanted)){const img=imageFrom(v)||imageFrom(v.athlete)||imageFrom(v.links?.find?.(x=>/headshot|image/i.test(x.rel?.join?.(' ')||'')));const id=v.id||v.athleteId||v.athlete?.id;matches.push({img,id});}
+          Object.values(v).forEach(walk);
+        };walk(data);
+        const hit=matches.find(x=>x.img);if(hit?.img)return hit.img;
+        const idHit=matches.find(x=>/^\d+$/.test(String(x.id||'')));
+        if(idHit)return `https://a.espncdn.com/i/headshots/nba/players/full/${idHit.id}.png`;
+      }
+    }catch(e){}
+    // Wikipedia's page summary works well for notable historical players.
+    try{
+      const r=await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cleanName.replace(/ /g,'_'))}`,{headers:{Accept:'application/json'}});
+      if(r.ok){const j=await r.json();if(norm(j.title)===wanted){const src=j.thumbnail?.source||j.originalimage?.source;if(validImage(src))return src;}}
+    }catch(e){}
+    // MediaWiki pageimages is a second independent route for exact page titles.
+    try{
+      const r=await fetch(`${WIKI_API}?action=query&format=json&origin=*&redirects=1&prop=pageimages&pithumbsize=640&titles=${encodeURIComponent(cleanName)}`);
+      if(r.ok){const j=await r.json();const page=Object.values(j.query?.pages||{})[0];if(page?.thumbnail?.source&&norm(page.title)===wanted)return page.thumbnail.source;}
+    }catch(e){}
+    // Commons search: accept only files whose title contains the player's full name,
+    // and reject trading cards, signatures, logos and unrelated generic images.
+    try{
+      const q=encodeURIComponent(`"${cleanName}" basketball`);
+      const r=await fetch(`https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrsearch=${q}&gsrnamespace=6&gsrlimit=20&prop=imageinfo&iiprop=url&iiurlwidth=640`);
+      if(r.ok){const j=await r.json();const pages=Object.values(j.query?.pages||{});
+        const good=pages.filter(pg=>pg.imageinfo?.[0]?.thumburl&&!/(logo|icon|poster|cardback|trading.?card|signature|autograph|jersey|arena)/i.test(pg.title||''));
+        const full=cleanName.split(/\s+/).filter(Boolean).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('.*');
+        const match=good.find(pg=>new RegExp(full,'i').test((pg.title||'').replace(/^File:/i,'')));
+        if(match?.imageinfo?.[0]?.thumburl)return match.imageinfo[0].thumburl;
+      }
+    }catch(e){}
     return '';
   })();
-  photoCache.set(name,promise);return promise;
+  photoCache.set(cacheKey,promise);return promise;
 }
+
+// Broken remote image URLs must never leave a broken-image icon in the UI.
+document.addEventListener("error", function(event){
+  const img=event.target;
+  if(img&&img.tagName==="IMG"&&(/player-photo|pick-player-photo|coach-photo/.test(img.className||"")||img.closest?.(".pick-avatar"))){
+    img.style.display="none";
+    if(img.classList.contains("pick-player-photo")){const fallback=img.nextElementSibling;if(fallback)fallback.style.display="grid";}
+  }
+}, true);
 
 // Famous NBA pairings. Each active pair gives both drafted players +10% OVR.
 const ICONIC_DUOS = [
@@ -1131,6 +1296,91 @@ async function hydrateStatsPanel(pop,p) {
   pop.dataset.statsLoaded="true";pop.dataset.statsLoading="false";
 }
 
+const SHOP_KEY='hardwoodDynastyShopV1';
+const SHOP_CATALOG={
+ olympic:{price:2500,rarity:'epic',names:['1980 USA Olympic Team','1984 USA Olympic Team','1988 USA Olympic Team','1992 USA Olympic Team','1996 USA Olympic Team','2000 USA Olympic Team','2004 USA Olympic Team','2008 USA Olympic Team','2012 USA Olympic Team','2016 USA Olympic Team','2020 USA Olympic Team','2024 USA Olympic Team','1992 USA Dream Team','2008 USA Redeem Team']},
+ allstar:{price:1500,rarity:'rare',names:['1992 NBA All-Star Team','1993 NBA All-Star Team','1994 NBA All-Star Team','1995 NBA All-Star Team','1996 NBA All-Star Team','1997 NBA All-Star Team','1998 NBA All-Star Team','2000 NBA All-Star Team','2001 NBA All-Star Team','2002 NBA All-Star Team','2003 NBA All-Star Team','2004 NBA All-Star Team','2005 NBA All-Star Team','2006 NBA All-Star Team','2007 NBA All-Star Team','2008 NBA All-Star Team','2009 NBA All-Star Team','2010 NBA All-Star Team','2011 NBA All-Star Team','2012 NBA All-Star Team','2013 NBA All-Star Team','2014 NBA All-Star Team','2015 NBA All-Star Team','2016 NBA All-Star Team','2017 NBA All-Star Team','2018 NBA All-Star Team','2019 NBA All-Star Team','2020 NBA All-Star Team','2021 NBA All-Star Team','2022 NBA All-Star Team','2023 NBA All-Star Team','2024 NBA All-Star Team','2025 NBA All-Star Team']},
+ country:{price:800,rarity:'common',names:[]}
+};
+let shopState={cash:0,owned:[],offers:[],rotation:0,claimed:[]};
+function loadShopState(){try{const raw=JSON.parse(localStorage.getItem(SHOP_KEY)||'{}');shopState={...shopState,...raw};if(!Array.isArray(shopState.owned))shopState.owned=[];if(!Array.isArray(shopState.offers))shopState.offers=[];if(!Array.isArray(shopState.claimed))shopState.claimed=[];const isCountryTeam=x=>/\sBest Players$/i.test(String(x?.name||''))||String(x?.type||'').toLowerCase()==='country';const isNonUsaOlympic=x=>/olympic/i.test(String(x?.name||''))&&!/(USA|United States|American|Dream Team|Redeem Team)/i.test(String(x?.name||''));const isPre1980Olympic=x=>/olympic/i.test(String(x?.name||''))&&Number((String(x?.name||'').match(/\b(19|20)\d{2}\b/)||[])[0]||0)<1980;shopState.owned=shopState.owned.filter(x=>!isCountryTeam(x)&&!isNonUsaOlympic(x)&&!isPre1980Olympic(x));shopState.offers=shopState.offers.filter(x=>!isCountryTeam(x)&&!isNonUsaOlympic(x)&&!isPre1980Olympic(x));shopState.rotation=-1;localStorage.setItem(SHOP_KEY,JSON.stringify(shopState));}catch(e){}}
+function saveShopState(){try{localStorage.setItem(SHOP_KEY,JSON.stringify(shopState));}catch(e){} renderShop();}
+function shopRotation(){return Math.floor(Date.now()/7200000);}
+function seededRandom(seed){let x=Math.sin(seed*127.1+311.7)*43758.5453;return x-Math.floor(x);}
+function buildShopOffers(){const rot=shopRotation();if(shopState.rotation===rot&&shopState.offers.length===3&&!shopState.offers.some(o=>shopState.owned.some(x=>x.name===o.name)))return;const offers=[],used=new Set(),owned=new Set(shopState.owned.map(x=>x.name));let seed=rot+1;const weighted=['allstar','allstar','olympic'];for(let tries=0;offers.length<3&&tries<300;tries++){const type=weighted[Math.floor(seededRandom(seed++)*weighted.length)],list=SHOP_CATALOG[type].names;const available=list.filter(name=>!owned.has(name)&&!used.has(name)&&!/best players/i.test(name)&&(type!=='olympic'||/(USA|United States|American|Dream Team|Redeem Team)/i.test(name))); if(!available.length)continue;const name=available[Math.floor(seededRandom(seed++)*available.length)];used.add(name);offers.push({id:type+'-'+rot+'-'+offers.length+'-'+seed,type,name,price:SHOP_CATALOG[type].price,rarity:SHOP_CATALOG[type].rarity});}shopState.rotation=rot;shopState.offers=offers;try{localStorage.setItem(SHOP_KEY,JSON.stringify(shopState));}catch(e){}}
+function renderShop(){const cash=$('shopCash'),grid=$('shopOffers'),owned=$('ownedTeams'),count=$('ownedCount');if(!cash||!grid)return;cash.textContent='$'+shopState.cash.toLocaleString();grid.innerHTML=shopState.offers.map(o=>{const already=shopState.owned.some(x=>x.name===o.name);return `<article class="shop-offer ${o.type}"><div class="shop-rarity">${({country:'common',allstar:'rare',olympic:'epic'})[o.type]||'common'}</div><h3>${escapeHTML(String(o.name).replace(/\b(most common|second rarest|most rare|rarest|common|rare|epic)\b/ig,'').replace(/\s{2,}/g,' ').trim())}</h3><div class="shop-price">$${o.price.toLocaleString()}</div><div class="coach-meta">${o.type==='olympic'?'olympic national squad':o.type==='allstar'?'NBA all-star collection':'best players from a country'}</div><button class="${already?'secondary':'primary'}" ${already||shopState.cash<o.price?'disabled':''} onclick="buyShopTeam('${o.id}')">${already?'OWNED':shopState.cash<o.price?'NOT ENOUGH CASH':'BUY TEAM'}</button></article>`;}).join('');if(owned){owned.innerHTML=shopState.owned.length?shopState.owned.map(x=>`<span class="owned-chip">${escapeHTML(x.name)} · $${x.price.toLocaleString()}</span>`).join(''):'no special teams yet.';}if(count)count.textContent=shopState.owned.length+' UNLOCKED';}
+function buyShopTeam(id){const o=shopState.offers.find(x=>x.id===id);if(!o||shopState.cash<o.price||shopState.owned.some(x=>x.name===o.name))return;shopState.cash-=o.price;shopState.owned.push({name:o.name,type:o.type,price:o.price,boughtAt:Date.now()});shopState.offers=shopState.offers.filter(x=>x.name!==o.name);shopState.rotation=-1;addOwnedTeamsToPool();buildShopOffers();const n=$('shopNotice');if(n)n.textContent=`purchased ${o.name}. permanently unlocked and added to your draft pool.`;saveShopState();}
+function awardCash(amount,reason){if(amount<=0)return;shopState.cash+=amount;const n=$('shopNotice');if(n)n.textContent=`+$${amount} · ${reason} · wallet: $${shopState.cash.toLocaleString()}`;saveShopState();}
+function updateShopCountdown(){const el=$('shopCountdown');if(!el)return;const left=7200000-(Date.now()%7200000),h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000),s=Math.floor(left%60000/1000);el.textContent=`new teams arrive in ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;if(shopState.rotation!==shopRotation()){buildShopOffers();renderShop();}}
+loadShopState();
+// retire legacy country best-player teams permanently from the active shop inventory
+shopState.owned=(shopState.owned||[]).filter(x=>!(/best players/i.test(String(x.name||''))||String(x.type||'').toLowerCase()==='country'));
+shopState.offers=(shopState.offers||[]).filter(x=>!(/best players/i.test(String(x.name||''))||String(x.type||'').toLowerCase()==='country'));
+shopState.rotation=-1;try{localStorage.setItem(SHOP_KEY,JSON.stringify(shopState));}catch(e){}
+buildShopOffers();
+
+const USA_OLYMPIC_ROSTERS={
+ '1980 USA Olympic Team':['Mark Aguirre','Rolando Blackman','Sam Bowie','Michael Brooks','Bill Hanzlik','Alton Lister','Rodney McCray','Isiah Thomas','Buck Williams', 'Ralph Sampson', 'Kevin McHale', 'Danny Vranes'],
+ '1984 USA Olympic Team':['Michael Jordan','Patrick Ewing','Chris Mullin','Sam Perkins','Wayman Tisdale','Alvin Robertson','Steve Alford','Vern Fleming','Leon Wood', 'Jeff Turner', 'Jon Koncak', 'Joe Kleine'],
+ '1988 USA Olympic Team':['David Robinson','Mitch Richmond','Danny Manning','Hersey Hawkins','Dan Majerle','Willie Anderson','Stacey Augmon','Jeff Grayer','J.R. Reid', 'Charles Smith', 'Danny Ferry', 'Rony Seikaly'],
+ '1992 USA Olympic Team':['Michael Jordan','Magic Johnson','Larry Bird','Charles Barkley','Scottie Pippen','David Robinson','Patrick Ewing','John Stockton','Karl Malone', 'Clyde Drexler', 'Christian Laettner', 'Chris Mullin'],
+ '1996 USA Olympic Team':['Charles Barkley','Scottie Pippen','David Robinson','Grant Hill','Reggie Miller','Penny Hardaway','Gary Payton','Hakeem Olajuwon','Shaquille O’Neal', 'John Stockton', 'Mitch Richmond', 'Karl Malone'],
+ '2000 USA Olympic Team':['Kevin Garnett','Jason Kidd','Vince Carter','Ray Allen','Alonzo Mourning','Tim Hardaway','Steve Smith','Vin Baker','Shareef Abdur-Rahim', 'Gary Payton', 'Stephon Marbury', 'Antonio McDyess'],
+ '2004 USA Olympic Team':['LeBron James','Dwyane Wade','Carmelo Anthony','Allen Iverson','Tim Duncan','Stephon Marbury','Lamar Odom','Richard Jefferson','Carlos Boozer', 'Shawn Marion', 'Emeka Okafor', 'Amar’e Stoudemire'],
+ '2008 USA Olympic Team':['LeBron James','Kobe Bryant','Dwyane Wade','Chris Paul','Jason Kidd','Dwight Howard','Carmelo Anthony','Chris Bosh','Deron Williams', 'Michael Redd', 'Tayshaun Prince', 'Carlos Boozer'],
+ '2012 USA Olympic Team':['LeBron James','Kobe Bryant','Kevin Durant','Chris Paul','Russell Westbrook','James Harden','Anthony Davis','Carmelo Anthony','Andre Iguodala', 'Tyson Chandler', 'Kevin Love', 'Deron Williams'],
+ '2016 USA Olympic Team':['Kevin Durant','Kyrie Irving','Carmelo Anthony','Klay Thompson','Paul George','Jimmy Butler','Kyle Lowry','DeMarcus Cousins','Draymond Green', 'Harrison Barnes', 'DeAndre Jordan', 'Hassan Whiteside'],
+ '2020 USA Olympic Team':['Kevin Durant','Damian Lillard','Jayson Tatum','Devin Booker','Jrue Holiday','Bam Adebayo','Zach LaVine','Khris Middleton','Draymond Green', 'Kevin Love', 'Jerami Grant', 'Keldon Johnson'],
+ '2024 USA Olympic Team':['LeBron James','Stephen Curry','Kevin Durant','Anthony Edwards','Jayson Tatum','Devin Booker','Anthony Davis','Joel Embiid','Jrue Holiday', 'Bam Adebayo', 'Derrick White', 'Tyrese Haliburton']
+};
+function normPlayerName(v){return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
+function addOwnedTeamsToPool(){
+ if(!Array.isArray(db)||!db.length||!teamsBySeason||!seasonsByTeam)return;
+ for(const owned of shopState.owned){
+  if(/\sBest Players$/i.test(String(owned.name||''))||String(owned.type||'').toLowerCase()==='country')continue;
+  const code='OWNED::'+owned.name;if(franchises.includes(code))continue;
+  let rosterForTeam=[];
+  const explicit=USA_OLYMPIC_ROSTERS[owned.name];
+  if(/olympic/i.test(String(owned.name||''))&&!explicit)continue;
+  if(explicit){
+   const year=Number((owned.name.match(/\b(19|20)\d{2}\b/)||[])[0])||2024;
+   rosterForTeam=explicit.map((displayName,i)=>{
+    const aliases=[displayName];if(/^Shaquille O’Neal$/i.test(displayName))aliases.push("Shaquille O'Neal",'Shaq');if(/^J\.R\. Reid$/i.test(displayName))aliases.push('JR Reid','J.R. Reid');if(/^Zach LaVine$/i.test(displayName))aliases.push('Zach Lavine');
+    const keys=new Set(aliases.map(normPlayerName));
+    const matches=db.filter(p=>keys.has(normPlayerName(p.Player)));
+    matches.sort((a,b)=>Math.abs(Number(a.Season||year)-year)-Math.abs(Number(b.Season||year)-year));
+    const source=matches[0]||{};
+    const season=Number(source.Season)||year;
+    return {...source,Player:displayName,Team:code,Season:String(season),sourceTeam:code,sourceYear:season,_ownedSpecialTeam:owned.name,_olympicYear:year,Pos:source.Pos||['PG','SG','SF','PF','C'][i%5]};
+   });
+  } else {
+   const bestByPlayer=new Map();for(const p of db){const key=normPlayerName(p.Player);if(!key)continue;const score=getRating(p);const prev=bestByPlayer.get(key);if(!prev||score>prev._shopRating)bestByPlayer.set(key,{...p,_shopRating:score});}
+   let candidates=[...bestByPlayer.values()];
+   if(owned.type==='allstar'){
+    const yearMatch=String(owned.name||'').match(/\b(19|20)\d{2}\b/);const targetYear=yearMatch?Number(yearMatch[0]):null;
+    const official=targetYear?ALL_STAR_ROSTERS[targetYear]:null;
+    if(!official||!official.length)continue;
+    candidates=official.map(entry=>{
+      const key=normPlayerName(entry.name);const matches=db.filter(p=>normPlayerName(p.Player)===key);
+      matches.sort((a,b)=>Math.abs(Number(a.Season||targetYear)-targetYear)-Math.abs(Number(b.Season||targetYear)-targetYear));
+      const source=matches[0];return source?{...source,Player:entry.name,Pos:entry.pos||source.Pos||'SF',_shopRating:getRating(source)}:null;
+    }).filter(Boolean);
+   }
+   if(owned.type==='country'){
+    const country=owned.name.replace(/ Best Players$/,'').toLowerCase();
+    const cues={usa:['usa','united states','american'],canada:['canada','canadian'],france:['france','french'],serbia:['serbia','serbian'],australia:['australia','australian'],spain:['spain','spanish'],argentina:['argentina','argentinian'],greece:['greece','greek'],lithuania:['lithuania','lithuanian'],germany:['germany','german'],brazil:['brazil','brazilian'],nigeria:['nigeria','nigerian']};
+    const terms=cues[country]||[];const matched=candidates.filter(p=>terms.some(t=>String(p.Country||p.Nationality||p.Birthplace||'').toLowerCase().includes(t)));if(matched.length>=8)candidates=matched;
+   }
+   candidates.sort((a,b)=>b._shopRating-a._shopRating);
+   const isAllStar=owned.type==='allstar';
+   const seasonMatch=String(owned.name||'').match(/\b(19|20)\d{2}\b/);
+   const rosterYear=isAllStar&&seasonMatch?Number(seasonMatch[0]):2026;
+   rosterForTeam=candidates.slice(0,isAllStar?24:Math.min(60,candidates.length)).map((p,i)=>({...p,Team:code,Season:String(rosterYear),sourceTeam:code,sourceYear:rosterYear,_ownedSpecialTeam:owned.name,Pos:p.Pos||['PG','SG','SF','PF','C'][i%5]}));
+  }
+  if(!rosterForTeam.length)continue;teamNames[code]=owned.name;franchises.push(code);const specialYear=Number((String(owned.name||'').match(/\b(19|20)\d{2}\b/)||[])[0])||2026;for(const p of rosterForTeam){p.Season=String(specialYear);p.sourceYear=specialYear;}if(!teamsBySeason.has(specialYear))teamsBySeason.set(specialYear,new Map());teamsBySeason.get(specialYear).set(code,rosterForTeam);seasonsByTeam.set(code,[specialYear]);
+ }
+}
+
 async function loadDB() {
   try {
     const res=await fetch(DATA_URL);
@@ -1194,6 +1444,9 @@ async function loadDB() {
       if(seen.has(key))return false;seen.add(key);return true;
     });
     db=[...supplement,...currentRows].filter(p=>p.Player&&p.Team&&Number(p.Season));
+    // The roster sources can occasionally contain non-NBA team labels. Never let
+    // those become draft franchises (e.g. country names / international squads).
+    db=db.filter(p=>teamNames[String(p.Team||"").trim().toUpperCase()] || String(p.Team||"").startsWith("OWNED::"));
     franchises=[...new Set(db.map(p=>p.Team))];
     teamsBySeason=new Map();seasonsByTeam=new Map();
     for(const p of db){
@@ -1206,6 +1459,8 @@ async function loadDB() {
       const ys=seasonsByTeam.get(p.Team);if(!ys.includes(y))ys.push(y);
     }
     for(const ys of seasonsByTeam.values())ys.sort((a,b)=>a-b);
+    await loadOfficialAllStarRosters();
+    addOwnedTeamsToPool();
     const availableYears=[...teamsBySeason.keys()].map(Number).sort((a,b)=>a-b);
     const earlyCount=availableYears.filter(y=>y<1979).length;
     const latest=availableYears.length?availableYears[availableYears.length-1]:"—";
@@ -1219,6 +1474,7 @@ async function loadDB() {
   }
 }
 
+function shuffleArray(items){const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 async function spinTeam() {
   if(!db.length||roster.length>=10||rolling) return;
   rolling=true; selectedYear=null; candidates=[]; chosenCandidate=null;
@@ -1231,7 +1487,7 @@ async function spinTeam() {
   const ticker=setInterval(()=>{$("team").textContent=teamLabel(randomItem(possible));},75);
   await new Promise(resolve=>setTimeout(resolve,1250)); clearInterval(ticker);
   selectedTeam=finalTeam;
-  $("team").textContent=teamLabel(finalTeam);$("teamSub").textContent="franchise locked · "+finalTeam;
+  $("team").textContent=teamLabel(finalTeam);$("teamSub").textContent=/^OWNED::/.test(finalTeam)?"special team locked":("franchise locked · "+finalTeam);
   $("team").classList.remove("rolling");$("team").classList.add("roll-value");
   $("year").textContent="ROLLING…";$("yearSub").textContent="season selector active";
   await new Promise(resolve=>setTimeout(resolve,250));
@@ -1244,22 +1500,28 @@ async function spinYear() {
   const years=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1980&&y<=2026);
   let available=years.filter(y=>!seenSeasons.has(selectedTeam+"-"+y));
   if(!available.length) available=years;
+  const olympicYear=olympicDisplayYear(selectedTeam);
   const finalYear=randomItem(available);
-  $("year").classList.add("rolling");
-  const ticker=setInterval(()=>{$("year").textContent=String(randomItem(years));},65);
-  await new Promise(resolve=>setTimeout(resolve,1050));clearInterval(ticker);
+  if(olympicYear){
+    $("year").textContent=String(olympicYear);
+    $("yearSub").textContent="olympic roster year locked";
+  }else{
+    $("year").classList.add("rolling");
+    const ticker=setInterval(()=>{$("year").textContent=String(randomItem(years));},65);
+    await new Promise(resolve=>setTimeout(resolve,1050));clearInterval(ticker);
+  }
   selectedYear=finalYear;seenSeasons.add(selectedTeam+"-"+selectedYear);
   const full=(teamsBySeason.get(selectedYear)?.get(selectedTeam)||[])
     .map(p=>{const base=getRating(p);return {...p,ovr:base,baseOvr:base,goat:false,eligible:normalizePositions(p.Pos,p.Player)};})
     .filter(p=>!usedPlayers.has(p.Player.toLowerCase()));
   const unique=new Map();
   for(const p of full){const key=p.Player.toLowerCase();if(!unique.has(key)||p.ovr>unique.get(key).ovr)unique.set(key,p);}
-  candidates=[...unique.values()].sort((a,b)=>b.ovr-a.ovr).slice(0,10).map(p=>{const goat=isGoatName(p.Player)&&goatCardRoll();const base=goat?{...p,goat:true,ovr:110,baseOvr:110}:p;return rollMomentCard(base);});
-  $("year").textContent=String(selectedYear);$("yearSub").textContent=`${full.length} unused roster entries`;
+  candidates=shuffleArray([...unique.values()]).slice(0,10).map((p,i)=>{const goat=isGoatName(p.Player)&&goatCardRoll();const base=goat?{...p,goat:true,ovr:110,baseOvr:110}:p;return {...rollMomentCard(base),_poolOrder:i};});
+  $("year").textContent=String(displaySeason(selectedTeam,selectedYear));$("yearSub").textContent=`${full.length} unused roster entries`;
   $("year").classList.remove("rolling");$("year").classList.add("roll-value");
   $("candidateInfo").textContent="choose one of the ten candidates. hover or tap a player for their season stats and photo.";
   $("status").textContent="season locked. pick one player below.";
-  renderCandidates();rolling=false;renderLifelines();
+  renderCandidates();rolling=false;$("spinTeam").disabled=roster.length>=10;$("spinTeam").textContent=roster.length>=10?"DRAFT COMPLETE":(roster.length?"ROLL NEXT FRANCHISE ↗":"ROLL FRANCHISE ↗");renderLifelines();
   $("candidatesPanel").scrollIntoView({behavior:"smooth",block:"start"});
   setTimeout(()=>$("year").classList.remove("roll-value"),500);
 }
@@ -1300,18 +1562,41 @@ const MOMENT_CARDS = [
  {player:"kevin durant",title:"THE 2017 FINALS DAGGER",ovr:104,keywords:"Kevin Durant 2017 NBA Finals three pointer",file:"Kevin_Durant"}
 ];
 function momentForPlayer(player){const key=normalizeStatName(player);return MOMENT_CARDS.filter(m=>normalizeStatName(m.player)===key);}
-function rollMomentCard(p){const options=momentForPlayer(p.Player);if(!options.length||Math.random()>=0.25)return p;const m=randomItem(options);return {...p,momentCard:true,momentTitle:m.title,momentOvr:m.ovr,momentKeywords:m.keywords,momentFile:m.file,baseOvr:m.ovr,ovr:m.ovr};}
-function momentImageUrl(p){const file=String(p.momentFile||'').replace(/ /g,'_');return file?`https://en.wikipedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}.jpg`:'';}
+function rollMomentCard(p){const options=momentForPlayer(p.Player);if(!options.length||Math.random()>=0.12)return p;const m=randomItem(options);return {...p,momentCard:true,momentTitle:m.title,momentOvr:m.ovr,momentKeywords:m.keywords,momentFile:m.file,baseOvr:m.ovr,ovr:m.ovr};}
+async function getMomentPhoto(p){
+  const query=String(p.momentKeywords||p.Player||'NBA basketball').trim();
+  try{
+    const url=`https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrsearch=${encodeURIComponent(query+' NBA basketball moment')}&gsrnamespace=6&gsrlimit=12&prop=imageinfo&iiprop=url&iiurlwidth=900`;
+    const r=await fetch(url);if(r.ok){const j=await r.json();const pages=Object.values(j.query?.pages||[]);
+      const useful=pages.filter(pg=>pg.imageinfo?.[0]?.thumburl&&!/logo|icon|poster|cardback|signature/i.test(pg.title||''));
+      const exact=useful.find(pg=>/basketball|nba|final| dunk|shot|block|game|court|playoff/i.test(pg.title||''));
+      if((exact||useful[0])?.imageinfo?.[0]?.thumburl)return (exact||useful[0]).imageinfo[0].thumburl;
+    }
+  }catch(e){}
+  return await getPlayerPhoto(p.Player);
+}
 
 
 function renderCandidates() {
   const wrap=$("candidates");wrap.innerHTML="";
   renderLifelines();
+  const sortKey=$("playerSort")?.value||"random";
+  const displayCandidates=[...candidates];
+  if(sortKey!=="random") displayCandidates.sort((a,b)=>{
+    const value=p=>{
+      if(sortKey==="ovr") return boostedOVR(p.baseOvr??p.ovr,false,p.Player,[...roster,p]);
+      const st=findSeasonStats(p,p.Season||selectedYear);
+      const keys={ppg:"PTS",apg:"AST",spg:"STL",bpg:"BLK"};
+      const n=Number(st?.[keys[sortKey]]);
+      return Number.isFinite(n)?n:-1;
+    };
+    return value(b)-value(a) || (a._poolOrder??0)-(b._poolOrder??0);
+  });
   if(!candidates.length) {
     wrap.innerHTML='<div class="empty-message" style="grid-column:1/-1">no unused players found for this season. roll another franchise.</div>';
     $("spinTeam").disabled=false;return;
   }
-  candidates.forEach((p,i)=>{
+  displayCandidates.forEach((p,i)=>{
     const card=document.createElement("div");card.className="candidate"+(p.goat?" goat-card":"");card.tabIndex=0;card.style.animationDelay=(i*20)+"ms";
     const name=escapeHTML(p.Player),position=escapeHTML(p.Pos||"—"),jersey=escapeHTML(p["No."]||"?");
     const displayOvr=boostedOVR(p.baseOvr??p.ovr,false,p.Player,[...roster,p]);
@@ -1327,6 +1612,7 @@ function renderCandidates() {
     card.innerHTML=`${p.momentCard?`<div class="moment-bg" aria-hidden="true" style="background-image:url('${momentImageUrl(p)}')"></div><div class="moment-shade" aria-hidden="true"></div><div class="moment-ribbon">MOMENT CARD · ${escapeHTML(p.momentTitle||'ICONIC MOMENT')}</div>`:''}<div class="pick-card-head"><div class="pick-avatar"><img class="pick-player-photo" alt="${name}" loading="lazy"><span>${name.split(' ').map(w=>w[0]||'').slice(0,2).join('')}</span></div><div class="pick-player-heading"><div class="player-name">${name}</div><div class="player-info">${position} · ${escapeHTML(teamLabel(p.Team))} · ${p.Season}</div></div><span class="rating ${ratingClass(displayOvr,p.goat)}">${displayOvr}</span></div>${p.goat?'<span class="goat-label">✦ GOAT · MYTHIC RARITY · 110 BASE</span>':''}${p.momentCard?'<span class="moment-boost">MOMENT BOOST · +OVR</span>':''}${duoInfo?duoTagHTML(p.Player,[...roster,p]):''}${statMini}<div class="pick-card-footer"><span>${p.eligible.length?"positions: "+escapeHTML(p.eligible.join(" / ")):"position data limited"}</span><strong>PICK PLAYER ↗</strong></div><div class="player-pop"><div class="pop-top"><img class="player-photo" alt="${name}" src="" loading="lazy"><div><div class="pop-name">${name}</div><div class="pop-meta">${position} · ${escapeHTML(teamLabel(p.Team))}<br>${p.Season} season · ${displayOvr} OVR</div></div></div>${statPanelHTML({...p,ovr:displayOvr})}</div>`;
     const photo=card.querySelector(".player-photo");
     const thumb=card.querySelector('.pick-player-photo');
+    if(p.momentCard){const bg=card.querySelector('.moment-bg');getMomentPhoto(p).then(src=>{if(src&&bg?.isConnected){bg.style.backgroundImage=`url("${src.replace(/"/g,'%22')}")`;bg.style.opacity='.72';}});}
     if(!p.momentCard){getPlayerPhoto(p.Player).then(src=>{if(src&&thumb?.isConnected){thumb.src=src;thumb.classList.add('loaded');thumb.nextElementSibling?.remove();}});}else{const avatar=card.querySelector('.pick-avatar');if(avatar)avatar.style.visibility='hidden';}
     const pop=card.querySelector(".player-pop");
     document.body.appendChild(pop); // portal the tooltip out of the card stack so it cannot sit behind cards
@@ -1374,7 +1660,7 @@ function draft(p,slotType,slotIndex,position=null) {
   if(stillDouble){
     candidates=candidates.filter(x=>x.Player.toLowerCase()!==key);
     $("status").textContent=`drafted ${p.Player} · choose one more player from this same roll.`;
-    $("candidateInfo").textContent=`double dip active · choose your second player from ${teamLabel(selectedTeam)} ${selectedYear}.`;
+    $("candidateInfo").textContent=`double dip active · choose your second player from ${teamLabel(selectedTeam)} ${displaySeason(selectedTeam,selectedYear)}.`;
     $("boardInstruction").textContent='double dip: select your second player, then assign them to an open slot.';
     renderCandidates();
   } else {
@@ -1382,11 +1668,13 @@ function draft(p,slotType,slotIndex,position=null) {
     $("candidateInfo").textContent="pick confirmed. roll your next franchise for a new set of candidates.";
     candidates=[];$("candidates").innerHTML='<div class="empty-message" style="grid-column:1/-1">pick locked in. ready for the next roll.</div>';
     document.querySelectorAll('.player-pop').forEach(el=>el.remove());
-    $("spinTeam").disabled=roster.length>=10;$("spinYear").disabled=true;
+    rolling=false;$("spinTeam").disabled=roster.length>=10;$("spinYear").disabled=true;
     $("spinTeam").textContent=roster.length>=10?"DRAFT COMPLETE":"ROLL NEXT FRANCHISE ↗";
     $("boardInstruction").textContent=roster.length>=10?'your dynasty is complete.':'pick confirmed. roll the next franchise to continue.';
   }
-  $("status").classList.add("good");renderSquad();updateProgress();renderLifelines();$("squadPanel").scrollIntoView({behavior:"smooth",block:"start"});
+  $("status").classList.add("good");renderSquad();updateProgress();renderLifelines();
+  if(roster.length>=10) setTimeout(()=>$("rollCoach").scrollIntoView({behavior:"smooth",block:"center"}),220);
+  else $("squadPanel").scrollIntoView({behavior:"smooth",block:"start"});
 }
 function slotHTML(p,i,bench,selected=null) {
   const role=bench?null:["PG","SG","SF","PF","C"][i];
@@ -1473,8 +1761,13 @@ function updateProgress() {
   if(roster.length===10) {
     $("franchisePanel").classList.add("unlocked");
     $("candidateInfo").textContent="your ten-player dynasty is complete. roll a coach to begin franchise mode.";
+    $("candidatesPanel").classList.add("draft-complete");
     $("status").textContent="draft complete. you have ten unique players.";
     $("status").classList.add("good");
+    if($("candidatesPanel").dataset.coachAutoScrolled!=="yes") {
+      $("candidatesPanel").dataset.coachAutoScrolled="yes";
+      setTimeout(()=>$("rollCoach").scrollIntoView({behavior:"smooth",block:"center"}),180);
+    }
   }
 }
 
@@ -1483,22 +1776,22 @@ function regenerateCandidates(){
   chosenCandidate=null;
   const full=(teamsBySeason.get(selectedYear)?.get(selectedTeam)||[]).map(p=>({...p,ovr:getRating(p),baseOvr:getRating(p),goat:false,eligible:normalizePositions(p.Pos,p.Player)})).filter(p=>!usedPlayers.has(p.Player.toLowerCase()));
   const unique=new Map();for(const p of full){const k=p.Player.toLowerCase();if(!unique.has(k)||p.ovr>unique.get(k).ovr)unique.set(k,p);}
-  candidates=[...unique.values()].sort((a,b)=>b.ovr-a.ovr).slice(0,10).map(p=>{const goat=isGoatName(p.Player)&&goatCardRoll();const base=goat?{...p,goat:true,ovr:110,baseOvr:110}:p;return rollMomentCard(base);});
+  candidates=shuffleArray([...unique.values()]).slice(0,10).map((p,i)=>{const goat=isGoatName(p.Player)&&goatCardRoll();const base=goat?{...p,goat:true,ovr:110,baseOvr:110}:p;return {...rollMomentCard(base),_poolOrder:i};});
   $("team").textContent=teamLabel(selectedTeam);$("teamSub").textContent='franchise locked · '+selectedTeam;
-  $("year").textContent=String(selectedYear);$("yearSub").textContent=`${full.length} unused roster entries`;
+  $("year").textContent=String(displaySeason(selectedTeam,selectedYear));$("yearSub").textContent=`${full.length} unused roster entries`;
   $("candidateInfo").textContent='choose a player from this team-season roll.';renderCandidates();renderLifelines();
 }
 function useTeamReroll(){
   if(!lifelines.team||!selectedYear||rolling)return;
   const options=[...teamsBySeason.get(selectedYear).keys()].filter(t=>t!==selectedTeam&&(teamsBySeason.get(selectedYear).get(t)||[]).some(p=>!usedPlayers.has(p.Player.toLowerCase())));
   if(!options.length){$("lifelineStatus").textContent='no other teams have eligible players for this year.';return;}
-  lifelines.team=false;selectedTeam=randomItem(options);regenerateCandidates();$("status").textContent=`team reroll used · ${teamLabel(selectedTeam)} ${selectedYear}.`;
+  lifelines.team=false;selectedTeam=randomItem(options);regenerateCandidates();$("status").textContent=`team reroll used · ${teamLabel(selectedTeam)} ${displaySeason(selectedTeam,selectedYear)}.`;
 }
 function useYearReroll(){
   if(!lifelines.year||!selectedTeam||rolling)return;
   const options=(seasonsByTeam.get(selectedTeam)||[]).filter(y=>y>=1980&&y<=2026&&y!==selectedYear&&(teamsBySeason.get(y)?.get(selectedTeam)||[]).some(p=>!usedPlayers.has(p.Player.toLowerCase())));
   if(!options.length){$("lifelineStatus").textContent='no other eligible seasons found for this team.';return;}
-  lifelines.year=false;selectedYear=randomItem(options);seenSeasons.add(selectedTeam+'-'+selectedYear);regenerateCandidates();$("status").textContent=`year reroll used · ${teamLabel(selectedTeam)} ${selectedYear}.`;
+  lifelines.year=false;selectedYear=randomItem(options);seenSeasons.add(selectedTeam+'-'+selectedYear);regenerateCandidates();$("status").textContent=`year reroll used · ${teamLabel(selectedTeam)} ${displaySeason(selectedTeam,selectedYear)}.`;
 }
 function useDoubleDip(){
   if(!lifelines.double||!candidates.length||roster.length>8||rolling)return;
@@ -1533,6 +1826,8 @@ function resetDraft() {
   $("candidateInfo").textContent="spin a team and a season to see your candidates.";
   $("status").textContent="draft reset. build a new dynasty.";
   $("status").classList.remove("good");
+  $("candidatesPanel").classList.remove("draft-complete");
+  delete $("candidatesPanel").dataset.coachAutoScrolled;
   $("boardInstruction").textContent="roll a team, choose a player, then click any empty spot on the board.";
   document.querySelectorAll(".player-pop").forEach(el=>el.remove());
   renderSquad();
@@ -1553,7 +1848,8 @@ const coaches=[
   ["John Kundla","1948–1959",96],["Paul Seymour","1951–1960",85],["Alex Hannum","1956–1971",91],["Red Holzman","1954–1982",93],["Fred Schaus","1960–1967",87],["Bill Sharman","1966–1982",91],["Tom Heinsohn","1969–1988",92],["K.C. Jones","1973–1998",91],["Jack Ramsay","1968–1989",92],["Dick Motta","1968–1997",89],["Billy Cunningham","1977–1985",91],["Cotton Fitzsimmons","1970–1997",88],["Don Nelson","1976–2010",94],["Lenny Wilkens","1969–2005",94],["Hubie Brown","1974–2005",88],["Jerry Sloan","1980–2011",94],["Rick Adelman","1989–2013",92],["George Karl","1984–2016",91],["Mike D'Antoni","1998–2021",91],["Avery Johnson","2004–2012",84],["Doc Rivers","1999–present",92],["Mike Brown","2005–present",89],["Mike Budenholzer","2013–2024",91],["Tyronn Lue","2016–present",90],["Nick Nurse","2013–present",90],["Billy Donovan","2015–present",87],["Monty Williams","2010–2024",86],["Rick Carlisle","2001–present",91],["Nate McMillan","2000–2022",88],["Flip Saunders","1995–2015",89],["Doug Collins","1986–2013",87],["Paul Westhead","1979–1992",85],["Mike Fratello","1983–2007",88],["Eddie Jordan","1999–2012",82],["Quinn Snyder","2014–present",88],["Frank Vogel","2010–2024",87],["Ime Udoka","2021–present",87],["Mark Jackson","2011–2014",86],["Maurice Cheeks","1994–2014",85],["Larry Costello","1962–1976",89],["Bill Fitch","1970–1998",90],["Gene Shue","1966–1989",89],["Doug Moe","1976–1993",89],["Larry Costello","1962–1976",89]
  ].map(([name,years,ovr])=>({name,years,wins:null,losses:null,titles:null,boost:Math.max(1,Math.round((ovr-80)/3)),ovr,photo:name,achievements:["NBA head coach","Historical coach pool entry","Coach rating is a gameplay estimate"]}))
 ];
-let selectedCoach=null,challenge=null,gameIndex=0,wins=0,losses=0,streak=0,simTimer=null,simSpeed=1,simPaused=false,seasonFinished=false,leagueTeams=[],schedule=[],playoffRounds=[],userConference="West",seasonPhase="regular",playoffGameCount=0,playoffCurrentRound=0,playoffCurrentSeries=0;
+let runRewardId=Date.now().toString(36);
+let selectedCoach=null,challenge=null,gameIndex=0,wins=0,losses=0,streak=0,simTimer=null,simSpeed=1,simPaused=false,seasonFinished=false,leagueTeams=[],schedule=[],playoffRounds=[],userConference="West",seasonPhase="regular",playoffGameCount=0,playoffUserGames=0,playoffUserWins=0,playoffCurrentRound=0,playoffCurrentSeries=0;
 const historicalChampions={1991:"Chicago Bulls",1992:"Chicago Bulls",1993:"Chicago Bulls",1994:"Houston Rockets",1995:"Houston Rockets",1996:"Chicago Bulls",1997:"Chicago Bulls",1998:"Chicago Bulls",1999:"San Antonio Spurs",2000:"Los Angeles Lakers",2001:"Los Angeles Lakers",2002:"Los Angeles Lakers",2003:"San Antonio Spurs",2004:"Detroit Pistons",2005:"San Antonio Spurs",2006:"Miami Heat",2007:"San Antonio Spurs",2008:"Boston Celtics",2009:"Los Angeles Lakers",2010:"Los Angeles Lakers",2011:"Dallas Mavericks",2012:"Miami Heat",2013:"Miami Heat",2014:"San Antonio Spurs",2015:"Golden State Warriors",2016:"Cleveland Cavaliers",2017:"Golden State Warriors",2018:"Golden State Warriors",2019:"Toronto Raptors",2020:"Los Angeles Lakers",2021:"Milwaukee Bucks",2022:"Golden State Warriors",2023:"Denver Nuggets",2024:"Boston Celtics",2025:"Oklahoma City Thunder"};
 async function rollCoach(){
   if(roster.length<10||selectedCoach||rolling)return;
@@ -1606,54 +1902,62 @@ function buildLeague(){
 function rollScore(teamStrength,oppStrength){let home=Math.round(108+(teamStrength-75)*1.15+(Math.random()*24-12));let away=Math.round(108+(oppStrength-75)*1.15+(Math.random()*24-12));if(home===away)home++;return [Math.max(65,home),Math.max(65,away)];}
 function updateSeasonUI(){ $("wins").textContent=wins;$("losses").textContent=losses;$("streak").textContent=streak>0?`W${streak}`:streak<0?`L${Math.abs(streak)}`:'—';$("perfect").textContent=losses===0?'ALIVE':'LOST';$("seasonProgressFill").style.width=(gameIndex/82*100)+'%';$("gameNumber").textContent=seasonPhase==='regular'?`GAME ${gameIndex} / 82`:`PLAYOFF GAME ${playoffGameCount}`;$("seasonStatus").textContent=seasonFinished?'SEASON COMPLETE':simPaused?'PAUSED':seasonPhase==='regular'?'REGULAR SEASON':'PLAYOFFS';}
 function renderStandings(){
-  const html=['East','West'].map(conf=>{const rows=leagueTeams.filter(t=>t.conference===conf).sort((a,b)=>b.wins-a.wins||b.strength-a.strength);return `<div class="standings-conference"><div class="standings-title">${conf.toUpperCase()}ERN CONFERENCE</div>${rows.map((t,i)=>`<div class="standing-row ${t.user?'user-row':''} ${i===7?'playoff-cut':''}"><span class="seed-pill">${i+1}</span><span>${escapeHTML(t.name)}</span><span class="team-record">${t.wins}W</span><span class="team-record">${t.losses}L</span></div>`).join('')}</div>`;}).join('');$("standingsTable").innerHTML=html;const user=leagueTeams.find(t=>t.user);const ranked=leagueTeams.filter(t=>t.conference===user.conference).sort((a,b)=>b.wins-a.wins||b.strength-a.strength);const seed=ranked.findIndex(t=>t.user)+1;$("seedSummary").textContent=`${user.conference.toUpperCase()} · #${seed} SEED`;return {seed,conference:user.conference};
+  const html=['East','West'].map(conf=>{const rows=leagueTeams.filter(t=>t.conference===conf).sort((a,b)=>b.wins-a.wins||b.strength-a.strength);return `<div class="standings-conference"><div class="standings-title">${conf.toUpperCase()}ERN CONFERENCE</div>${rows.map((t,i)=>`<div class="standing-row ${t.user?'user-row':''} ${i===7?'playoff-cut':''}"><span>${escapeHTML(t.name)}</span><span class="team-record">${t.wins}W</span><span class="team-record">${t.losses}L</span></div>`).join('')}</div>`;}).join('');$("standingsTable").innerHTML=html;const user=leagueTeams.find(t=>t.user);const ranked=leagueTeams.filter(t=>t.conference===user.conference).sort((a,b)=>b.wins-a.wins||b.strength-a.strength);const seed=ranked.findIndex(t=>t.user)+1;$("seedSummary").textContent=`${user.conference.toUpperCase()} CONFERENCE`;return {seed,conference:user.conference};
 }
 function simulateOneGame(){
  if(seasonPhase!=='regular'){simulatePlayoffGame();return;}
  if(gameIndex>=82){finishRegularSeason();return;}
- const opp=schedule[gameIndex];gameIndex++;const user=leagueTeams.find(t=>t.user);const [hs,as]=rollScore(user.strength,opp.strength);const won=hs>as;wins+=won?1:0;losses+=won?0:1;streak=won?(streak>=0?streak+1:1):(streak<=0?streak-1:-1);user.wins=wins;user.losses=losses;
+ const opp=schedule[gameIndex];gameIndex++;const user=leagueTeams.find(t=>t.user);const [hs,as]=rollScore(user.strength,opp.strength);const won=hs>as;wins+=won?1:0;losses+=won?0:1;if(won)awardCash(1,`regular-season win ${gameIndex}`);streak=won?(streak>=0?streak+1:1):(streak<=0?streak-1:-1);user.wins=wins;user.losses=losses;
  // Update the displayed league records as the user's real 82-game record is formed.
  $("homeTeam").textContent='YOUR DYNASTY';$("awayTeam").textContent=opp.name;$("homeScore").textContent=hs;$("awayScore").textContent=as;$("gameQuarter").textContent='FINAL';$("gameNote").textContent=`Game ${gameIndex}: ${won?'WIN':'LOSS'} · ${opp.name} (${opp.strength.toFixed(1)} estimated team rating).`;const line=document.createElement('div');line.className='feed-line latest '+(won?'win':'loss');line.textContent=`G${String(gameIndex).padStart(2,'0')} · ${won?'W':'L'} · ${hs}–${as} vs ${opp.name}`;$("gameFeed").prepend(line);while($("gameFeed").children.length>22)$("gameFeed").lastChild.remove();updateSeasonUI();if(gameIndex>=82)finishRegularSeason();
 }
 let championshipClipTimer=null;
-function revealVictoryModal(){
- const overlay=$("victoryOverlay");$("victoryTitle").textContent="CHAMPIONS";
- $("victoryMessage").textContent=`A championship season completed with a ${wins}–${losses} regular-season record.`;
- $("victoryRecord").textContent=`${wins}–${losses}`;if($("victorySeason"))$("victorySeason").textContent=String(challenge||"—");
- overlay.classList.add("open");overlay.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");
-}
+function revealVictoryModal(){ /* removed: championship stats screen is the final celebration */ }
 function showVictory(){
- const clipOverlay=$("championshipClipOverlay"),frame=$("championshipClip");
+ const clipOverlay=$("championshipClipOverlay");
  if(championshipClipTimer)clearTimeout(championshipClipTimer);
+ $("championshipMoviePhase").classList.remove("phase-hidden");
+ $("championshipStatsPhase").classList.remove("phase-visible");
+ $("championshipStatsPhase").setAttribute("aria-hidden","true");
+ $("clipStatsRecord").textContent=`${wins}–${losses}`;
+ $("clipStatsSeason").textContent=String(challenge||"—");
+ $("clipStatsPlayoffGames").textContent=String(playoffGameCount||0);
+ const champ=leagueTeams.find(t=>t.user);
+ $("clipStatsMessage").textContent=`${champ?.name||"your dynasty"} are the champions. your season is complete.`;
  clipOverlay.classList.add("open");clipOverlay.setAttribute("aria-hidden","false");document.body.classList.add("modal-open");
- frame.src="https://www.youtube-nocookie.com/embed/9v6EFRAb_as?autoplay=1&mute=1&controls=0&rel=0&playsinline=1&start=65";
- championshipClipTimer=setTimeout(()=>finishChampionshipClip(),9000);
+ championshipClipTimer=setTimeout(showChampionshipStats,4000);
+}
+function showChampionshipStats(){
+ if(championshipClipTimer)clearTimeout(championshipClipTimer);championshipClipTimer=null;
+ $("championshipMoviePhase").classList.add("phase-hidden");
+ $("championshipStatsPhase").classList.add("phase-visible");
+ $("championshipStatsPhase").setAttribute("aria-hidden","false");
 }
 function finishChampionshipClip(){
  if(championshipClipTimer)clearTimeout(championshipClipTimer);championshipClipTimer=null;
- const clipOverlay=$("championshipClipOverlay"),frame=$("championshipClip");clipOverlay.classList.remove("open");clipOverlay.setAttribute("aria-hidden","true");
- setTimeout(()=>{frame.src="about:blank";revealVictoryModal();},750);
+ const clipOverlay=$("championshipClipOverlay");clipOverlay.classList.remove("open");clipOverlay.setAttribute("aria-hidden","true");
+ setTimeout(()=>{document.body.classList.remove("modal-open");scrollToPostseason();},1550);
 }
-function closeVictory(){const overlay=$("victoryOverlay");overlay.classList.remove("open");overlay.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");}
+function closeVictory(){document.body.classList.remove("modal-open");}
 function completeRunUI(){$("newRunWrap").hidden=false;}
 function scrollToPostseason(){const target=$("playoffResults");if(target)setTimeout(()=>target.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}),180);}
 function startNewRun(){closeVictory();resetDraft();$("newRunWrap").hidden=true;window.scrollTo({top:0,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});}
 
 function finishRegularSeason(){
  if(seasonPhase!=='regular')return;
- seasonPhase='playoffs';const seedInfo=renderStandings();const user=leagueTeams.find(t=>t.user);const confTeams=leagueTeams.filter(t=>t.conference===user.conference).sort((a,b)=>b.wins-a.wins||b.strength-a.strength);const seed=confTeams.findIndex(t=>t.user)+1;
- if(seed>8){seasonFinished=true;showSeasonAwards(false);$("gameNote").textContent=`regular season complete: ${wins}–${losses}. your ${seedInfo.conference} seed is #${seed}; you missed the 8-team playoff field.`;$("playoffResults").innerHTML='<div class="empty-message">your dynasty missed the playoffs. use the standings to see the final seed.</div>';$("startFranchise").disabled=false;$("startFranchise").textContent='RESTART SEASON';completeRunUI();updateSeasonUI();scrollToPostseason();return;}
+ seasonPhase='playoffs';if(wins===82&&losses===0&&!shopState.claimed.includes('perfect-'+runRewardId)){shopState.claimed.push('perfect-'+runRewardId);awardCash(20,'82–0 perfect regular season bonus');}const seedInfo=renderStandings();const user=leagueTeams.find(t=>t.user);const confTeams=leagueTeams.filter(t=>t.conference===user.conference).sort((a,b)=>b.wins-a.wins||b.strength-a.strength);const seed=confTeams.findIndex(t=>t.user)+1;
+ if(seed>8){seasonFinished=true;showSeasonAwards(false);$("gameNote").textContent=`regular season complete: ${wins}–${losses}. your team did not qualify for the playoffs.`;$("playoffResults").innerHTML='<div class="empty-message">your dynasty missed the playoffs.</div>';$("startFranchise").disabled=false;$("startFranchise").textContent='RESTART SEASON';completeRunUI();updateSeasonUI();scrollToPostseason();return;}
  const east=leagueTeams.filter(t=>t.conference==='East').sort((a,b)=>b.wins-a.wins||b.strength-a.strength).slice(0,8);const west=leagueTeams.filter(t=>t.conference==='West').sort((a,b)=>b.wins-a.wins||b.strength-a.strength).slice(0,8);
  playoffRounds=[{name:'ROUND 1',series:[]},{name:'CONFERENCE SEMIS',series:[]},{name:'CONFERENCE FINALS',series:[]},{name:'NBA FINALS',series:[]}];
  function pairSeeds(teams){return [[teams[0],teams[7]],[teams[3],teams[4]],[teams[1],teams[6]],[teams[2],teams[5]]].filter(pair=>pair[0]&&pair[1]).map(([a,b])=>({a,b,aw:0,bw:0,winner:null,conference:a.conference}));}
- playoffRounds[0].series=[...pairSeeds(east),...pairSeeds(west)];playoffCurrentRound=0;playoffCurrentSeries=0;playoffGameCount=0;
- renderPlayoffs();$("gameNote").textContent=`regular season complete: ${wins}–${losses}. your ${seedInfo.conference} seed is #${seed}. the playoffs are starting.`;$("seasonStatus").textContent='PLAYOFFS';$("gameQuarter").textContent='PLAYOFFS TIP-OFF';updateSeasonUI();scrollToPostseason();
+ playoffRounds[0].series=[...pairSeeds(east),...pairSeeds(west)];playoffCurrentRound=0;playoffCurrentSeries=0;playoffGameCount=0;playoffUserGames=0;playoffUserWins=0;
+ renderPlayoffs();$("gameNote").textContent=`regular season complete: ${wins}–${losses}. your playoff run starts now.`;$("seasonStatus").textContent='PLAYOFFS';$("gameQuarter").textContent='PLAYOFFS TIP-OFF';updateSeasonUI();scrollToPostseason();
 }
 function advancePlayoffRound(){
  const round=playoffRounds[playoffCurrentRound];
  if(round.series.some(s=>!s.winner))return;
  if(playoffCurrentRound===3){
-   seasonFinished=true;const champ=playoffRounds[3].series[0]?.winner;showSeasonAwards(true);$("gameNote").textContent=`final record ${wins}–${losses}. ${champ?.name||'champion'} won the simulated championship after ${playoffGameCount} playoff games.`;$("startFranchise").disabled=false;$("startFranchise").textContent='RESTART SEASON';completeRunUI();renderPlayoffs();updateSeasonUI();if(champ?.user)showVictory();return;
+   seasonFinished=true;const champ=playoffRounds[3].series[0]?.winner;if(champ?.user&&!shopState.claimed.includes('ring-'+runRewardId)){awardCash(10,'winning the championship ring');}if(champ?.user&&playoffUserGames===16&&playoffUserWins===16&&!shopState.claimed.includes('sweep-'+runRewardId)){shopState.claimed.push('sweep-'+runRewardId);awardCash(20,'16–0 perfect postseason bonus');}showSeasonAwards(true);$("gameNote").textContent=`final record ${wins}–${losses}. ${champ?.name||'champion'} won the simulated championship after ${playoffGameCount} playoff games.`;$("startFranchise").disabled=false;$("startFranchise").textContent='RESTART SEASON';completeRunUI();renderPlayoffs();updateSeasonUI();if(champ?.user)showVictory();return;
  }
  const winnersByConference={East:[],West:[]};round.series.forEach(s=>{if(s.winner&&winnersByConference[s.conference])winnersByConference[s.conference].push(s.winner);});
  const next=playoffRounds[playoffCurrentRound+1];
@@ -1666,22 +1970,24 @@ function simulatePlayoffGame(){
  const round=playoffRounds[playoffCurrentRound];if(!round){seasonFinished=true;return;}
  while(playoffCurrentSeries<round.series.length&&round.series[playoffCurrentSeries].winner)playoffCurrentSeries++;
  if(playoffCurrentSeries>=round.series.length){advancePlayoffRound();if(!seasonFinished)simulatePlayoffGame();return;}
- const series=round.series[playoffCurrentSeries];const [as,bs]=rollScore(series.a.strength,series.b.strength);if(as>bs)series.aw++;else series.bw++;playoffGameCount++;
+ const series=round.series[playoffCurrentSeries];const [as,bs]=rollScore(series.a.strength,series.b.strength);const userInGame=!!(series.a.user||series.b.user);const playoffWon=(series.a.user&&as>bs)||(series.b.user&&bs>as);if(userInGame)playoffUserGames++;if(playoffWon)playoffUserWins++;if(as>bs)series.aw++;else series.bw++;playoffGameCount++;if(playoffWon)awardCash(1,`playoff win ${playoffGameCount}`);
  const winner=series.aw>=4?series.a:series.bw>=4?series.b:null;if(winner)series.winner=winner;
  $("homeTeam").textContent=series.a.name;$("awayTeam").textContent=series.b.name;$("homeScore").textContent=as;$("awayScore").textContent=bs;$("gameQuarter").textContent='PLAYOFF FINAL';$("gameNote").textContent=`${round.name}: ${series.a.name} ${series.aw}–${series.bw} ${series.b.name}${winner?' · '+winner.name+' advances':''}`;
- const line=document.createElement('div');line.className='feed-line latest';line.textContent=`PO G${String(playoffGameCount).padStart(2,'0')} · ${round.name} · ${series.a.name} ${as}–${bs} ${series.b.name} · series ${series.aw}–${series.bw}`;$("gameFeed").prepend(line);while($("gameFeed").children.length>22)$("gameFeed").lastChild.remove();renderPlayoffs();updateSeasonUI();
+ if(series.a.user||series.b.user){const line=document.createElement('div');line.className='feed-line latest';line.textContent=`PO G${String(playoffGameCount).padStart(2,'0')} · ${round.name} · ${series.a.name} ${as}–${bs} ${series.b.name} · series ${series.aw}–${series.bw}`;$("gameFeed").prepend(line);while($("gameFeed").children.length>22)$("gameFeed").lastChild.remove();}
+ renderPlayoffs();updateSeasonUI();
  if(winner){playoffCurrentSeries++;if(round.series.every(s=>s.winner))advancePlayoffRound();}
 }
 function renderPlayoffs(){
  const labels=['ROUND 1','CONFERENCE SEMIS','CONFERENCE FINALS','NBA FINALS'];
  const roundMarkup=playoffRounds.map((round,i)=>{
-  const cards=round.series.length?round.series.map((series,j)=>{
-   const current=i===playoffCurrentRound&&!series.winner&&j===playoffCurrentSeries;
+  const visibleSeries=round.series.filter(series=>series.a.user||series.b.user);
+  const cards=visibleSeries.length?visibleSeries.map((series,j)=>{
+   const current=i===playoffCurrentRound&&!series.winner&&round.series.indexOf(series)===playoffCurrentSeries;
    const userInSeries=!!(series.a.user||series.b.user);
    const status=series.winner?`<span class="bracket-status clinched">ADVANCES</span>`:current?`<span class="bracket-status live">UP NEXT</span>`:`<span class="bracket-status">${i>playoffCurrentRound?'UPCOMING':'IN PROGRESS'}</span>`;
    const teamLine=(team,score)=>`<div class="bracket-team ${series.winner===team?'series-winner':''} ${team.user?'bracket-user':''}"><span>${escapeHTML(team.name)}</span><strong>${score}</strong></div>`;
    return `<div class="series-card ${series.winner?.user?'won-series':''} ${current?'series-current':''} ${userInSeries?'series-user-involved':''}"><div class="series-card-top">${status}<span class="series-game-count">${series.aw+series.bw}/7 GAMES</span></div>${teamLine(series.a,series.aw)}${teamLine(series.b,series.bw)}<div class="series-progress" aria-label="series progress"><span style="width:${Math.min(100,((series.aw+series.bw)/7)*100)}%"></span></div><div class="series-caption">${series.winner?`${escapeHTML(series.winner.name)} advances`:`first to 4 wins · ${Math.max(0,4-Math.max(series.aw,series.bw))} more to clinch`}</div></div>`;
-  }).join(''):'<div class="stat-note">matchups appear when the previous round is complete.</div>';
+  }).join(''):'<div class="stat-note">your team has no games in this round.</div>';
   const phase=i<playoffCurrentRound?'ROUND COMPLETE':i===playoffCurrentRound?'CURRENT ROUND':'LOCKED';
   return `<div class="playoff-round ${i===playoffCurrentRound&&!seasonFinished?'round-active':''} ${i<playoffCurrentRound?'round-complete':''}"><div class="round-head"><h4>${labels[i]}</h4><span>${phase}</span></div>${cards}</div>`;
  }).join('');
@@ -1710,7 +2016,7 @@ function showSeasonAwards(madePlayoffs){
  $("awardResults").innerHTML=mvpHTML+starHTML+champHTML+awardsHTML;
 }
 function finishSeason(){if(seasonPhase==='regular')finishRegularSeason();else{seasonFinished=true;updateSeasonUI();}}
-function startFranchise(){if(!selectedCoach||!challenge)return;$("newRunWrap").hidden=true;$("seasonSim").style.display='block';$("startFranchise").disabled=true;gameIndex=0;wins=0;losses=0;streak=0;seasonFinished=false;simPaused=false;playoffRounds=[];playoffGameCount=0;playoffCurrentRound=0;playoffCurrentSeries=0;seasonPhase='regular';$("gameFeed").innerHTML='';$("standingsTable").innerHTML='<div class="empty-message">standings will populate after the regular season.</div>';$("playoffResults").innerHTML='<div class="empty-message">playoff bracket will appear after 82 games.</div>';$("awardResults").innerHTML='<div class="empty-message">awards will be revealed at season end.</div>';buildLeague();updateSeasonUI();runSimulation();$("seasonSim").scrollIntoView({behavior:'smooth',block:'start'});}
+function startFranchise(){if(!selectedCoach||!challenge)return;runRewardId=Date.now().toString(36);$("newRunWrap").hidden=true;$("seasonSim").style.display='block';$("startFranchise").disabled=true;gameIndex=0;wins=0;losses=0;streak=0;seasonFinished=false;simPaused=false;playoffRounds=[];playoffGameCount=0;playoffUserGames=0;playoffUserWins=0;playoffCurrentRound=0;playoffCurrentSeries=0;seasonPhase='regular';$("gameFeed").innerHTML='';$("standingsTable").innerHTML='<div class="empty-message">standings will populate after the regular season.</div>';$("playoffResults").innerHTML='<div class="empty-message">playoff bracket will appear after 82 games.</div>';$("awardResults").innerHTML='<div class="empty-message">awards will be revealed at season end.</div>';buildLeague();updateSeasonUI();runSimulation();$("seasonSim").scrollIntoView({behavior:'smooth',block:'start'});}
 let instantRunning=false;
 function runSimulation(){
   if(simTimer)clearTimeout(simTimer);
@@ -1733,12 +2039,13 @@ function runInstantSimulation(){
   setTimeout(batch,0);
 }
 document.querySelectorAll('.speed-btn').forEach(btn=>btn.addEventListener('click',()=>{simSpeed=Number(btn.dataset.speed);document.querySelectorAll('.speed-btn').forEach(b=>b.classList.toggle('active',b===btn));if(simSpeed===0&&!seasonFinished){simPaused=false;runSimulation();}else if(!simPaused&&!seasonFinished){instantRunning=false;runSimulation();}}));
-$("skipChampionshipClip").addEventListener("click",finishChampionshipClip);$("newRunButton").addEventListener("click",startNewRun);$("victoryNewRun").addEventListener("click",startNewRun);$("victoryClose").addEventListener("click",closeVictory);document.querySelectorAll("[data-victory-close]").forEach(el=>el.addEventListener("click",closeVictory));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeVictory();});
+$("skipChampionshipClip").addEventListener("click",finishChampionshipClip);$("newRunButton").addEventListener("click",startNewRun);
 $("rollCoach").addEventListener('click',rollCoach);$("rollChallenge").addEventListener('click',rollChallenge);$("startFranchise").addEventListener('click',()=>{if(seasonFinished){$("startFranchise").textContent="START FRANCHISE ↗";seasonFinished=false;$("seasonSim").style.display="none";startFranchise();}else startFranchise();});
 $("pauseSeason").addEventListener('click',()=>{simPaused=!simPaused;$("pauseSeason").textContent=simPaused?"RESUME":"PAUSE";if(simPaused){clearTimeout(simTimer);simTimer=null;}else{instantRunning=false;runSimulation();}updateSeasonUI();});
 $("spinTeam").addEventListener("click",spinTeam);
 $("spinYear").addEventListener("click",spinYear);
 $("teamReroll").addEventListener("click",useTeamReroll);$("yearReroll").addEventListener("click",useYearReroll);$("doubleDip").addEventListener("click",useDoubleDip);$("movePlayer").addEventListener("click",useMovePlayer);
+$("playerSort").addEventListener("change",()=>renderCandidates());
 $("reset").addEventListener("click",resetDraft);
 
 window.addEventListener('resize',()=>requestAnimationFrame(renderDuoLines));
@@ -1751,25 +2058,36 @@ loadDB();
 
 <style id="cinematic-v19-patch">
 #duoConnectionOverlay{position:fixed;inset:0;z-index:80;pointer-events:none;overflow:visible}
-.championship-clip-overlay{position:fixed;inset:0;z-index:11000;display:grid;place-items:center;padding:20px;background:#030303;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease,visibility .9s ease}
+.championship-clip-overlay{position:fixed;inset:0;z-index:11000;display:grid;place-items:stretch;padding:0;background:#030303;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .75s ease,visibility .75s ease}
 .championship-clip-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
-.championship-clip-frame{width:min(1050px,100%);text-align:center;animation:clipReveal .8s cubic-bezier(.2,.8,.2,1) both}
-.clip-kicker{font-size:10px;letter-spacing:3px;color:#d9bd69;margin:0 0 15px;font-weight:800}
-.championship-clip-frame iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid #d9bd69;background:#090909;box-shadow:0 0 80px #d9bd6920}
-.clip-caption{margin:15px 0;color:#eee;font-size:12px;letter-spacing:3px;font-weight:800}
-#skipChampionshipClip{margin-top:12px;padding:10px 20px}
-@keyframes clipReveal{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.championship-clip-frame{position:relative;width:100%;height:100%;min-height:100dvh;display:flex;flex-direction:column;background:#030303;overflow:hidden}
+.championship-banner{position:absolute;z-index:3;top:0;left:0;width:100%;padding:clamp(22px,4vh,48px) 18px 18px;text-align:center;color:#fff;font-size:clamp(36px,8vw,100px);line-height:.9;letter-spacing:-.065em;font-weight:950;text-transform:uppercase;background:linear-gradient(#030303ed,transparent);text-shadow:0 3px 30px #000;pointer-events:none}
+.championship-banner span{display:block;margin-top:13px;font-size:10px;letter-spacing:.28em;color:#b7b7b7;font-weight:700}
+.championship-movie-phase{position:absolute;inset:0;display:grid;place-items:center;opacity:1;transition:opacity .7s ease;}
+.championship-movie-phase.phase-hidden{opacity:0;pointer-events:none}
+.championship-gif{display:block;width:100%;height:100%;max-height:none;aspect-ratio:auto;object-fit:cover;border:0;background:#030303;box-shadow:none}
+.championship-stats-phase{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:clamp(24px,6vw,80px);padding-top:clamp(140px,20vh,220px);text-align:center;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease,visibility .7s ease;background:radial-gradient(ellipse at 50% 45%,#191919 0,#080808 48%,#030303 78%)}
+.championship-stats-phase.phase-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.championship-stats-kicker{color:#999;font-size:10px;letter-spacing:.3em;font-weight:800;margin-bottom:30px}
+.championship-stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:min(100%,1000px);border:1px solid #353535}
+.championship-stats-grid>div{padding:clamp(18px,4vw,42px) 10px;background:#0b0b0b}
+.championship-stats-grid>div+div{border-left:1px solid #353535}
+.championship-stats-grid span{display:block;color:#999;font-size:clamp(8px,1vw,11px);letter-spacing:.14em;font-weight:800}
+.championship-stats-grid strong{display:block;margin-top:14px;color:#fff;font-size:clamp(28px,6vw,64px);letter-spacing:-.05em;font-weight:950;font-variant-numeric:tabular-nums}
+#clipStatsMessage{margin:25px 0 30px;color:#c9c9c9;font-size:13px;letter-spacing:.04em}
+#skipChampionshipClip{margin-top:10px;padding:14px 24px;border:1px solid #fff;background:#fff;color:#050505;font-weight:900;letter-spacing:.12em}
 .victory-card h2{font-weight:800;letter-spacing:-1px;text-transform:uppercase}
 .victory-trophy{animation:none!important}
 .victory-stats span{font-size:8px;letter-spacing:1.2px}
-@media(prefers-reduced-motion:reduce){.championship-clip-overlay,.championship-clip-frame{transition:none;animation:none}}
+@media(max-width:560px){.championship-banner{padding-top:32px}.championship-banner span{font-size:8px;letter-spacing:.18em}.championship-stats-grid{grid-template-columns:1fr}.championship-stats-grid>div{padding:16px}.championship-stats-grid>div+div{border-left:0;border-top:1px solid #353535}.championship-stats-grid strong{margin-top:6px;font-size:32px}.championship-stats-kicker{margin-bottom:18px}#clipStatsMessage{margin:18px 0}}
+@media(prefers-reduced-motion:reduce){.championship-clip-overlay,.championship-movie-phase,.championship-stats-phase{transition:none}}
 </style>
 
 <style id="moment-card-polish">
 .candidate{isolation:isolate;overflow:hidden;}
 .candidate .pick-card-head,.candidate .pick-stat-main,.candidate .pick-stat-sub,.candidate .pick-card-footer,.candidate .goat-label,.candidate .duo-tag,.candidate .moment-boost{position:relative;z-index:2}
-.moment-bg{position:absolute;inset:0;z-index:0;background-position:center 28%;background-size:cover;opacity:.32;filter:saturate(.8) contrast(1.08);transform:scale(1.02)}
-.moment-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,7,10,.92),rgba(5,7,10,.62) 55%,rgba(5,7,10,.76)),linear-gradient(0deg,rgba(5,7,10,.95),transparent 65%)}
+.moment-bg{position:absolute;inset:0;z-index:0;background-position:center 24%;background-size:cover;background-repeat:no-repeat;opacity:.62;filter:saturate(.9) contrast(1.04);transform:scale(1.02);transition:opacity .2s}
+.moment-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,7,10,.76),rgba(5,7,10,.35) 58%,rgba(5,7,10,.54)),linear-gradient(0deg,rgba(5,7,10,.88),rgba(5,7,10,.04) 72%)}
 .moment-ribbon{position:relative;z-index:2;margin:0 0 8px;padding:5px 7px;border-left:3px solid #e7ca72;background:#c9a64620;color:#f3df9b;font-size:9px;letter-spacing:.12em;font-weight:900}
 .moment-boost{display:inline-block;margin:4px 0 6px;padding:4px 6px;border:1px solid #e7ca7266;color:#f4dfa0;background:#b38d2722;font-size:9px;font-weight:900;letter-spacing:.1em}
 .candidate.moment-card{border-color:#d7bc68!important;background:#111318!important;box-shadow:inset 0 0 0 1px #e6cb7030,0 8px 24px #0008!important}
@@ -1823,6 +2141,127 @@ button,input,select,textarea,.panel,.tile,.summary-box,.candidate,.slot,.rating,
 .roll-above-select #spinTeam:disabled,.roll-above-select #spinYear:disabled{opacity:.48!important}
 @media(max-width:900px){.layout #draftPanel,.layout #squadPanel,.layout #candidatesPanel{grid-column:1!important;grid-row:auto!important}.layout #draftPanel{order:1!important}.layout #candidatesPanel{order:2!important}.layout #squadPanel{order:3!important}}
 </style>
+
+<style id="v30-draft-polish-and-completion">
+/* crisp, premium draft controls: no rounded corners anywhere */
+button,.candidate,.pos-btn,.position-choice,.speed-btn{border-radius:0!important}
+button.secondary,button.primary,.roll-above-select button,#rollCoach,#rollChallenge,#startFranchise,#reset{
+  position:relative;isolation:isolate;overflow:hidden;border:1px solid #555!important;
+  background:linear-gradient(135deg,#242424 0%,#101010 48%,#1d1d1d 100%)!important;
+  color:#f5f5f5!important;font-weight:900!important;letter-spacing:1.1px!important;
+  text-transform:uppercase;box-shadow:inset 0 1px #ffffff16,0 4px 0 #050505,0 8px 18px #0005!important;
+  transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease!important;
+}
+button.secondary:not(:disabled):hover,button.primary:not(:disabled):hover,#rollCoach:not(:disabled):hover,#rollChallenge:not(:disabled):hover,#startFranchise:not(:disabled):hover,#reset:not(:disabled):hover{
+  border-color:#f0f0f0!important;background:linear-gradient(135deg,#3b3b3b,#171717 55%,#292929)!important;
+  box-shadow:inset 0 1px #ffffff35,0 4px 0 #050505,0 0 0 1px #ffffff12,0 10px 24px #ffffff0d!important;transform:translateY(-2px)
+}
+button.secondary:active,button.primary:active,#rollCoach:active,#rollChallenge:active,#startFranchise:active,#reset:active{transform:translateY(1px);box-shadow:inset 0 2px 8px #000a!important}
+.roll-above-select #spinTeam{background:linear-gradient(135deg,#fff,#cfcfcf 55%,#f5f5f5)!important;color:#050505!important;border-color:#fff!important;box-shadow:inset 0 1px #fff,0 4px 0 #555,0 10px 22px #ffffff12!important}
+.roll-above-select #spinTeam:not(:disabled):hover{background:linear-gradient(135deg,#fff,#eee)!important;box-shadow:inset 0 1px #fff,0 4px 0 #555,0 0 24px #ffffff20!important}
+.roll-above-select #spinYear{background:linear-gradient(135deg,#303030,#090909 60%,#202020)!important;border-color:#888!important;box-shadow:inset 0 1px #ffffff20,0 4px 0 #050505,0 10px 22px #0008!important}
+.lifeline-buttons button{border-color:#4a4a4a!important;background:linear-gradient(135deg,#202020,#0a0a0a 65%,#1d1d1d)!important;box-shadow:inset 0 1px #ffffff12,0 3px 0 #030303!important;letter-spacing:.5px!important}
+.lifeline-buttons button:not(:disabled):hover{border-color:#ddd!important;transform:translateY(-1px);box-shadow:inset 0 1px #ffffff22,0 3px 0 #030303,0 0 16px #ffffff0c!important}
+.lifeline-buttons button:disabled{box-shadow:none!important}
+/* once all ten players are drafted, retain only the lifeline strip */
+#candidatesPanel.draft-complete>.panel-head,#candidatesPanel.draft-complete>#candidateInfo,#candidatesPanel.draft-complete>#candidates{display:none!important}
+#candidatesPanel.draft-complete{padding:0!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+#candidatesPanel.draft-complete #lifelines{margin:0!important;border-color:#444!important;background:linear-gradient(110deg,#151515,#050505 70%,#1c1c1c)!important;box-shadow:0 5px 20px #0008!important}
+#franchisePanel{scroll-margin-top:32px}
+</style>
+
+
+<style id="v36-shop-page-navigation-fix">
+#shopNav{font-family:inherit!important;border-radius:0!important;min-height:34px;padding:8px 11px;font-size:10px;font-weight:900;letter-spacing:.1em;cursor:pointer;text-transform:uppercase}
+#shopPage[hidden],#homePage[hidden]{display:none!important}
+body.shop-page-open #shopPage{display:block!important;width:100%;min-height:calc(100vh - 70px);box-sizing:border-box}
+body.shop-page-open #homePage{display:none!important}
+#shopPage .panel,#shopPage .shop-offer,#shopPage button,#shopPage .owned-chip{border-radius:0!important}
+</style>
+
+
+<div id="moneyCodeModal" class="money-modal" hidden role="dialog" aria-modal="true" aria-labelledby="moneyModalTitle">
+  <div class="money-modal-card">
+    <div class="money-modal-kicker">HARDWOOD DYNASTY · WALLET</div>
+    <h2 id="moneyModalTitle">your cash</h2>
+    <div id="moneyModalCash" class="money-modal-cash">$0</div>
+    <p>got a code? enter it below to redeem your bonus.</p>
+    <form id="moneyCodeForm"><input id="moneyCodeInput" autocomplete="off" spellcheck="false" placeholder="ENTER CODE" aria-label="Redeem code"><button type="submit" class="money-redeem-button">REDEEM</button></form>
+    <div id="moneyCodeMessage" role="status" class="money-code-message"></div>
+    <button type="button" id="moneyModalClose" class="money-close-button">CLOSE</button>
+  </div>
+</div>
+<style id="v40-black-positions-wallet">
+/* force every position control back to plain black, including active/focus states */
+html body .position-choice,html body .position-choice button,html body .position-choice-buttons button,html body .position-picker button,html body button.pos-btn,html body .pos-btn,html body .pos-btn:hover,html body .pos-btn:focus,html body .pos-btn:focus-visible,html body .pos-btn.active,html body .pos-btn.selected,html body .pos-btn[aria-pressed="true"],html body .position-choice button.active,html body .position-picker button[aria-pressed="true"]{background:#050505!important;background-image:none!important;color:#d4d4d4!important;border:1px solid #292929!important;box-shadow:none!important;filter:none!important}
+html body .position-choice button:hover,html body .position-choice-buttons button:hover,html body .position-picker button:hover,html body button.pos-btn:hover{background:#111!important;background-image:none!important;color:#fff!important;border-color:#444!important}
+.header-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.money-top-button{display:flex!important;align-items:center;justify-content:center;gap:9px;min-height:38px;padding:7px 12px!important;background:#050505!important;background-image:none!important;color:#eee!important;border:1px solid #393939!important;box-shadow:inset 0 1px #ffffff0a!important;border-radius:0!important}
+.money-top-label{font-size:9px;letter-spacing:1.2px;color:#8f969f}.money-top-button strong{font-size:13px;color:#fff;font-variant-numeric:tabular-nums}
+.money-modal[hidden]{display:none!important}.money-modal{position:fixed;inset:0;z-index:100000;background:#000d;display:grid;place-items:center;padding:16px}.money-modal-card{width:min(420px,100%);padding:24px;background:#090909;border:1px solid #444;box-shadow:0 20px 80px #000;color:#eee}.money-modal-kicker{font-size:9px;letter-spacing:1.6px;color:#999}.money-modal-card h2{font-size:24px;margin:10px 0}.money-modal-cash{font-size:32px;font-weight:900;margin-bottom:16px}.money-modal-card p{font-size:12px;color:#aaa}.money-modal-card form{display:flex;gap:0;margin-top:14px}.money-modal-card input{min-width:0;flex:1;background:#111;color:#fff;border:1px solid #444;padding:12px;font:inherit;border-radius:0!important}.money-redeem-button,.money-close-button{background:#050505!important;color:#eee!important;border:1px solid #444!important;padding:11px 13px!important;border-radius:0!important}.money-close-button{width:100%;margin-top:14px}.money-code-message{min-height:18px;margin-top:10px;font-size:11px;color:#c5c5c5}
+@media(max-width:700px){.header-tools{gap:5px}.money-top-button{padding:7px 9px!important}.money-top-label{display:none}.money-top-button strong{font-size:11px}}
+</style>
+<script id="v40-wallet-code-system">
+(()=>{
+ const $=id=>document.getElementById(id);const modal=$('moneyCodeModal'),open=$('moneyTopButton'),close=$('moneyModalClose'),form=$('moneyCodeForm'),input=$('moneyCodeInput'),msg=$('moneyCodeMessage');
+ const CODE='HD-10M-MX-2026';
+ function refreshCash(){let cash=0;try{const st=JSON.parse(localStorage.getItem('hardwoodDynastyShopV1')||'{}');cash=Number(st.cash)||0;if(typeof shopState!=='undefined'&&Number(shopState.cash)!==cash){shopState.cash=cash;if(typeof renderShop==='function')renderShop();}}catch(e){}const val='$'+cash.toLocaleString();if($('topCashAmount'))$('topCashAmount').textContent=val;if($('moneyModalCash'))$('moneyModalCash').textContent=val;}
+ function show(){refreshCash();modal.hidden=false;msg.textContent='';input.value='';setTimeout(()=>input.focus(),0)}function hide(){modal.hidden=true;open.focus()}
+ open.addEventListener('click',show);close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()});
+ form.addEventListener('submit',e=>{e.preventDefault();const entered=input.value.trim().toUpperCase();if(entered!==CODE){msg.textContent='invalid code. try again.';return;}let st={cash:0,owned:[],offers:[],rotation:0,claimed:[]};try{st={...st,...JSON.parse(localStorage.getItem('hardwoodDynastyShopV1')||'{}')}}catch(e){}if(!Array.isArray(st.claimed))st.claimed=[];if(st.claimed.includes(CODE)){msg.textContent='this code has already been redeemed on this browser.';return;}st.cash=(Number(st.cash)||0)+10000000;st.claimed.push(CODE);localStorage.setItem('hardwoodDynastyShopV1',JSON.stringify(st));if(typeof shopState!=='undefined'){shopState={...shopState,...st};if(typeof saveShopState==='function')saveShopState();}msg.textContent='$10,000,000 added to your wallet.';refreshCash();if(typeof renderShop==='function')renderShop();
+ });
+ refreshCash();setInterval(refreshCash,1000);
+})();
+</script>
+
+
+<style id="v41-low-glare-position-and-shop-fixes">
+/* positions: true black in every state; beat generic primary-button styles */
+html body .position-picker button,html body .position-choice-buttons button,html body .position-choice button,html body button.pos-btn,html body button.pos-btn.primary,html body .position-picker button.primary,html body .position-choice-buttons button.primary{background:#050505!important;background-image:none!important;color:#d0d0d0!important;border:1px solid #292929!important;box-shadow:none!important;filter:none!important}
+html body .position-picker button:hover,html body .position-choice-buttons button:hover,html body .position-choice button:hover,html body button.pos-btn:hover{background:#111!important;background-image:none!important;color:#fff!important;border-color:#444!important}
+html body .position-picker button.active,html body .position-choice-buttons button.active,html body button.pos-btn.active,html body button.pos-btn.selected,html body button.pos-btn[aria-pressed="true"]{background:#151515!important;background-image:none!important;color:#fff!important;border-color:#444!important;box-shadow:inset 0 0 0 1px #ffffff08!important}
+/* store actions use the same dark metallic palette, not the default white primary style */
+html body #shopPage .shop-offer button.primary,html body #shopPage .shop-offer button:not(.secondary){background:linear-gradient(135deg,#242424,#101010 65%,#1c1c1c)!important;color:#eee!important;border:1px solid #555!important;box-shadow:inset 0 1px #ffffff12,0 2px 0 #030303!important}
+html body #shopPage .shop-offer button:not(:disabled):hover{background:#292929!important;border-color:#888!important}
+</style>
+
+
+<style id="v46-country-removal-low-glare-fix">
+/* country Best Players teams are retired; keep all roster positions and wallet controls low-glare */
+html body .slot,html body button.slot,html body .slot.compatible,html body .slot.next-slot,html body .slot.selectable:hover,html body .slot.mismatch-target{background:#080808!important;background-image:none!important;color:#e2e2e2!important;border-color:#303030!important;box-shadow:none!important}
+html body .slot.compatible,html body .slot.next-slot{border-color:#454545!important;box-shadow:inset 0 0 0 1px #ffffff05!important}
+html body .slot .slot-pos,html body .slot .slot-name{color:#dedede!important}
+html body .position-choice,html body .position-picker button,html body .position-choice-buttons button,html body button.pos-btn,html body button.pos-btn.active,html body button.pos-btn.selected,html body button.pos-btn[aria-pressed="true"]{background:#080808!important;background-image:none!important;color:#d0d0d0!important;border:1px solid #303030!important;box-shadow:none!important}
+html body .position-picker button:hover,html body .position-choice-buttons button:hover,html body button.pos-btn:hover{background:#151515!important;color:#eee!important;border-color:#4a4a4a!important}
+html body #moneyTopButton,html body button.money-top-button{background:#080808!important;background-image:none!important;color:#dedede!important;border:1px solid #333!important;box-shadow:none!important;filter:none!important}
+html body #moneyTopButton:hover,html body button.money-top-button:hover{background:#151515!important;border-color:#4a4a4a!important;color:#fff!important}
+html body #moneyTopButton .money-top-label{color:#929292!important}
+html body #moneyTopButton #topCashAmount{color:#e2e2e2!important}
+</style>
+
+
+<style id="v47-final-low-glare-roster-fix">
+/* hard override the white empty court cards seen on some browsers */
+html body .court-board .court-lineup .slot,html body .court-board .court-lineup button.slot,html body .bench-grid .slot,html body .bench-grid button.slot,html body button.role-slot,html body button.bench-slot{background:#080808!important;background-color:#080808!important;background-image:none!important;color:#d8d8d8!important;border:1px solid #292929!important;box-shadow:none!important;filter:none!important}
+html body .court-board .slot:disabled{opacity:1!important;background:#080808!important;background-image:none!important}
+html body .court-board .slot .slot-pos,html body .court-board .slot .slot-name,html body .court-board .slot .slot-sub,html body .bench-grid .slot .slot-pos,html body .bench-grid .slot .slot-name,html body .bench-grid .slot .slot-sub{color:#c7c7c7!important;text-shadow:none!important}
+html body .court-board .slot.compatible,html body .court-board .slot.next-slot,html body .court-board .slot.selectable:hover{background:#121212!important;background-image:none!important;border-color:#454545!important;box-shadow:none!important}
+html body #moneyTopButton,html body button#moneyTopButton,html body .header-tools button.money-top-button{background:#080808!important;background-color:#080808!important;background-image:none!important;color:#d8d8d8!important;border:1px solid #303030!important;box-shadow:none!important;filter:none!important}
+html body #moneyTopButton:hover{background:#121212!important;border-color:#444!important}
+</style>
+
+<style id="v49-absolute-low-glare-fix">
+/* final low-glare override: empty lineup slots were being repainted by later/legacy rules */
+html,body{color-scheme:dark!important}
+html body .court-board .court-lineup .slot,html body .court-board .court-lineup button.slot,html body .court-board .court-lineup .slot:disabled,html body .court-board .court-lineup .slot[disabled],html body .bench-grid .slot,html body .bench-grid button.slot,html body .bench-grid .slot:disabled,html body button.role-slot,html body button.bench-slot{appearance:none!important;-webkit-appearance:none!important;background:#080808!important;background-color:#080808!important;background-image:none!important;color:#cfcfcf!important;border:1px solid #303030!important;box-shadow:none!important;filter:none!important;opacity:1!important;text-shadow:none!important}
+html body .court-board .court-lineup .slot *,html body .bench-grid .slot *{color:#cfcfcf!important;text-shadow:none!important}
+html body .court-board .court-lineup .slot:hover,html body .bench-grid .slot:hover{background:#111!important;background-color:#111!important;background-image:none!important;border-color:#484848!important;box-shadow:none!important}
+html body #moneyTopButton,html body button#moneyTopButton,html body .header-tools #moneyTopButton,html body .header-tools button.money-top-button,html body button.money-top-button{appearance:none!important;-webkit-appearance:none!important;background:#090909!important;background-color:#090909!important;background-image:none!important;color:#d0d0d0!important;border:1px solid #333!important;box-shadow:none!important;filter:none!important;text-shadow:none!important}
+html body #moneyTopButton *,html body button.money-top-button *{color:#d0d0d0!important;text-shadow:none!important}
+html body #moneyTopButton:hover,html body button.money-top-button:hover{background:#151515!important;background-color:#151515!important;border-color:#555!important}
+html body .position-choice,html body .position-picker button,html body .position-choice-buttons button,html body button.pos-btn,html body button.pos-btn.active,html body button.pos-btn.selected,html body button.pos-btn[aria-pressed="true"]{appearance:none!important;-webkit-appearance:none!important;background:#090909!important;background-color:#090909!important;background-image:none!important;color:#d0d0d0!important;border:1px solid #333!important;box-shadow:none!important}
+</style>
+
 </body>
 </html>
 
@@ -1851,4 +2290,146 @@ button,input,select,textarea,.panel,.tile,.summary-box,.candidate,.slot,.rating,
 .slot.filled{position:relative;z-index:41}
 .candidate.duo-active-card{position:relative;z-index:2}
 @media(max-width:560px){.pick-avatar{width:36px!important;height:42px!important}.pick-card-head{grid-template-columns:36px minmax(0,1fr) auto!important}}
+</style>
+
+<style id="phone-layout-and-celebration-fix">
+/* slower cinematic reveal and a lower title */
+.championship-clip-overlay{transition:opacity 1.55s ease,visibility 1.55s ease!important}
+.championship-banner{top:clamp(26px,7vh,86px)!important;padding-top:clamp(22px,4vh,48px)!important}
+.championship-movie-phase{transition:opacity 1.05s ease!important}
+.championship-stats-phase{transition:opacity 1.05s ease,transform 1.05s ease,visibility 1.05s ease!important}
+.header-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.phone-layout-toggle{border:1px solid #777;background:#111;color:#fff;padding:8px 11px;font-size:10px;font-weight:900;letter-spacing:.1em;cursor:pointer;border-radius:0!important}
+.phone-layout-toggle[aria-pressed="true"]{background:#fff;color:#000}
+body.phone-layout main{width:min(100%,460px)!important;padding:18px 10px 40px!important}
+body.phone-layout header{width:100%;padding:12px 10px;gap:8px;align-items:flex-start;flex-direction:column}
+body.phone-layout .header-tools{width:100%;justify-content:space-between}
+body.phone-layout .layout{grid-template-columns:minmax(0,1fr)!important}
+body.phone-layout .layout>*{grid-column:1!important;grid-row:auto!important}
+body.phone-layout .panel{padding:12px!important}
+body.phone-layout .candidates{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-height:none!important;grid-template-rows:none!important;grid-auto-rows:minmax(132px,auto)!important}
+body.phone-layout .candidate{min-height:132px!important;padding:8px!important}
+body.phone-layout .court-lineup{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+body.phone-layout .slot{min-height:94px!important;padding:5px!important}
+body.phone-layout .slot-name{font-size:9px!important}
+body.phone-layout .lifeline-buttons{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+body.phone-layout .championship-stats-phase{padding:110px 16px 22px!important}
+body.phone-layout .championship-stats-grid{grid-template-columns:1fr!important}
+body.phone-layout .championship-stats-grid>div{padding:12px!important}
+body.phone-layout .championship-stats-grid>div+div{border-left:0!important;border-top:1px solid #353535!important}
+body.phone-layout .championship-stats-grid strong{font-size:28px!important;margin-top:5px!important}
+body.phone-layout .championship-stats-kicker{margin-bottom:14px!important}
+body.phone-layout .championship-banner{top:16px!important;font-size:clamp(30px,10vw,44px)!important}
+@media(max-width:560px){.header-tools{width:100%;justify-content:space-between}header{flex-wrap:wrap}.championship-banner{top:18px!important}}
+/* v27: robust phone layout — prevent desktop grid widths collapsing into a strip */
+body.phone-layout{width:100%!important;min-width:0!important;overflow-x:hidden!important}
+body.phone-layout header{position:relative!important;width:100%!important;box-sizing:border-box!important}
+body.phone-layout main{display:block!important;width:100%!important;max-width:480px!important;min-width:0!important;margin:0 auto!important;padding:18px 12px 42px!important;box-sizing:border-box!important}
+body.phone-layout main>*{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+body.phone-layout .layout{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:14px!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important}
+body.phone-layout .layout>.panel,body.phone-layout .layout>section,body.phone-layout .layout>div{display:block!important;position:relative!important;order:initial!important;grid-column:auto!important;grid-row:auto!important;flex:0 0 auto!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
+body.phone-layout .panel{overflow:visible!important;min-width:0!important;width:100%!important;box-sizing:border-box!important}
+body.phone-layout .candidates{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:none!important;grid-auto-rows:minmax(150px,auto)!important;gap:8px!important;width:100%!important;max-height:none!important;overflow:visible!important;min-width:0!important}
+body.phone-layout .candidate{width:100%!important;min-width:0!important;min-height:150px!important;box-sizing:border-box!important;overflow-wrap:anywhere!important}
+body.phone-layout .team-year{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important;min-width:0!important}
+body.phone-layout .summary{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;width:100%!important;min-width:0!important}
+body.phone-layout .court-board,body.phone-layout .bench-grid,body.phone-layout .lifeline-buttons,body.phone-layout .panel-head,body.phone-layout .actions{max-width:100%!important;min-width:0!important}
+body.phone-layout .court-lineup{grid-template-columns:repeat(5,minmax(0,1fr))!important;width:100%!important;min-width:0!important}
+body.phone-layout .slot{min-width:0!important;overflow:hidden!important}
+body.phone-layout img,body.phone-layout canvas,body.phone-layout table{max-width:100%!important}
+@media(max-width:380px){body.phone-layout main{padding-inline:8px!important}body.phone-layout .candidates{grid-template-columns:minmax(0,1fr)!important}body.phone-layout .summary{grid-template-columns:repeat(3,minmax(0,1fr))!important}body.phone-layout .court-lineup{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
+</style>
+<script id="phone-layout-toggle-script">
+renderShop();updateShopCountdown();setInterval(updateShopCountdown,1000);
+(function setupShopNavigation(){const btn=document.getElementById('shopNav'),home=document.getElementById('homePage'),shop=document.getElementById('shopPage');if(!btn||!home||!shop)return;function showShop(show){home.hidden=show;shop.hidden=!show;btn.textContent=show?'BACK TO DRAFT':'TEAM SHOP';btn.setAttribute('aria-pressed',String(show));document.body.classList.toggle('shop-page-open',show);window.scrollTo({top:0,behavior:'instant'});if(show)renderShop();}btn.addEventListener('click',()=>showShop(shop.hidden));showShop(false);})();
+
+(()=>{const b=document.getElementById('phoneLayoutToggle');if(!b)return;const set=v=>{document.body.classList.toggle('phone-layout',v);b.setAttribute('aria-pressed',String(v));b.textContent=v?'DESKTOP LAYOUT':'PHONE LAYOUT';try{localStorage.setItem('hardwoodPhoneLayout',v?'1':'0')}catch(e){}};let initial=false;try{initial=localStorage.getItem('hardwoodPhoneLayout')==='1'}catch(e){}set(initial);b.addEventListener('click',()=>set(!document.body.classList.contains('phone-layout')));})();
+</script>
+
+<style id="v28-roll-placement-and-hard-edges">
+html body *,html body *::before,html body *::after{border-radius:0!important}
+.roll-below-select{display:flex!important;width:100%!important;margin:12px 0 18px!important;gap:0!important}
+.roll-below-select #spinTeam{display:block!important;width:100%!important;min-width:0!important;min-height:54px!important;padding:14px 10px!important;background:#f0f0f0!important;color:#050505!important;border:1px solid #fff!important;box-shadow:none!important;font-size:13px!important;font-weight:900!important;letter-spacing:2px!important;text-transform:uppercase!important}
+.roll-below-select #spinTeam:disabled{opacity:.48!important}
+#spinYear{display:none!important}
+</style>
+
+<style id="v35-coherent-sharp-controls">
+html body button,html body .button,html body input[type=button],html body input[type=submit]{border-radius:0!important;box-sizing:border-box!important;font-family:inherit!important;font-weight:850!important;letter-spacing:.7px!important;text-transform:uppercase!important;transition:background .15s ease,border-color .15s ease,transform .15s ease,box-shadow .15s ease!important;cursor:pointer!important;outline-offset:3px}
+html body button.primary,html body button:not(.secondary):not(.phone-layout-toggle):not(.speed-btn):not(.pos-btn):not(.position-choice):not(.candidate){background:linear-gradient(135deg,#f5f5f5,#cfcfcf 58%,#f7f7f7)!important;color:#090909!important;border:1px solid #fff!important;box-shadow:inset 0 1px #fff9,0 3px 0 #666!important}
+html body button.secondary,html body .speed-btn,html body .pos-btn,html body .position-choice,html body .phone-layout-toggle{background:linear-gradient(135deg,#252525,#101010 65%,#202020)!important;color:#f1f1f1!important;border:1px solid #555!important;box-shadow:inset 0 1px #ffffff15,0 3px 0 #030303!important}
+html body button:not(:disabled):hover{border-color:#eee!important;filter:brightness(1.12);transform:translateY(-1px)!important}
+html body button:not(:disabled):active{transform:translateY(1px)!important;box-shadow:inset 0 2px 7px #0008!important}
+html body button:disabled{cursor:not-allowed!important;opacity:.45!important;filter:saturate(.2)}
+#shopPage .shop-offer button{min-height:46px;margin-top:auto}
+#shopPage .shop-panel{border:1px solid #555}
+#shopPage .shop-wallet{border-radius:0!important}
+@media(max-width:700px){#shopPage{padding:18px 10px 40px!important}#shopPage .shop-grid{grid-template-columns:1fr!important}#shopPage .shop-wallet{gap:10px!important}}
+</style>
+
+/* v38: quieter position controls and consistent rarity labels */
+html body .pos-btn,html body .position-picker .pos-btn,html body .position-choice-buttons .pos-btn{background:linear-gradient(135deg,#202020,#111)!important;color:#b9bec7!important;border:1px solid #3c4149!important;box-shadow:inset 0 1px #ffffff0b,0 2px 0 #050505!important}
+html body .pos-btn:hover,html body .position-picker .pos-btn:hover,html body .position-choice-buttons .pos-btn:hover{background:#30343b!important;color:#f2f2f2!important;border-color:#707782!important}
+html body .shop-rarity{text-transform:lowercase!important;letter-spacing:1px;color:#bfc3ca}
+html body .shop-offer.olympic .shop-rarity{color:#e3c779}html body .shop-offer.allstar .shop-rarity{color:#bba8ed}html body .shop-offer.country .shop-rarity{color:#c4c8ce}
+
+<style id="v39-black-position-controls">
+/* position controls return to the original low-glare black */
+html body .pos-btn,html body .position-picker .pos-btn,html body .position-choice-buttons .pos-btn,html body .position-choice{background:#080808!important;color:#d0d0d0!important;border:1px solid #292929!important;box-shadow:inset 0 1px #ffffff08!important}
+html body .pos-btn:hover,html body .position-picker .pos-btn:hover,html body .position-choice-buttons .pos-btn:hover{background:#151515!important;color:#fff!important;border-color:#444!important}
+html body .pos-btn.active,html body .pos-btn.selected,html body .pos-btn[aria-pressed="true"],html body .position-choice button.active{background:#1a1a1a!important;color:#fff!important;border-color:#555!important;box-shadow:inset 0 0 0 1px #ffffff08!important}
+</style>
+
+<style id="hardwood-final-dark-board-fix">
+html body .court-board button.slot,
+html body .court-board button.slot:link,
+html body .court-board button.slot:visited,
+html body .court-board button.slot:focus,
+html body .court-board button.slot:active,
+html body .court-board button.slot:hover,
+html body #starters button.slot,
+html body #bench button.slot,
+html body .court-board .slot:not(.filled),
+html body #starters .slot:not(.filled),
+html body #bench .slot:not(.filled) {
+  -webkit-appearance:none!important; appearance:none!important;
+  background:#080808!important; background-color:#080808!important;
+  background-image:none!important; color:#d5d5d5!important;
+  border:1px solid #303030!important; border-radius:0!important;
+  box-shadow:none!important; filter:none!important; text-shadow:none!important;
+}
+html body .court-board button.slot .slot-pos,
+html body .court-board button.slot .slot-name,
+html body .court-board button.slot .slot-sub,
+html body #starters button.slot *,
+html body #bench button.slot * {color:#bcbcbc!important;text-shadow:none!important}
+html body .court-board button.slot.next-slot {border-color:#414141!important;box-shadow:inset 0 0 0 1px #171717!important}
+html body .court-board button.slot.compatible {background:#111!important;border-color:#555!important}
+html body .court-board button.slot.mismatch-target {background:#100909!important;border-color:#493030!important}
+html body #moneyTopButton, html body button#moneyTopButton, html body .header-tools button.money-top-button {
+  -webkit-appearance:none!important;appearance:none!important;background:#080808!important;background-color:#080808!important;background-image:none!important;color:#c9c9c9!important;border:1px solid #303030!important;border-radius:0!important;box-shadow:none!important;filter:none!important;text-shadow:none!important
+}
+html body #moneyTopButton *, html body button#moneyTopButton * {color:#c9c9c9!important;text-shadow:none!important}
+</style>
+
+<style id="v55-eligible-position-glow">
+/* softly light up roster slots that match the currently selected draft player */
+html body .court-board button.slot.compatible,
+html body #starters button.slot.compatible,
+html body .court-lineup button.slot.compatible {
+  background:#202020!important;
+  background-color:#202020!important;
+  color:#fff!important;
+  border:1px solid #777!important;
+  box-shadow:inset 0 0 0 1px #ffffff12,0 0 10px #ffffff12!important;
+  transition:background .15s ease,border-color .15s ease,box-shadow .15s ease!important;
+}
+html body .court-board button.slot.compatible .slot-pos,
+html body .court-board button.slot.compatible .slot-name,
+html body .court-board button.slot.compatible .slot-sub,
+html body #starters button.slot.compatible * {color:#f5f5f5!important}
+html body .court-board button.slot.compatible:hover,
+html body #starters button.slot.compatible:hover {
+  background:#292929!important;border-color:#aaa!important;box-shadow:inset 0 0 0 1px #ffffff20,0 0 14px #ffffff18!important;
+}
 </style>
